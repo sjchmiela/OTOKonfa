@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header class='header'>
+    <%= link_to root_path do %>
+      <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
+    <% end %>
+    <nav class='header-nav'>
+    </nav>
+  </header>
+  <div class='centering'>
+    <div class='centered content'>
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
