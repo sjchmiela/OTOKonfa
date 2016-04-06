@@ -12,6 +12,13 @@
       <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
     <% end %>
     <nav class='header-nav'>
+      <% if !user_signed_in? %>
+        <%= link_to (t 'authorization.sign_in'), new_user_session_path %>
+        <%= link_to (t 'authorization.sign_up'), new_user_registration_path %>
+      <% else %>
+        Zalogowano jako <%= current_user.first_name %> <%= current_user.last_name %>.
+        <%= link_to (t 'authorization.sign_out'), destroy_user_session_path, method: :delete %>
+      <% end %>
     </nav>
   </header>
   <div class='centering'>
