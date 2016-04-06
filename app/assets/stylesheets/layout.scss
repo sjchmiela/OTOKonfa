@@ -1,0 +1,31 @@
+.centering {
+  display: flex;
+  justify-content: center;
+  .centered {
+    flex-grow: 1;
+  }
+}
+
+.header {
+  background-color: #06674E;
+  padding: 1.618em 2.618em 2.618em;
+  text-align: center;
+  &-logo {
+    height: 1.618em;
+  }
+  &-nav {
+    padding: 0.618em 1em 1em;
+    font-size: 0.809em;
+    color: #BFC1C2;
+  }
+}
+
+.content {
+  padding: 3px;
+  background-color: #fff;
+  margin: -2.618em 1em 0;
+  max-width: 62em;
+  padding: 1em;
+  border: 3px solid #06674E;
+  border-radius: 1em;
+}
