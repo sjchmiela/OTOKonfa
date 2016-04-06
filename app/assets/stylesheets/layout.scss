@@ -1,3 +1,11 @@
+.centering {
+  display: flex;
+  justify-content: center;
+  .centered {
+    flex-grow: 1;
+  }
+}
+
 .header {
   background-color: #06674E;
   padding: 1.618em 2.618em 2.618em;
@@ -15,8 +23,8 @@
 .content {
   padding: 3px;
   background-color: #fff;
-  margin: -2.618em auto 0;
-  width: 62em;
+  margin: -2.618em 1em 0;
+  max-width: 62em;
   padding: 1em;
   border: 3px solid #06674E;
   border-radius: 1em;
