@@ -26,6 +26,9 @@ en:
   venues: Venues
   venue:
     no_hotels: 'This venue does not offer any lodging.'
+  contact:
+    header: Contact
+    send_message: 'Send message'
   not_found:
     title: 'No venues found'
     description: 'Unfortunately, we could not found any venue matching your criteria. Try tweaking search query.'
