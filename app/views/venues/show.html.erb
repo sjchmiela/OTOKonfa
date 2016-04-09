@@ -15,11 +15,11 @@
       <div class="card-content black-text">
         <span class="card-title">Kontakt</span>
         <div class="row">
-          <div class="col s6">
+          <div class="col s8">
             <p><%= @venue.address %></p>
           </div>
-          <div class="col s6">
-            <p><a href="tel:<%= @venue.phone %>"><%= @venue.phone %></a></p>
+          <div class="col s4">
+            <p><a href="tel:<%= @venue.phone %>"><i class="tiny material-icons">phone</i><%= @venue.phone %></a></p>
           </div>
         </div>
       </div>

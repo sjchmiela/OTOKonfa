@@ -16,7 +16,9 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li class="<%= ("active" if params[:controller] == "venues") %>">
-            <%= link_to (t 'venues'), venues_path %>
+            <%= link_to venues_path do %>
+              <i class="material-icons left">view_list</i><%= t :venues %>
+            <% end %>
           </li>
         </ul>
       </div>
