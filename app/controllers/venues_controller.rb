@@ -4,7 +4,11 @@ class VenuesController < ApplicationController
   # GET /venues
   # GET /venues.json
   def index
-    @venues = Venue.all
+    if !params[:search]
+      @venues = Venue.all
+    else
+      @venues = Venue.where('name like ? or description like ?', "%#{params[:search]}%", "%#{params[:search]}%")
+    end
   end
 
   # GET /venues/1
