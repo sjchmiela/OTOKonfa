@@ -7,17 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class='header'>
-    <%= link_to root_path do %>
-      <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
-    <% end %>
-    <nav class='header-nav'>
-    </nav>
-  </header>
-  <div class='centering'>
-    <div class='centered content'>
-      <%= yield %>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to root_path, class: 'brand-logo' do %>
+        <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
+      <% end %>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      </ul>
     </div>
+  </nav>
+  <div class='container'>
+    <%= yield %>
   </div>
 </body>
 </html>

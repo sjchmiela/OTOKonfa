@@ -35,6 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use high_voltage for static pages
 gem 'high_voltage', '~> 2.4.0'
 
+# Use Materialize as CSS framework
+gem 'materialize-sass'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
