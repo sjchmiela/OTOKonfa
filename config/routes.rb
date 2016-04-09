@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :venues
+  namespace :managers do
+    resources :venues, except: [:index, :show]
+  end
+
+  resources :venues, only: [:index, :show]
   root to: 'high_voltage/pages#show', id: 'home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
