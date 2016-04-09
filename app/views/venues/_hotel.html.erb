@@ -1,0 +1,8 @@
+<strong><%= hotel.name %></strong>
+<% if hotel.room_components.empty? %>
+  <ul>
+    <% hotel.room_components.each do |room_component| %>
+      <li><%= pluralize(room_component.quantity, 'room') %>, <%= pluralize(room_component.capacity, 'person') each.</li>
+    <% end %>
+  </ul>
+<% end %>
