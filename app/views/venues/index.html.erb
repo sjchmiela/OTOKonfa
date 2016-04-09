@@ -1,10 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Venues</h1>
-
-<% @venues.each do |venue| %>
-  <%= render partial: 'venue', locals: { venue: venue } %>
-<% end %>
-<br>
-
-<%= link_to 'New Venue', new_venue_path %>
+<div class="row">
+  <div class="col s12">
+    <h1><%= t 'venues' %></h1>
+  </div>
+  <% @venues.each do |venue| %>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content black-text">
+          <span class="card-title"><%= venue.name %></span>
+          <p><%= truncate(venue.description, length: 150) %></p>
+        </div>
+        <div class="card-action">
+          <%= link_to (t :show), venue %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

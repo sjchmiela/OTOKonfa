@@ -1,29 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @venue.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @venue.description %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @venue.address %>
-</p>
-
-<p>
-  <strong>Geoposition:</strong>
-  <%= @venue.geoposition %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @venue.phone %>
-</p>
-
-<%= link_to 'Edit', edit_venue_path(@venue) %> |
-<%= link_to 'Back', venues_path %>
+<div class="row">
+  <div class="col s12">
+    <h1><%= @venue.name %></h1>
+  </div>
+  <div class="col s12 m6">
+    <div class="card lighten-5">
+      <div class="card-content black-text">
+        <span class="card-title">Opis</span>
+        <p><%= @venue.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card">
+      <div class="card-content black-text">
+        <span class="card-title">Kontakt</span>
+        <div class="row">
+          <div class="col s6">
+            <p><%= @venue.address %></p>
+          </div>
+          <div class="col s6">
+            <p><a href="tel:<%= @venue.phone %>"><%= @venue.phone %></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
