@@ -21,11 +21,21 @@
             <% end %>
           </li>
           <% if !user_signed_in? %>
-            <li><%= link_to (t 'authorization.sign_in'), new_user_session_path %></li>
-            <li><%= link_to (t 'authorization.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
+            <li><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
+            <li><%= link_to (t 'authentication.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
           <% else %>
-            <li>Zalogowano jako <%= current_user.first_name %> <%= current_user.last_name %>.</li>
-            <li><%= link_to (t 'authorization.sign_out'), destroy_user_session_path, method: :delete %></li>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <%= current_user.first_name %>
+                <i class='material-icons left'>account_box</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= I18n.t 'authentication.sign_out' %>
+                <i class='material-icons left'>power_settings_new</i>
+              <% end %>
+            </li>
           <% end %>
         </ul>
       </div>
