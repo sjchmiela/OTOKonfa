@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160409135126) do
+ActiveRecord::Schema.define(version: 20160412215720) do
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4
@@ -33,6 +33,31 @@ ActiveRecord::Schema.define(version: 20160409135126) do
   end
 
   add_index "hotels", ["venue_id"], name: "index_hotels_on_venue_id", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.string   "title",              limit: 255
+    t.integer  "imageable_id",       limit: 4
+    t.string   "imageable_type",     limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "order",              limit: 4
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "venue_id",   limit: 4
+    t.integer  "stars",      limit: 4
+    t.text     "comment",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  add_index "reviews", ["venue_id"], name: "index_reviews_on_venue_id", using: :btree
 
   create_table "room_components", force: :cascade do |t|
     t.integer  "hotel_id",   limit: 4
@@ -76,5 +101,7 @@ ActiveRecord::Schema.define(version: 20160409135126) do
 
   add_foreign_key "halls", "venues"
   add_foreign_key "hotels", "venues"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "venues"
   add_foreign_key "room_components", "hotels"
 end
