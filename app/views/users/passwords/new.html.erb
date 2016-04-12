@@ -1,0 +1,26 @@
+<div class='row'>
+  <div class='col s12 m8 offset-m2'>
+    <h1><%= I18n.t 'authentication.forgot_password' %></h1>
+  </div>
+  <div class='col s12 m8 offset-m2'>
+    <div class='card'>
+      <div class="card-content black-text">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="card-actions right-align">
+            <%= render "users/shared/links" %>
+            <%= f.button class: 'btn waves-effect waves-light' do %>
+              <%= I18n.t 'authentication.forgot_password_action' %><i class="material-icons right">send</i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
