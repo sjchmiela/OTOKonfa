@@ -22,7 +22,7 @@
           </li>
           <% if !user_signed_in? %>
             <li><%= link_to (t 'authorization.sign_in'), new_user_session_path %></li>
-            <li><%= link_to (t 'authorization.sign_up'), new_user_registration_path %></li>
+            <li><%= link_to (t 'authorization.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
           <% else %>
             <li>Zalogowano jako <%= current_user.first_name %> <%= current_user.last_name %>.</li>
             <li><%= link_to (t 'authorization.sign_out'), destroy_user_session_path, method: :delete %></li>
