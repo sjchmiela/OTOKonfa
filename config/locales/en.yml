@@ -32,3 +32,5 @@ en:
   not_found:
     title: 'No venues found'
     description: 'Unfortunately, we could not found any venue matching your criteria. Try tweaking search query.'
+  authentication:
+    sign_up: Sign up
