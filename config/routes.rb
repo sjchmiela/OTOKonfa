@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :venues do
+    resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
+  end
+
   devise_for :users, controllers: {
     passwords: 'users/passwords',
     registrations: 'users/registrations',
