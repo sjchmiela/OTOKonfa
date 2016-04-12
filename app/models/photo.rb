@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+  default_scope { order(:order) }
   belongs_to :imageable, polymorphic: true
   has_attached_file :image
   validates_attachment_presence :image
