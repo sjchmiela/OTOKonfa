@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412083038) do
+ActiveRecord::Schema.define(version: 20160412083832) do
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160412083038) do
     t.string   "imageable_type",     limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "order",              limit: 4
   end
 
   create_table "room_components", force: :cascade do |t|
