@@ -7,24 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header class='header'>
-    <%= link_to root_path do %>
-      <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
-    <% end %>
-    <nav class='header-nav'>
-      <% if !user_signed_in? %>
-        <%= link_to (t 'authorization.sign_in'), new_user_session_path %>
-        <%= link_to (t 'authorization.sign_up'), new_user_registration_path %>
-      <% else %>
-        Zalogowano jako <%= current_user.first_name %> <%= current_user.last_name %>.
-        <%= link_to (t 'authorization.sign_out'), destroy_user_session_path, method: :delete %>
+  <nav>
+    <div class="nav-wrapper">
+      <%= link_to root_path, class: 'brand-logo' do %>
+        <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
       <% end %>
-    </nav>
-  </header>
-  <div class='centering'>
-    <div class='centered content'>
-      <%= yield %>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if !user_signed_in? %>
+          <%= link_to (t 'authorization.sign_in'), new_user_session_path %>
+          <%= link_to (t 'authorization.sign_up'), new_user_registration_path %>
+        <% else %>
+          Zalogowano jako <%= current_user.first_name %> <%= current_user.last_name %>.
+          <%= link_to (t 'authorization.sign_out'), destroy_user_session_path, method: :delete %>
+        <% end %>
+      </ul>
     </div>
+  </nav>
+  <div class='container'>
+    <%= yield %>
   </div>
 </body>
 </html>
