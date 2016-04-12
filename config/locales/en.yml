@@ -22,6 +22,7 @@
 en:
   home: 'Home'
   hello: "Hello world"
+  save: Save
   show: Show
   venues: Venues
   venue:
@@ -33,8 +34,10 @@ en:
     title: 'No venues found'
     description: 'Unfortunately, we could not found any venue matching your criteria. Try tweaking search query.'
   authentication:
+    cancel: Cancel account
     sign_up: Sign up
     edit: Edit account
     sign_in: Sign in
+    sign_out: Sign out
     forgot_password: Forgot your password?
     forgot_password_action: "Send reset instructions"
