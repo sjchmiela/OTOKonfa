@@ -1,8 +1,10 @@
 <div class='row'>
-  <div class='col s12 m8 offset-m2'>
+  <div class='col s12'>
+    <h1><%= I18n.t 'authentication.edit' %></h1>
+  </div>
+  <div class='col s12 m8'>
     <div class='card'>
       <div class="card-content black-text">
-        <span class="card-title"><h4><%= I18n.t 'authentication.edit' %></h4></span>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= devise_error_messages! %>
 
@@ -41,19 +43,21 @@
           </div>
 
           <div class="actions right-align">
-
+            <%= render "users/shared/links" %>
             <%= f.button class: 'btn waves-effect waves-light' do %>
-              <%= I18n.t 'authentication.sign_up' %><i class="material-icons right">send</i>
+              <%= I18n.t 'save' %><i class="material-icons right">send</i>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
-    <%= render "users/shared/links" %>
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
+  </div>
+  <div class='col s12 m4'>
+    <div class='card'>
+      <div class="card-content black-text">
+        <span class="card-title"><%= I18n.t 'authentication.cancel' %></span>
+        <div class='row'><div class='col s12'><p>Unhappy?</p></div></div>
+        <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn red darken-2', data: { confirm: "Are you sure?" }, method: :delete %>
+    </div>
   </div>
 </div>
