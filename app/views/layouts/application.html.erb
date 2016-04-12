@@ -21,10 +21,10 @@
             <% end %>
           </li>
           <% if !user_signed_in? %>
-            <li><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
+            <li class="<%= ("active" if params[:controller] == "users/sessions") %>"><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
             <li><%= link_to (t 'authentication.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
           <% else %>
-            <li>
+            <li class="<%= ("active" if params[:controller] == "users/registrations") %>">
               <%= link_to edit_user_registration_path do %>
                 <%= current_user.first_name %>
                 <i class='material-icons left'>account_box</i>
