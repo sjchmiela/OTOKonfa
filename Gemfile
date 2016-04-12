@@ -38,6 +38,9 @@ gem 'high_voltage', '~> 2.4.0'
 # Use Materialize as CSS framework
 gem 'materialize-sass'
 
+# Use Paperclip for image attachments
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
