@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col s12">
+    <h3><%= t 'venues' %></h3>
+  </div>
+  <form class="col s12">
+    <div class="input-field col s12">
+      <i class="material-icons prefix">search</i>
+      <input id="venue_search" type="tel" class="validate" name="search" value="<%= params[:search] %>">
+      <label for="venue_search"><%= t 'search' %></label>
+    </div>
+  </form>
+  <% if @venues.each do |venue| %>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content black-text">
+          <span class="card-title"><%= venue.name %></span>
+          <p><%= truncate(venue.description, length: 150) %></p>
+        </div>
+        <div class="card-action right-align">
+          <%= link_to (t :show), venue %>
+        </div>
+      </div>
+    </div>
+  <% end.empty? %>
+    <div class="col s12 m6 offset-m3">
+      <div class="card">
+        <div class="card-content black-text">
+          <span class="card-title"><%= t 'not_found.title' %></span>
+          <p><%= t 'not_found.description' %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

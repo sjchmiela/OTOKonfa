@@ -1,4 +1,5 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "materialize/components/color";
-$primary-color: color("#06674E", "lighten-2") !default;
-@import "materialize";
-@import "navbar";
+$primary-color: color("green", "darken-3") !default;
+@import 'materialize';
+@import 'custom';

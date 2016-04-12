@@ -11,7 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406181002) do
+ActiveRecord::Schema.define(version: 20160409135126) do
+
+  create_table "halls", force: :cascade do |t|
+    t.integer  "venue_id",    limit: 4
+    t.integer  "chairs",      limit: 4
+    t.integer  "capacity",    limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+  end
+
+  add_index "halls", ["venue_id"], name: "index_halls_on_venue_id", using: :btree
+
+  create_table "hotels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "venue_id",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "hotels", ["venue_id"], name: "index_hotels_on_venue_id", using: :btree
+
+  create_table "room_components", force: :cascade do |t|
+    t.integer  "hotel_id",   limit: 4
+    t.integer  "capacity",   limit: 4
+    t.integer  "quantity",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "room_components", ["hotel_id"], name: "index_room_components_on_hotel_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -33,4 +64,17 @@ ActiveRecord::Schema.define(version: 20160406181002) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "venues", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.text     "address",     limit: 65535
+    t.string   "geoposition", limit: 255
+    t.string   "phone",       limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_foreign_key "halls", "venues"
+  add_foreign_key "hotels", "venues"
+  add_foreign_key "room_components", "hotels"
 end
