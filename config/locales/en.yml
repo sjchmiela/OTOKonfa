@@ -34,3 +34,7 @@ en:
     description: 'Unfortunately, we could not found any venue matching your criteria. Try tweaking search query.'
   authentication:
     sign_up: Sign up
+    edit: Edit account
+    sign_in: Sign in
+    forgot_password: Forgot your password?
+    forgot_password_action: "Send reset instructions"
