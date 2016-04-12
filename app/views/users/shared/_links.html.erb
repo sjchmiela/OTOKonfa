@@ -1,4 +1,4 @@
-<%- if controller_name != 'sessions' %>
+<%- if controller_name != 'sessions' && !(controller_name == 'registrations' && action_name == 'edit') %>
   <%= link_to "Log in", new_session_path(resource_name), class: 'btn btn-flat' %>
 <% end -%>
 
