@@ -24,7 +24,17 @@ en:
   hello: "Hello world"
   save: Save
   show: Show
-  venues: Venues
+  venues:
+    navbar:
+      title: Venues
+    reviews:
+      header: Reviews
+      empty: This venue has not been reviewed yet.
+      sign_in: Sign in
+      to_leave_your_review: to leave your review.
+      create: Save
+      comment: Your comment
+      no_comment: No comment provided
   venue:
     no_hotels: 'This venue does not offer any lodging.'
   contact:
