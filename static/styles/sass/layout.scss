@@ -1,0 +1,111 @@
+p {
+    margin: 1rem 0;
+}
+
+.nav-wrapper {
+    padding: 0 2rem;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+.footer-copyright {
+    margin-top: 1.5rem;
+}
+
+.parallax-container {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.venue__header {
+
+    h1 {
+        margin: .5rem 0;
+    }
+
+    .accessories {
+        margin: 0 0 1rem;
+    }
+
+    .section {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    &-info {
+        .material-icons {
+            vertical-align: middle;
+        }
+
+        p {
+            margin: 1rem 0 0;
+        }
+
+        .rating {
+            li:first-child {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+
+.venue__reviews {
+    .collection-item.avatar {
+        min-height: 0;
+
+        .title {
+            display: block;
+            margin-bottom: .25rem;
+        }
+
+        .secondary-content {
+            top: 8px;
+
+            .material-icons {
+                vertical-align: bottom;
+            }
+        }
+    }
+}
+
+.venue__contact {
+    li {
+        position: relative;
+        padding: 0.5rem 3rem;
+
+        .material-icons {
+            position: absolute;
+            left: 0.5rem;
+            top: 0.5rem;
+        }
+    }
+}
+
+.chip {
+    margin: 0 .25rem 0.5rem 0;
+}
+
+.rating {
+    li {
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.underline {
+    border-bottom: 1px solid #e0e0e0;
+
+    .btn {
+        text-transform: none;
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+h4.underline {
+    padding-bottom: 1rem;
+}
