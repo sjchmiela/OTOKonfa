@@ -51,3 +51,5 @@ en:
     sign_out: Sign out
     forgot_password: Forgot password?
     forgot_password_action: "Send reset instructions"
+    change_password: Change password
+    change_password_action: Save new password
