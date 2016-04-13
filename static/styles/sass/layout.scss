@@ -2,6 +2,11 @@ p {
     margin: 1rem 0;
 }
 
+#modal-login {
+    width: 90%;
+    max-width: 400px;
+}
+
 .nav-wrapper {
     padding: 0 2rem;
 }
@@ -37,9 +42,6 @@ p {
     }
 
     &-info {
-        .material-icons {
-            vertical-align: middle;
-        }
 
         p {
             margin: 1rem 0 0;
@@ -96,14 +98,27 @@ p {
     }
 }
 
+.modal {
+    h4 {
+        padding: 0 0.75rem;
+    }
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
 .underline {
     border-bottom: 1px solid #e0e0e0;
 
     .btn {
         text-transform: none;
         font-size: 1rem;
-        padding: 0 1rem;
     }
+}
+
+.btn {
+    padding: 0 1rem;
 }
 
 h4.underline {

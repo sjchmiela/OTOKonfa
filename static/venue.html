@@ -15,7 +15,7 @@
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo"><i class="material-icons left">work</i>OtoKonfa</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#"><i class="material-icons left">vpn_key</i>Zaloguj</a></li>
+                <li><a href="#modal-login" class="modal-trigger"><i class="material-icons left">vpn_key</i>Zaloguj</a></li>
                 <li><a href="#"><i class="material-icons left">stars</i>Zarejestruj się</a></li>
             </ul>
         </div>
@@ -87,7 +87,7 @@
                     <div style="margin:1em 0 0; height:200px;background:#555"></div>
                 </div>
                 <div class="venue__contact section">
-                    <h4 class="underline">Kontakt <a href="#contact-form" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
+                    <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
                     <ul>
                         <li><i class="material-icons">call</i>+48 123 777 999</li>
                         <li><i class="material-icons">email</i>kontakt@example.org</li>
@@ -168,7 +168,7 @@
         </div>
     </div>
 </footer>
-<div id="contact-form" class="modal">
+<div id="modal-contact" class="modal">
     <div class="modal-content">
         <h4>Formularz kontaktowy</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ultrices odio. Donec dapibus nulla a arcu cursus, vel eleifend velit placerat. Donec aliquam elit in interdum bibendum. Morbi vulputate vitae erat vitae ultrices. Praesent vitae metus hendrerit, eleifend metus non, volutpat arcu. </p>
@@ -195,8 +195,27 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="modal-action modal-close light-blue darken-2 btn"><i class="material-icons left">send</i>Wyślij</button>
+                    <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">send</i>Wyślij</button>
                 </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal-login" class="modal">
+    <div class="modal-content">
+        <h4>Zaloguj</h4>
+        <form class="row">
+            <div class="input-field col s12">
+                <input id="login" type="text" class="validate">
+                <label for="login">Login</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Hasło</label>
+            </div>
+            <div class="input-field col s12">
+                <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn">Zaloguj</button>
+                <button class="waves-effect waves-light btn-flat">Zapomniałem hasła</button>
             </div>
         </form>
     </div>
