@@ -1,0 +1,37 @@
+.map {
+  min-height: 26em;
+}
+
+[type="radio"]:not(:checked) + label.no-circle, [type="radio"]:checked + label.no-circle {
+  padding-left: 0;
+  color: gold;
+}
+.no-circle::before, .no-circle::after {
+  display: none;
+}
+
+[type="radio"]:checked ~ label.no-circle {
+  color: grey;
+}
+
+[type="radio"]:checked + label.no-circle {
+  color: gold;
+}
+
+
+.gold-text {
+  color: gold;
+}
+
+.rating {
+  &-icon {
+    color: gold;
+    float: left;
+  }
+  &-stars {
+    font-weight: bold;
+    float: left;
+    margin-top: 1px;
+    margin-left: 1px;
+  }
+}

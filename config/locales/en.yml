@@ -22,3 +22,34 @@
 en:
   home: 'Home'
   hello: "Hello world"
+  save: Save
+  show: Show
+  venues:
+    navbar:
+      title: Venues
+    reviews:
+      header: Reviews
+      empty: This venue has not been reviewed yet.
+      sign_in: Sign in
+      to_leave_your_review: to leave your review.
+      create: Save
+      comment: Your comment
+      no_comment: No comment provided
+  venue:
+    no_hotels: 'This venue does not offer any lodging.'
+  contact:
+    header: Contact
+    send_message: 'Send message'
+  not_found:
+    title: 'No venues found'
+    description: 'Unfortunately, we could not found any venue matching your criteria. Try tweaking search query.'
+  authentication:
+    cancel: Cancel account
+    sign_up: Sign up
+    edit: Edit account
+    sign_in: Sign in
+    sign_out: Sign out
+    forgot_password: Forgot password?
+    forgot_password_action: "Send reset instructions"
+    change_password: Change password
+    change_password_action: Save new password

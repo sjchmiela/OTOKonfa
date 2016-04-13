@@ -32,8 +32,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use Devise for authentication
+gem 'devise'
+
 # Use high_voltage for static pages
 gem 'high_voltage', '~> 2.4.0'
+
+# Use Materialize as CSS framework
+gem 'materialize-sass'
+
+# Use Paperclip for image attachments
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
+# Use letter opener for capturing e-mails in dev environment
+gem 'letter_opener', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

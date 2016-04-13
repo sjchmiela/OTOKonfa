@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  root to: 'high_voltage/pages#show', id: 'home'
+  devise_for :users, controllers: {
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+  namespace :managers do
+    resources :venues, except: [:index, :show]
+  end
+  resources :venues, only: [:index, :show] do
+    resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
+  end
+  root to: 'venues#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

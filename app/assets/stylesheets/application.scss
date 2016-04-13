@@ -1,0 +1,5 @@
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import "materialize/components/color";
+$primary-color: color("green", "darken-3") !default;
+@import 'materialize';
+@import 'custom';
