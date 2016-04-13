@@ -11,3 +11,6 @@ Hall.create(venue: ice_krakow, name: 'Sala audytoryjna', chairs: 2000, capacity:
 Hall.create(venue: ice_krakow, name: 'Sala teatralna', chairs: 220, capacity: 660)
 Hall.create(venue: ice_krakow, name: 'Sala kameralna', chairs: 300, capacity: 500)
 Hall.create(venue: ice_krakow, name: 'Zespół sal konferencyjnych', chairs: 300, capacity: 600)
+
+hilton_garden = Venue.create(name: 'Hilton Garden Inn', description: 'Zaplanuj kolejne spotkanie biznesowe lub imprezę towarzyską w hotelu Hilton Garden Inn w Krakowie. Oprócz bezpłatnego dostępu do całodobowego samoobsługowego centrum biznesowego z komputerami, drukarkami i bezpłatnym dostępem do Internetu do dyspozycji oddajemy też cztery uniwersalne sale konferencyjne, salę zebrań VIP z wyłącznym dostępem oraz imponujące foyer konferencyjne z niezapomnianymi widokami na Wawel. Wszystkie sale wyposażone są w projektory LCD, systemy audio i bezpłatne Wi-Fi.', address: 'ul. Marii Konopnickiej 33, \nKraków 30-302', geoposition: '50.0459368, 19.9314029', phone: '12 399 90 00')
+Hall.create(venue: hilton_garden, name: 'Zespół sal konferencyjnych', chairs: 250, capacity: 500)
