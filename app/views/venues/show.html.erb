@@ -52,5 +52,66 @@
       </ul>
     </div>
   </div>
-  <iframe class="col s12 map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= URI.encode(@venue.geoposition) %>&key=AIzaSyCk1E3ZhPKzWeVJW4MpLrb1XhPWPTBijpg" allowfullscreen></iframe>
+  <iframe class="col s12 m8 map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= URI.encode(@venue.geoposition) %>&key=AIzaSyCk1E3ZhPKzWeVJW4MpLrb1XhPWPTBijpg" allowfullscreen></iframe>
+  <div class="col s12 m4">
+    <div class="card">
+      <ul class="collection with-header">
+        <li class="collection-header">
+          <span class="card-title"><%= t "venues.reviews.header" %></span>
+        </li>
+        <% if @venue.reviews.each do |review| %>
+          <li class="collection-item avatar">
+            <i class="material-icons circle">perm_identity</i>
+            <span class="title"><strong><%= review.user.first_name %></strong></span>
+            <p>
+              <% unless review.comment.empty? %>
+                <%= review.comment %>
+              <% else %>
+                <span class="grey-text"><em><%= t 'venues.reviews.no_comment' %></em></span>
+              <% end %>
+            </p>
+            <span class="secondary-content black-text">
+              <div class="rating">
+                <i class="material-icons rating-icon">star</i>
+                <div class="rating-stars"><%= review.stars %></div>
+              </div>
+            </span>
+          </li>
+        <% end.empty? %>
+          <li class="collection-item">
+            <%= I18n.t "venues.reviews.empty" %>
+          </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li class="collection-item avatar">
+            <i class="material-icons circle grey">perm_identity</i>
+            <span class="title"><strong><%= current_user.first_name %></strong></span>
+            <%= form_for [@venue, @review] do |f| %>
+              <div class="field">
+                <% (1..5).each do |stars| %>
+                  <%= f.radio_button :stars, stars %>
+                  <%= f.label "stars_#{stars}", class: 'no-circle' do %>
+                    <i class="material-icons">star</i>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="field">
+                <%= f.text_area :comment, class: 'materialize-textarea', placeholder: (t "venues.reviews.comment") %>
+              </div>
+              <div class="row">
+                <%= f.button class: 'btn col s10 offset-s1' do %>
+                  <%= I18n.t 'venues.reviews.create' %>
+                  <i class="material-icons right">send</i>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="collection-item">
+            <%= link_to (I18n.t "venues.reviews.sign_in"), new_user_session_path %> <%= t "venues.reviews.to_leave_your_review" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
