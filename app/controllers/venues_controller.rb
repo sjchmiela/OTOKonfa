@@ -14,6 +14,7 @@ class VenuesController < ApplicationController
   # GET /venues/1
   # GET /venues/1.json
   def show
+    @review = Review.new(user: current_user) if user_signed_in?
   end
 
   private
