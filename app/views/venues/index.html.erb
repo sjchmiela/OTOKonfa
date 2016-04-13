@@ -9,9 +9,9 @@
       <label for="venue_search"><%= t 'search' %></label>
     </div>
   </form>
-  <% if @venues.each do |venue| %>
-    <div class="col s12 m6">
-      <div class="card">
+  <% if @venues.each_with_index do |venue, index| %>
+    <div class="col s12 m6" <% if index % 2 == 0 %>style="clear: left"<% end %>>
+      <div class="card card-venue">
         <% if venue.photos.any? %>
           <div class="card-image">
             <%= image_tag venue.photos.first.image %>
