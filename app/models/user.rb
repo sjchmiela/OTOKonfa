@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :first_name, in: 2..100
   validates_length_of :last_name, in: 2..100
+
+  has_many :reviews
 end
