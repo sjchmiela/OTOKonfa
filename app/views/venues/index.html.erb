@@ -12,8 +12,13 @@
   <% if @venues.each do |venue| %>
     <div class="col s12 m6">
       <div class="card">
+        <% if venue.photos.any? %>
+          <div class="card-image">
+            <%= image_tag venue.photos.first.image %>
+            <span class="card-title"><%= venue.name %></span>
+          </div>
+        <% end %>
         <div class="card-content black-text">
-          <span class="card-title"><%= venue.name %></span>
           <p><%= truncate(venue.description, length: 150) %></p>
         </div>
         <div class="card-action right-align">
