@@ -19,6 +19,9 @@
           </div>
         <% end %>
         <div class="card-content black-text">
+          <% unless venue.photos.any? %>
+          <span class="card-title"><%= venue.name %></span>
+          <% end %>
           <p><%= truncate(venue.description, length: 150) %></p>
         </div>
         <div class="card-action right-align">

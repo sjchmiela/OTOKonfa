@@ -40,6 +40,7 @@
         <% end %>
       </ul>
     </div>
+    <iframe class="col s12 map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= URI.encode(@venue.geoposition) %>&key=AIzaSyCk1E3ZhPKzWeVJW4MpLrb1XhPWPTBijpg" allowfullscreen></iframe>
   </div>
   <div class="col s12 m4">
     <div class="card">
@@ -71,9 +72,6 @@
         <% end %>
       </ul>
     </div>
-  </div>
-  <iframe class="col s12 m8 map" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= URI.encode(@venue.geoposition) %>&key=AIzaSyCk1E3ZhPKzWeVJW4MpLrb1XhPWPTBijpg" allowfullscreen></iframe>
-  <div class="col s12 m4">
     <div class="card">
       <ul class="collection with-header">
         <li class="collection-header">
