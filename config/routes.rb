@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :venues, only: [:index, :show] do
     resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
   end
-  root to: 'high_voltage/pages#show', id: 'home'
+  root to: 'venues#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
