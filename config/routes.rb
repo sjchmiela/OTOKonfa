@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   namespace :admin do
-    resources:venues, only: [:update]
+    resources :venues, only: [:update]
   end
   namespace :managers do
     resources :venues, except: [:index, :show]

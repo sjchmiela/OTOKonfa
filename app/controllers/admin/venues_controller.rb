@@ -19,7 +19,7 @@ end
 private
 
   def authenticate_admin!
-	redirect_to root_url, alert: 'You are not authorized to manage this venue.' if (!user_signed_in? || !current_user.admin)
+	redirect_to root_url, alert: 'You are not authorized to manage this venue.' unless admin_signed_in
   end
 
   def required_params
