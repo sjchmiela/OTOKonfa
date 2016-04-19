@@ -87,21 +87,19 @@ p, ul {
     }
 }
 
-.venue__halls {
-    .card {
-        cursor: pointer;
+.card--venue {
+    cursor: pointer;
 
-        ul, p {
-            margin: 0;
-        }
+    ul, p {
+        margin: 0;
+    }
 
-        .divider {
-            margin: 20px -20px;
-        }
+    .divider {
+        margin: 20px -20px;
+    }
 
-        .material-icons {
-            font-size: 2rem;
-        }
+    .material-icons {
+        font-size: 2rem;
     }
 
     .card-content {
@@ -125,10 +123,6 @@ p, ul {
             right: 20px;
             bottom: 20px;
         }
-    }
-
-    .card:hover .card-image img {
-        opacity: 0.75;
     }
 }
 

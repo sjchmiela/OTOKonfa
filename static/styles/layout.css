@@ -50,27 +50,25 @@ p, ul {
     left: 0.5rem;
     top: 0.5rem; }
 
-.venue__halls .card {
+.card--venue {
   cursor: pointer; }
-  .venue__halls .card ul, .venue__halls .card p {
+  .card--venue ul, .card--venue p {
     margin: 0; }
-  .venue__halls .card .divider {
+  .card--venue .divider {
     margin: 20px -20px; }
-  .venue__halls .card .material-icons {
+  .card--venue .material-icons {
     font-size: 2rem; }
-.venue__halls .card-content .card-title {
-  line-height: 30px; }
-.venue__halls .card-reveal .card-title {
-  margin-bottom: 20px; }
-  .venue__halls .card-reveal .card-title .material-icons {
-    position: relative;
-    top: 2px; }
-.venue__halls .card-reveal .fancybox {
-  position: absolute;
-  right: 20px;
-  bottom: 20px; }
-.venue__halls .card:hover .card-image img {
-  opacity: 0.75; }
+  .card--venue .card-content .card-title {
+    line-height: 30px; }
+  .card--venue .card-reveal .card-title {
+    margin-bottom: 20px; }
+    .card--venue .card-reveal .card-title .material-icons {
+      position: relative;
+      top: 2px; }
+  .card--venue .card-reveal .fancybox {
+    position: absolute;
+    right: 20px;
+    bottom: 20px; }
 
 .chip {
   margin: 0 .25rem 0.5rem 0; }
