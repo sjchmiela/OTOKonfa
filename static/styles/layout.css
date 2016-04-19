@@ -56,21 +56,19 @@ p, ul {
     margin: 0; }
   .venue__halls .card .divider {
     margin: 20px -20px; }
-.venue__halls .card-image {
-  background: #333; }
-  .venue__halls .card-image img {
-    transition: opacity 0.3s; }
-  .venue__halls .card-image .material-icons {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 2rem;
-    color: #fff; }
-.venue__halls .card-reveal .material-icons {
+  .venue__halls .card .material-icons {
+    font-size: 2rem; }
+.venue__halls .card-content .card-title {
+  line-height: 30px; }
+.venue__halls .card-reveal .card-title {
+  margin-bottom: 20px; }
+  .venue__halls .card-reveal .card-title .material-icons {
+    position: relative;
+    top: 2px; }
+.venue__halls .card-reveal .fancybox {
   position: absolute;
   right: 20px;
-  bottom: 20px;
-  font-size: 2rem; }
+  bottom: 20px; }
 .venue__halls .card:hover .card-image img {
   opacity: 0.75; }
 

@@ -98,30 +98,32 @@ p, ul {
         .divider {
             margin: 20px -20px;
         }
-    }
-
-    .card-image {
-        background: #333;
-
-        img {
-            transition: opacity 0.3s;
-        }
 
         .material-icons {
-            position: absolute;
-            right: 1rem;
-            top: 1rem;
             font-size: 2rem;
-            color: #fff;
+        }
+    }
+
+    .card-content {
+        .card-title {
+            line-height: 30px;
         }
     }
 
     .card-reveal {
-        .material-icons {
+        .card-title {
+            margin-bottom: 20px;
+
+            .material-icons {
+                position: relative;
+                top: 2px;
+            }
+        }
+
+        .fancybox {
             position: absolute;
             right: 20px;
             bottom: 20px;
-            font-size: 2rem;
         }
     }
 
