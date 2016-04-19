@@ -149,6 +149,11 @@ p, ul {
     form {
         margin: 0 -.75rem;
     }
+
+    .checkbox-field {
+        margin: 0 0 1rem;
+        padding: 0;
+    }
 }
 
 .material-icons {
@@ -217,4 +222,9 @@ span[contenteditable]{
         padding-top: .75rem;
         padding-bottom: .75rem;
     }
+}
+
+[type="checkbox"].filled-in:checked+label:after {
+    border-color: #0288d1;
+    background-color: #0288d1;
 }
