@@ -34,6 +34,8 @@ p, ul {
 
 .venue__reviews .collection-item.avatar {
   min-height: 0; }
+  .venue__reviews .collection-item.avatar i.circle {
+    font-size: 24px; }
   .venue__reviews .collection-item.avatar .title {
     display: block;
     margin-bottom: .25rem; }
