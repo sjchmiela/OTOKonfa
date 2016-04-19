@@ -1,8 +1,8 @@
-p {
+p, ul {
     margin: 1rem 0;
 }
 
-#modal-login {
+.modal-small {
     width: 90%;
     max-width: 400px;
 }
@@ -87,6 +87,12 @@ p {
     }
 }
 
+.venue__halls {
+    ul {
+        margin: 0;
+    }
+}
+
 .chip {
     margin: 0 .25rem 0.5rem 0;
 }
@@ -99,8 +105,12 @@ p {
 }
 
 .modal {
-    h4 {
-        padding: 0 0.75rem;
+    .modal-content {
+        padding: 1.75rem 2.5rem;
+    }
+
+    form {
+        margin: 0 -.75rem;
     }
 }
 
@@ -123,4 +133,26 @@ p {
 
 h4.underline {
     padding-bottom: 1rem;
+}
+
+#modal-review {
+    ul {
+        margin-bottom: 1rem;
+
+        label {
+            padding: 0;
+
+            .material-icons {
+                font-size: 2rem;
+            }
+
+            &:before, &:after {
+                display: none;
+            }
+        }
+
+        input:not(:checked) + label > i {
+            color: #e0e0e0!important;
+        }
+    }
 }

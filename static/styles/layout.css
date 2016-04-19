@@ -1,7 +1,7 @@
-p {
+p, ul {
   margin: 1rem 0; }
 
-#modal-login {
+.modal-small {
   width: 90%;
   max-width: 400px; }
 
@@ -50,6 +50,9 @@ p {
     left: 0.5rem;
     top: 0.5rem; }
 
+.venue__halls ul {
+  margin: 0; }
+
 .chip {
   margin: 0 .25rem 0.5rem 0; }
 
@@ -57,8 +60,10 @@ p {
   display: inline-block;
   vertical-align: middle; }
 
-.modal h4 {
-  padding: 0 0.75rem; }
+.modal .modal-content {
+  padding: 1.75rem 2.5rem; }
+.modal form {
+  margin: 0 -.75rem; }
 
 .material-icons {
   vertical-align: middle; }
@@ -74,5 +79,16 @@ p {
 
 h4.underline {
   padding-bottom: 1rem; }
+
+#modal-review ul {
+  margin-bottom: 1rem; }
+  #modal-review ul label {
+    padding: 0; }
+    #modal-review ul label .material-icons {
+      font-size: 2rem; }
+    #modal-review ul label:before, #modal-review ul label:after {
+      display: none; }
+  #modal-review ul input:not(:checked) + label > i {
+    color: #e0e0e0 !important; }
 
 /*# sourceMappingURL=layout.css.map */

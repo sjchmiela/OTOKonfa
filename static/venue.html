@@ -76,9 +76,6 @@
                         Curabitur fermentum magna dolor, vitae cursus libero porttitor at.
                     </div>
                 </div>
-                <div class="venue__gallery section">
-                    <h4 class="underline">Galeria zdjęć</h4>
-                </div>
             </div>
             <div class="col s4">
                 <div class="venue__location section">
@@ -96,7 +93,7 @@
                     </ul>
                 </div>
                 <div class="venue__reviews section">
-                    <h4 class="underline">Oceny <a class="right waves-effect waves-light btn light-blue darken-2"><i class="material-icons left">comment</i>dodaj</a></h4>
+                    <h4 class="underline">Oceny <a href="#modal-review" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">comment</i>dodaj</a></h4>
                     <ul class="collection">
                         <li class="collection-item avatar">
                             <i class="material-icons circle light-blue darken-2">perm_identity</i>
@@ -201,7 +198,38 @@
         </form>
     </div>
 </div>
-<div id="modal-login" class="modal">
+<div id="modal-review" class="modal modal-small">
+    <div class="modal-content">
+        <h4>Oceń obiekt</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ultrices odio. Donec dapibus nulla a arcu cursus, vel eleifend velit placerat.</p>
+        <form class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <label for="rate-3">Ocena</label>
+                    <ul class="row">
+                        <li class="col s2 offset-s1"><input name="rate" type="radio" id="rate-1" /><label for="rate-1"><i class="material-icons red-text text-accent-4">sentiment_very_dissatisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="rate-2" /><label for="rate-2"><i class="material-icons red-text text-accent-2">sentiment_dissatisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="rate-3" /><label for="rate-3"><i class="material-icons grey-text">sentiment_neutral</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="rate-4" /><label for="rate-4"><i class="material-icons light-green-text text-accent-2">sentiment_satisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="rate-5" /><label for="rate-5"><i class="material-icons light-green-text text-accent-4">sentiment_very_satisfied</i></label></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="comment" class="materialize-textarea"></textarea>
+                    <label for="comment">Opcjonalny komentarz</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">send</i>Dodaj ocenę</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal-login" class="modal modal-small">
     <div class="modal-content">
         <h4>Zaloguj</h4>
         <form class="row">
