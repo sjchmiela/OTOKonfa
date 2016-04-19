@@ -1,7 +1,16 @@
 <div class="row">
-  <div class="col s12">
-    <h1><%= @venue.name %></h1>
-  </div>
+  <% if manager_signed_in? and @venue.manager_id == current_manager.id %>
+    <div class="col s10">
+      <h1><%= @venue.name %></h1>
+    </div>
+    <div class="col s2">
+      <%= link_to :edit, edit_managers_venue_path(@venue), class: 'btn' %>
+    </div>
+  <% else %>
+    <div class="col s12">
+      <h1><%= @venue.name %></h1>
+    </div>
+  <% end %>
   <div class="col s12">
     <div class="card green">
       <div class="card-content white-text">
