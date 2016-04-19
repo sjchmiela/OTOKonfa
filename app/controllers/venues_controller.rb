@@ -5,9 +5,17 @@ class VenuesController < ApplicationController
   # GET /venues.json
   def index
     if !params[:search]
-      @venues = Venue.all
+      if user_signed_in? && current_user.admin?
+	@venues = Venue.all
+      else
+      	@venues = Venue.where('accepted = true')
+      end
     else
-      @venues = Venue.where('name like ? or description like ?', "%#{params[:search]}%", "%#{params[:search]}%")
+      if user_signed_in? && current_user.admin?
+      	@venues = Venue.where('name like ? or description like ?', "%#{params[:search]}%", "%#{params[:search]}%")
+      else
+	@venues = Venue.where('accepted = true and (name like ? or description like ?)', "%#{params[:search]}%", "%#{params[:search]}%")
+      end
     end
   end
 

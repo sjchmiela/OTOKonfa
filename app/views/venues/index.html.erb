@@ -25,6 +25,13 @@
           <p><%= truncate(venue.description, length: 150) %></p>
         </div>
         <div class="card-action right-align">
+	  <% if @current_user && current_user.admin %>
+	    <% if venue.accepted %>
+              <%= link_to (t 'venues.cancel_acceptation'), admin_venue_path(:id => venue.id, :accepted => false), :method => :put  %>
+            <% else %>
+              <%= link_to (t 'venues.accept'), admin_venue_path(:id => venue.id, :accepted => true), :method => :put %>
+            <% end %>
+	  <% end %>
           <%= link_to (t :show), venue %>
         </div>
       </div>

@@ -25,6 +25,8 @@ en:
   save: Save
   show: Show
   venues:
+    accept: Accept
+    cancel_acceptation: Cancel acceptation
     navbar:
       title: Venues
     reviews:
