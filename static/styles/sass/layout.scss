@@ -202,3 +202,15 @@ h4.underline {
 span[contenteditable]{
     display: inline-block;
 }
+
+.venue__gallery {
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .col {
+        padding-top: .75rem;
+        padding-bottom: .75rem;
+    }
+}
