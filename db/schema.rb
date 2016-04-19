@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419170327) do
+ActiveRecord::Schema.define(version: 20160419171652) do
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4
@@ -117,11 +117,15 @@ ActiveRecord::Schema.define(version: 20160419170327) do
     t.string   "phone",       limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "manager_id",  limit: 4
   end
+
+  add_index "venues", ["manager_id"], name: "index_venues_on_manager_id", using: :btree
 
   add_foreign_key "halls", "venues"
   add_foreign_key "hotels", "venues"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "venues"
   add_foreign_key "room_components", "hotels"
+  add_foreign_key "venues", "managers"
 end
