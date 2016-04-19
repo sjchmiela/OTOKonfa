@@ -26,6 +26,8 @@ pl:
   show: Pokaż
   halls: Sale
   venues:
+    accept: Akceptuj
+    cancel_acceptation: Anuluj akceptację
     navbar:
       title: Ośrodki
     reviews:

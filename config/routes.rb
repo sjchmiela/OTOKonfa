@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
+  namespace :admin do
+    resources :venues, only: [:update]
+  end
   namespace :managers do
     resources :venues, except: [:index, :show]
   end
