@@ -113,4 +113,11 @@ h4.underline {
 .color-default {
   color: inherit; }
 
+*[contenteditable] {
+  outline: #777 dashed 1px;
+  padding: .2rem; }
+
+span[contenteditable] {
+  display: inline-block; }
+
 /*# sourceMappingURL=layout.css.map */
