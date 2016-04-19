@@ -1,5 +1,5 @@
 class AddAcceptedToVenues < ActiveRecord::Migration
   def change
-    add_column :venues, :accepted, :boolean, default:true
+    add_column :venues, :accepted, :boolean, default:false
   end
 end
