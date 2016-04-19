@@ -299,22 +299,22 @@
         <form class="col s12">
             <div class="row">
                 <div class="input-field col s4">
-                    <input id="name" type="text" class="validate">
-                    <label for="name">Imię i nazwisko</label>
+                    <input id="contact-name" type="text" class="validate">
+                    <label for="contact-name">Imię i nazwisko</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    <input id="contact-email" type="email" class="validate">
+                    <label for="contact-email">Email</label>
                 </div>
                 <div class="input-field col s4">
-                    <input id="telephone" type="tel" class="validate">
-                    <label for="telephone">Telefon</label>
+                    <input id="contact-telephone" type="tel" class="validate">
+                    <label for="contact-telephone">Telefon</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="message" class="materialize-textarea validate"></textarea>
-                    <label for="message">Wiadomość</label>
+                    <textarea id="contact-message" class="materialize-textarea validate"></textarea>
+                    <label for="contact-message">Wiadomość</label>
                 </div>
             </div>
             <div class="row">
@@ -334,18 +334,18 @@
                 <div class="col s12">
                     <label for="rate-3">Ocena</label>
                     <ul class="row">
-                        <li class="col s2 offset-s1"><input name="rate" type="radio" id="rate-1" /><label for="rate-1"><i class="material-icons red-text text-accent-4">sentiment_very_dissatisfied</i></label></li>
-                        <li class="col s2"><input name="rate" type="radio" id="rate-2" /><label for="rate-2"><i class="material-icons red-text text-accent-2">sentiment_dissatisfied</i></label></li>
-                        <li class="col s2"><input name="rate" type="radio" id="rate-3" /><label for="rate-3"><i class="material-icons grey-text">sentiment_neutral</i></label></li>
-                        <li class="col s2"><input name="rate" type="radio" id="rate-4" /><label for="rate-4"><i class="material-icons light-green-text text-accent-2">sentiment_satisfied</i></label></li>
-                        <li class="col s2"><input name="rate" type="radio" id="rate-5" /><label for="rate-5"><i class="material-icons light-green-text text-accent-4">sentiment_very_satisfied</i></label></li>
+                        <li class="col s2 offset-s1"><input name="rate" type="radio" id="review-rate-1" /><label for="review-rate-1"><i class="material-icons red-text text-accent-4">sentiment_very_dissatisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="review-rate-2" /><label for="review-rate-2"><i class="material-icons red-text text-accent-2">sentiment_dissatisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="review-rate-3" /><label for="review-rate-3"><i class="material-icons grey-text">sentiment_neutral</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="review-rate-4" /><label for="review-rate-4"><i class="material-icons light-green-text text-accent-2">sentiment_satisfied</i></label></li>
+                        <li class="col s2"><input name="rate" type="radio" id="review-rate-5" /><label for="review-rate-5"><i class="material-icons light-green-text text-accent-4">sentiment_very_satisfied</i></label></li>
                     </ul>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <textarea id="comment" class="materialize-textarea"></textarea>
-                    <label for="comment">Opcjonalny komentarz</label>
+                    <textarea id="review-comment" class="materialize-textarea"></textarea>
+                    <label for="review-comment">Opcjonalny komentarz</label>
                 </div>
             </div>
             <div class="row">
@@ -361,16 +361,16 @@
         <h4>Logowanie</h4>
         <form class="row">
             <div class="input-field col s12">
-                <input id="login" type="email" class="validate">
-                <label for="login">Email</label>
+                <input id="login-email" type="email">
+                <label for="login-email">Email</label>
             </div>
             <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
-                <label for="password">Hasło</label>
+                <input id="login-password" type="password">
+                <label for="login-password">Hasło</label>
             </div>
             <div class="input-field col s12 checkbox-field">
-                <input type="checkbox" class="filled-in" id="filled-in-box">
-                <label for="filled-in-box">Zapamiętaj mnie</label>
+                <input type="checkbox" class="filled-in" id="login-remember">
+                <label for="login-remember">Zapamiętaj mnie</label>
             </div>
             <div class="input-field col s12">
                 <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn">Zaloguj</button>
@@ -384,24 +384,24 @@
         <h4>Rejestracja</h4>
         <form class="row">
             <div class="input-field col s6">
-                <input id="login" type="text">
-                <label for="login">Imię</label>
+                <input id="register-name" type="text">
+                <label for="register-name">Imię</label>
             </div>
             <div class="input-field col s6">
-                <input id="login" type="text">
-                <label for="login">Nazwisko</label>
+                <input id="register-surname" type="text">
+                <label for="register-surname">Nazwisko</label>
             </div>
             <div class="input-field col s6">
-                <input id="password" type="password">
-                <label for="password">Hasło</label>
+                <input id="register-password" type="password">
+                <label for="register-password">Hasło</label>
             </div>
             <div class="input-field col s6">
-                <input id="password" type="password">
-                <label for="password">Powtórz hasło</label>
+                <input id="register-confirm" type="password">
+                <label for="register-confirm">Powtórz hasło</label>
             </div>
             <div class="input-field col s6">
-                <input id="login" type="email">
-                <label for="login">Email</label>
+                <input id="register-email" type="email">
+                <label for="register-email">Email</label>
             </div>
             <div class="input-field col s12">
                 <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn">Utwórz konto</button>
