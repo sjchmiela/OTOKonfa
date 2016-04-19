@@ -89,10 +89,14 @@ p, ul {
 
 .venue__halls {
     .card {
-        display: block;
+        cursor: pointer;
 
-        ul {
+        ul, p {
             margin: 0;
+        }
+
+        .divider {
+            margin: 20px -20px;
         }
     }
 
@@ -102,18 +106,27 @@ p, ul {
         img {
             transition: opacity 0.3s;
         }
+
+        .material-icons {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            color: #fff;
+        }
+    }
+
+    .card-reveal {
+        .material-icons {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            font-size: 2rem;
+        }
     }
 
     .card:hover .card-image img {
         opacity: 0.75;
-    }
-
-    .material-icons {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
-        font-size: 2rem;
-        color: #fff;
     }
 }
 

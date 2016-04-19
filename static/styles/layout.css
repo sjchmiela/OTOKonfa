@@ -51,21 +51,28 @@ p, ul {
     top: 0.5rem; }
 
 .venue__halls .card {
-  display: block; }
-  .venue__halls .card ul {
+  cursor: pointer; }
+  .venue__halls .card ul, .venue__halls .card p {
     margin: 0; }
+  .venue__halls .card .divider {
+    margin: 20px -20px; }
 .venue__halls .card-image {
   background: #333; }
   .venue__halls .card-image img {
     transition: opacity 0.3s; }
+  .venue__halls .card-image .material-icons {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    color: #fff; }
+.venue__halls .card-reveal .material-icons {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 2rem; }
 .venue__halls .card:hover .card-image img {
   opacity: 0.75; }
-.venue__halls .material-icons {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  font-size: 2rem;
-  color: #fff; }
 
 .chip {
   margin: 0 .25rem 0.5rem 0; }
