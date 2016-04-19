@@ -88,8 +88,32 @@ p, ul {
 }
 
 .venue__halls {
-    ul {
-        margin: 0;
+    .card {
+        display: block;
+
+        ul {
+            margin: 0;
+        }
+    }
+
+    .card-image {
+        background: #333;
+
+        img {
+            transition: opacity 0.3s;
+        }
+    }
+
+    .card:hover .card-image img {
+        opacity: 0.75;
+    }
+
+    .material-icons {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        font-size: 2rem;
+        color: #fff;
     }
 }
 
@@ -155,4 +179,8 @@ h4.underline {
             color: #e0e0e0!important;
         }
     }
+}
+
+.color-default {
+    color: inherit;
 }
