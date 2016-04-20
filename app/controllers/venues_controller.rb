@@ -6,15 +6,15 @@ class VenuesController < ApplicationController
   def index
     if !params[:search]
       if admin_signed_in
-	@venues = Venue.all
+        @venues = Venue.all
       else
-      	@venues = Venue.where(accepted: true)
+        @venues = Venue.where(accepted: true)
       end
     else
       if admin_signed_in
-      	@venues = Venue.where('name like ? or description like ?', "%#{params[:search]}%", "%#{params[:search]}%")
+        @venues = Venue.where('name like ? or description like ?', "%#{params[:search]}%", "%#{params[:search]}%")
       else
-	@venues = Venue.where('accepted = true and (name like ? or description like ?)', "%#{params[:search]}%", "%#{params[:search]}%")
+        @venues = Venue.where('accepted = true and (name like ? or description like ?)', "%#{params[:search]}%", "%#{params[:search]}%")
       end
     end
   end
