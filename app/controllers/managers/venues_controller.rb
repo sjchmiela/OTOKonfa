@@ -1,5 +1,7 @@
 class Managers::VenuesController < ApplicationController
+  before_action :authenticate_manager!
   before_action :set_venue, only: [:edit, :update, :destroy]
+  before_action :check_manager_ownership!, only: [:edit, :update, :destroy]
 
   # GET /venues/new
   def new
@@ -51,6 +53,15 @@ class Managers::VenuesController < ApplicationController
   end
 
   private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_venue
+    @venue = Venue.find(params[:id])
+  end
+
+  def check_manager_ownership!
+    redirect_to root_url, alert: 'You are not authorized to manage this venue.' if @venue.manager != current_manager
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def venue_params

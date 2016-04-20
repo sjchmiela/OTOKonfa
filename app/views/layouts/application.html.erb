@@ -20,22 +20,37 @@
               <i class="material-icons left">business</i><%= t "venues.navbar.title" %>
             <% end %>
           </li>
-          <% if !user_signed_in? %>
-            <li class="<%= ("active" if params[:controller] == "users/sessions") %>"><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
-            <li><%= link_to (t 'authentication.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
-          <% else %>
+          <% if manager_signed_in? %>
             <li class="<%= ("active" if params[:controller] == "users/registrations") %>">
-              <%= link_to edit_user_registration_path do %>
-                <%= current_user.first_name %>
+              <%= link_to edit_manager_registration_path do %>
+                <%= current_manager.first_name %> (M.)
                 <i class='material-icons left'>account_box</i>
               <% end %>
             </li>
             <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= link_to destroy_manager_session_path, method: :delete do %>
                 <%= I18n.t 'authentication.sign_out' %>
                 <i class='material-icons left'>power_settings_new</i>
               <% end %>
             </li>
+          <% else %>
+            <% if !user_signed_in? %>
+              <li class="<%= ("active" if params[:controller] == "users/sessions") %>"><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
+              <li><%= link_to (t 'authentication.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
+            <% else %>
+              <li class="<%= ("active" if params[:controller] == "users/registrations") %>">
+                <%= link_to edit_user_registration_path do %>
+                  <%= current_user.first_name %>
+                  <i class='material-icons left'>account_box</i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  <%= I18n.t 'authentication.sign_out' %>
+                  <i class='material-icons left'>power_settings_new</i>
+                <% end %>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </div>

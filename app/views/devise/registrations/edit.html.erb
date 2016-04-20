@@ -1,6 +1,7 @@
 <div class='row'>
   <div class='col s12'>
     <h1><%= I18n.t 'authentication.edit' %></h1>
+    <h5><%= I18n.t resource_name %></h5>
   </div>
   <div class='col s12 m8'>
     <div class='card'>
@@ -10,12 +11,12 @@
 
           <div class="field">
             <%= f.label :first_name %>
-            <%= f.email_field :first_name, autofocus: true %>
+            <%= f.text_field :first_name, autofocus: true %>
           </div>
 
           <div class="field">
             <%= f.label :last_name %>
-            <%= f.email_field :last_name %>
+            <%= f.text_field :last_name %>
           </div>
 
           <div class="field">
@@ -43,7 +44,7 @@
           </div>
 
           <div class="actions right-align">
-            <%= render "users/shared/links" %>
+            <%= render "devise/shared/links" %>
             <%= f.button class: 'btn waves-effect waves-light' do %>
               <%= I18n.t 'save' %><i class="material-icons right">send</i>
             <% end %>
