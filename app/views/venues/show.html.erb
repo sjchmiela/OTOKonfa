@@ -1,7 +1,16 @@
 <div class="row">
-  <div class="col s12">
-    <h1><%= @venue.name %></h1>
-  </div>
+  <% if manager_signed_in? and @venue.manager_id == current_manager.id %>
+    <div class="col s10">
+      <h1><%= @venue.name %></h1>
+    </div>
+    <div class="col s2">
+      <%= link_to :edit, edit_managers_venue_path(@venue), class: 'btn' %>
+    </div>
+  <% else %>
+    <div class="col s12">
+      <h1><%= @venue.name %></h1>
+    </div>
+  <% end %>
   <div class="col s12">
     <div class="card green">
       <div class="card-content white-text">
@@ -100,34 +109,36 @@
             <%= I18n.t "venues.reviews.empty" %>
           </li>
         <% end %>
-        <% if user_signed_in? %>
-          <li class="collection-item avatar">
-            <i class="material-icons circle grey">perm_identity</i>
-            <span class="title"><strong><%= current_user.first_name %></strong></span>
-            <%= form_for [@venue, @review] do |f| %>
-              <div class="field">
-                <% (1..5).each do |stars| %>
-                  <%= f.radio_button :stars, stars %>
-                  <%= f.label "stars_#{stars}", class: 'no-circle' do %>
-                    <i class="material-icons">star</i>
+        <% if !manager_signed_in? %>
+          <% if user_signed_in? %>
+            <li class="collection-item avatar">
+              <i class="material-icons circle grey">perm_identity</i>
+              <span class="title"><strong><%= current_user.first_name %></strong></span>
+              <%= form_for [@venue, @review] do |f| %>
+                <div class="field">
+                  <% (1..5).each do |stars| %>
+                    <%= f.radio_button :stars, stars %>
+                    <%= f.label "stars_#{stars}", class: 'no-circle' do %>
+                      <i class="material-icons">star</i>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div class="field">
-                <%= f.text_area :comment, class: 'materialize-textarea', placeholder: (t "venues.reviews.comment") %>
-              </div>
-              <div class="row">
-                <%= f.button class: 'btn col s10 offset-s1' do %>
-                  <%= I18n.t 'venues.reviews.create' %>
-                  <i class="material-icons right">send</i>
-                <% end %>
-              </div>
-            <% end %>
-          </li>
-        <% else %>
-          <li class="collection-item">
-            <%= link_to (I18n.t "venues.reviews.sign_in"), new_user_session_path %> <%= t "venues.reviews.to_leave_your_review" %>
-          </li>
+                </div>
+                <div class="field">
+                  <%= f.text_area :comment, class: 'materialize-textarea', placeholder: (t "venues.reviews.comment") %>
+                </div>
+                <div class="row">
+                  <%= f.button class: 'btn col s10 offset-s1' do %>
+                    <%= I18n.t 'venues.reviews.create' %>
+                    <i class="material-icons right">send</i>
+                  <% end %>
+                </div>
+              <% end %>
+            </li>
+          <% else %>
+            <li class="collection-item">
+              <%= link_to (I18n.t "venues.reviews.sign_in"), new_user_session_path %> <%= t "venues.reviews.to_leave_your_review" %>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </div>

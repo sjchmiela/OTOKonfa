@@ -20,12 +20,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 pl:
+  user: Użytkownik
+  manager: Menedżer
   home: Strona główna
   hello: "Hello world"
   save: Zapisz
   show: Pokaż
   halls: Sale
   venues:
+    accept: Akceptuj
+    cancel_acceptation: Anuluj akceptację
     navbar:
       title: Ośrodki
     reviews:
