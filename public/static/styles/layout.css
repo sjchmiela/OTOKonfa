@@ -134,4 +134,16 @@ span[contenteditable] {
   border-color: #0288d1;
   background-color: #0288d1; }
 
+.page-nav {
+  margin: 1rem 0 0 2rem; }
+  .page-nav ul {
+    margin: 0;
+    border-left: 2px solid #01579b; }
+  .page-nav li {
+    margin: 0 1rem; }
+  .page-nav .active {
+    color: #01579b; }
+  .page-nav a {
+    color: #b3e5fc; }
+
 /*# sourceMappingURL=layout.css.map */
