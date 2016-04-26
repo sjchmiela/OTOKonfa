@@ -152,6 +152,9 @@ span[contenteditable] {
   .page-nav a {
     color: #b3e5fc; }
 
+.default-page {
+  padding: 1rem 0 3rem; }
+
 .venues .card--venue .card-title {
   font-size: 18px; }
 .venues .card--venue .card-content, .venues .card--venue .card-reveal {
@@ -172,5 +175,17 @@ span[contenteditable] {
   .card-meta li {
     display: inline-block;
     margin-right: 0.5rem; }
+
+.search-section {
+  height: 300px; }
+  .search-section .container {
+    padding-top: 123px; }
+  .search-section + .page-footer {
+    margin-top: 0; }
+  .search-section input {
+    box-sizing: border-box;
+    border-radius: 2px;
+    height: 54px;
+    padding: 0 1rem; }
 
 /*# sourceMappingURL=layout.css.map */

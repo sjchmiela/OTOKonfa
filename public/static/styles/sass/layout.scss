@@ -257,6 +257,10 @@ span[contenteditable]{
     }
 }
 
+.default-page {
+    padding: 1rem 0 3rem;
+}
+
 .venues {
     .card--venue {
         .card-title {
@@ -291,5 +295,24 @@ span[contenteditable]{
     li {
         display: inline-block;
         margin-right: 0.5rem;
+    }
+}
+
+.search-section {
+    height: 300px;
+
+    .container {
+        padding-top: 123px;
+    }
+
+    & + .page-footer {
+        margin-top: 0;
+    }
+
+    input {
+        box-sizing: border-box;
+        border-radius: 2px;
+        height: 54px;
+        padding: 0 1rem;
     }
 }
