@@ -106,7 +106,7 @@ p, ul {
   padding: 0 1rem; }
 
 .underline {
-  padding-bottom: 1rem; }
+  padding-bottom: 1rem !important; }
 
 #modal-review ul {
   margin-bottom: 1rem; }
