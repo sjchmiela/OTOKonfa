@@ -75,6 +75,12 @@ p, ul {
 .chip {
   margin: 0 .25rem 0.5rem 0; }
 
+.card .chip {
+  margin: 0 0.1rem 0.4rem 0;
+  height: 28px;
+  font-size: 10px;
+  line-height: 28px; }
+
 .rating li {
   display: inline-block;
   vertical-align: middle; }
@@ -145,5 +151,26 @@ span[contenteditable] {
     color: #01579b; }
   .page-nav a {
     color: #b3e5fc; }
+
+.venues .card--venue .card-title {
+  font-size: 18px; }
+.venues .card--venue .card-content, .venues .card--venue .card-reveal {
+  padding: 15px; }
+.venues .action--details {
+  position: absolute;
+  right: 15px;
+  bottom: 15px; }
+.venues .action--compare {
+  position: absolute;
+  left: 15px;
+  bottom: 15px; }
+
+.card-meta {
+  font-size: 14px; }
+  .card-meta .material-icons {
+    font-size: 18px; }
+  .card-meta li {
+    display: inline-block;
+    margin-right: 0.5rem; }
 
 /*# sourceMappingURL=layout.css.map */
