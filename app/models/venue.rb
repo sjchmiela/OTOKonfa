@@ -9,4 +9,8 @@ class Venue < ActiveRecord::Base
     return 0 if reviews.count == 0
     reviews.inject(0) { |a, e| a + e.stars } / reviews.count.to_f
   end
+
+  def city
+    address.split('\n').last.match('(.)+\s')
+  end
 end
