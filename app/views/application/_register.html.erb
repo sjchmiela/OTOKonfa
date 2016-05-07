@@ -1,0 +1,44 @@
+<div id="modal-register" class="modal">
+  <div class="modal-content">
+    <h4>Rejestracja</h4>
+    <%= form_for(@new_user, as: 'user', url: registration_path(@new_user), html: { class: 'row' }) do |f| %>
+
+      <div class="input-field col s6">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="input-field col s6">
+        <%= f.label :email %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="input-field col s12 checkbox-field">
+        <input type="checkbox" class="filled-in" id="register-accept">
+        <label for="register-accept">Akceptuję <a href="#">regulamin</a> serwisu</label>
+      </div>
+
+      <div class="input-field col s12">
+        <%= f.submit 'Utwórz konto', class: 'modal-action modal-close waves-effect waves-light light-blue darken-2 btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
