@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class VenuesTest < ActionMailer::TestCase
+class VenuesMailerTest < ActionMailer::TestCase
   test "contact" do
-    mail = Venues.contact
+    mail = VenuesMailer.contact
     assert_equal "Contact", mail.subject
     assert_equal ["to@example.org"], mail.to
     assert_equal ["from@example.com"], mail.from
