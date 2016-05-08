@@ -21,6 +21,71 @@
         </div>
     </nav>
 </div>
+<section class="filter section">
+    <div class="container">
+        <h4>Znajdź idealne miejsce na konferencję</h4>
+        <div class="filter__wrap z-depth-1">
+            <div class="row">
+                <div class="col s5">
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Wielkość sali (miejsca)</label>
+                        </div>
+                        <div class="col s7">
+                            <div class="range-input" data-min="0" data-max="100" data-start-from="20" data-start-to="80"></div>
+                            <div class="filter__slot-types">
+                                <input name="slot-type" type="radio" id="filter-slot-sitting" />
+                                <label for="filter-slot-sitting">siedzące</label>
+                                <input name="slot-type" type="radio" id="filter-slot-standing" />
+                                <label for="filter-slot-standing">stojące</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Ilość sali</label>
+                        </div>
+                        <div class="col s7">
+                            <div class="range-input" data-min="0" data-max="100" data-start-from="20" data-start-to="80"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Wielkość hotelu (miejsca)</label>
+                        </div>
+                        <div class="col s7">
+                            <div class="range-input" data-min="0" data-max="100" data-start-from="20" data-start-to="80"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>W odległości (km)</label>
+                        </div>
+                        <div class="col s7">
+                            <div class="range-input" data-min="0" data-max="100" data-start-from="20" data-start-to="80"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s5">
+                            <label>Średnia ocen</label>
+                        </div>
+                        <div class="col s7">
+                            <div class="range-input" data-min="0" data-max="100" data-start-from="20" data-start-to="80"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s4">
+                    <div class="row">
+                        <div class="col s12">
+                            <label for="filter-attributes">Udogodnienia</label>
+                            <input type="text" class="tags-input" placeholder="podaj atrybut..." id="filter-attributes">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="venues section">
     <div class="container">
         <div class="row">
@@ -342,6 +407,11 @@
 </footer>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="scripts/nouislider.js"></script>
+<script src="scripts/bootstrap-tagsinput.min.js"></script>
+<script src="scripts/tags.js"></script>
+<script src="scripts/filter.js"></script>
 <script src="scripts/layout.js"></script>
 </body>
 </html>
