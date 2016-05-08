@@ -1,49 +1,16 @@
-<div class="row">
-  <div class="col s12">
-    <h3><%= t 'venues.navbar.title' %></h3>
-  </div>
-  <form class="col s12">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">search</i>
-      <input id="venue_search" type="tel" class="validate" name="search" value="<%= params[:search] %>">
-      <label for="venue_search"><%= t 'search' %></label>
-    </div>
-  </form>
-  <% if @venues.each_with_index do |venue, index| %>
-    <div class="col s12 m6" <% if index % 2 == 0 %>style="clear: left"<% end %>>
-      <div class="card card-venue">
-        <% if venue.photos.any? %>
-          <div class="card-image">
-            <%= image_tag venue.photos.first.image %>
-            <span class="card-title"><%= venue.name %></span>
+<section class="venues section">
+  <div class="container">
+    <div class="row">
+      <% if @venues.each do |venue| %>
+        <%= render partial: 'venue', locals: { venue: venue } %>
+      <% end.empty? %>
+        <div class="card">
+          <div class="card-content black-text">
+            <span class="card-title"><%= t 'not_found.title' %></span>
+            <p><%= t 'not_found.description' %></p>
           </div>
-        <% end %>
-        <div class="card-content black-text">
-          <% unless venue.photos.any? %>
-          <span class="card-title"><%= venue.name %></span>
-          <% end %>
-          <p><%= truncate(venue.description, length: 150) %></p>
         </div>
-        <div class="card-action right-align">
-	  <% if admin_signed_in %>
-	    <% if venue.accepted %>
-              <%= link_to (t 'venues.cancel_acceptation'), admin_venue_path(:id => venue.id, :accepted => false), :method => :put  %>
-            <% else %>
-              <%= link_to (t 'venues.accept'), admin_venue_path(:id => venue.id, :accepted => true), :method => :put %>
-            <% end %>
-	  <% end %>
-          <%= link_to (t :show), venue %>
-        </div>
-      </div>
+      <% end %>
     </div>
-  <% end.empty? %>
-    <div class="col s12 m6 offset-m3">
-      <div class="card">
-        <div class="card-content black-text">
-          <span class="card-title"><%= t 'not_found.title' %></span>
-          <p><%= t 'not_found.description' %></p>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+  </div>
+</section>

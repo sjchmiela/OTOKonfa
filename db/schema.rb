@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419171652) do
+ActiveRecord::Schema.define(version: 20160507203358) do
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4
@@ -120,6 +120,7 @@ ActiveRecord::Schema.define(version: 20160419171652) do
     t.datetime "updated_at",                                null: false
     t.integer  "manager_id",  limit: 4
     t.boolean  "accepted",                  default: false
+    t.string   "website",     limit: 255
   end
 
   add_index "venues", ["manager_id"], name: "index_venues_on_manager_id", using: :btree

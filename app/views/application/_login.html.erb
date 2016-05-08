@@ -1,0 +1,23 @@
+<div id="modal-login" class="modal modal-small">
+  <div class="modal-content">
+    <h4>Logowanie</h4>
+    <%= form_for(@new_user, as: 'user', url: new_user_session_path, class: 'row') do |f| %>
+      <div class="input-field col s12">
+        <%= f.email_field :email %>
+        <%= f.label :email %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.password_field :password %>
+        <%= f.label :password %>
+      </div>
+      <div class="input-field col s12 checkbox-field">
+        <%= f.check_box :remember_me, class: 'filled-in' %>
+        <%= f.label :remember_me %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.submit 'Zaloguj', class: 'modal-action modal-close waves-effect waves-light light-blue darken-2 btn' %>
+        <%= link_to 'Zapomniałem hasła', new_user_password_path, class: 'waves-effect waves-light btn-flat' %>
+      </div>
+    <% end %>
+  </div>
+</div>

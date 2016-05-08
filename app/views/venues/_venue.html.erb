@@ -1,0 +1,25 @@
+<div class="col s4">
+  <div class="card card--venue hoverable">
+    <% if venue.photos.any? %>
+      <div class="card-image activator">
+        <%= image_tag venue.photos.first.image, class: 'activator' %>
+      </div>
+    <% end %>
+    <div class="card-content activator">
+      <span class="card-title activator grey-text text-darken-4">
+        <%= venue.name %>
+        <i class="material-icons right activator">more_vert</i>
+      </span>
+      <ul class="card-meta">
+        <li>
+          <i class="material-icons amber-text">star</i>
+          <%= venue.average_rating %>
+        </li>
+        <li>
+          <i class="material-icons">location_on</i>
+          <%= venue.city %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
