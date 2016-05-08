@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507203358) do
+ActiveRecord::Schema.define(version: 20160508201948) do
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "icon",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "features_venues", id: false, force: :cascade do |t|
+    t.integer "feature_id", limit: 4
+    t.integer "venue_id",   limit: 4
+  end
+
+  add_index "features_venues", ["feature_id", "venue_id"], name: "index_features_venues_on_feature_id_and_venue_id", using: :btree
+  add_index "features_venues", ["feature_id"], name: "index_features_venues_on_feature_id", using: :btree
+  add_index "features_venues", ["venue_id"], name: "index_features_venues_on_venue_id", using: :btree
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4

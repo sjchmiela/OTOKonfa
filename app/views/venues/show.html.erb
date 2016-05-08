@@ -4,6 +4,15 @@
             <div class="row">
                 <div class="col s8">
                     <h1><%= @venue.name %></h1>
+                    <ul class="accessories">
+                      <% @venue.features.each do |feature| %>
+                      <li class="chip light-blue darken-2 white-text">
+                        <% if feature.icon? %>
+                          <i class="material-icons"><%= feature.icon %></i>
+                        <% end %>
+                        <%= feature.name %>
+                      <% end %>
+                    </ul>
                 </div>
                 <div class="col s4 venue__header-info">
                     <ul class="rating yellow-text text-accent-4">
