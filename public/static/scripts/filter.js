@@ -47,7 +47,14 @@
             strokeColor: '#0288d1'
         });
         circle.bindTo('center', marker, 'position');
+
+        google.maps.event.addListener(marker, 'dragend', updateLocationInput );
     };
+
+    function updateLocationInput(){
+        var location = marker.getPosition();
+        $location.val(location.lat + ',' + location.lng);
+    }
 
     function getDefaultPosition(){
         if($location.val() != ''){
