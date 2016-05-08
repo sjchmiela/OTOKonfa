@@ -331,6 +331,16 @@ span[contenteditable]{
         margin-top: 4px;
         margin-bottom: 15px;
     }
+
+    .map {
+        height: 185px;
+        background: #ddd;
+    }
+
+    .filter__submit {
+        padding: 1rem 0;
+        text-align: center;
+    }
 }
 
 .filter__slot-types {

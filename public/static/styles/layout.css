@@ -198,6 +198,12 @@ span[contenteditable] {
   .filter__wrap .range-input {
     margin-top: 4px;
     margin-bottom: 15px; }
+  .filter__wrap .map {
+    height: 185px;
+    background: #ddd; }
+  .filter__wrap .filter__submit {
+    padding: 1rem 0;
+    text-align: center; }
 
 .filter__slot-types {
   margin-top: 20px; }
