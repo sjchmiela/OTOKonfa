@@ -1,33 +1,34 @@
 <div id="modal-contact" class="modal">
   <div class="modal-content">
-  <h4>Formularz kontaktowy</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu ultrices odio. Donec dapibus nulla a arcu cursus, vel eleifend velit placerat. Donec aliquam elit in interdum bibendum. Morbi vulputate vitae erat vitae ultrices. Praesent vitae metus hendrerit, eleifend metus non, volutpat arcu. </p>
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s4">
-        <input id="contact-name" type="text" class="validate">
-        <label for="contact-name">Imię i nazwisko</label>
+    <h4>Formularz kontaktowy</h4>
+    <%= form_tag venue_contact_path(@venue), class: 'col s12' do %>
+      <div class="row">
+        <div class="input-field col s4">
+          <%= text_field_tag :name %>
+          <%= label_tag :name %>
+        </div>
+        <div class="input-field col s4">
+          <%= email_field_tag :email %>
+          <%= label_tag :email %>
+        </div>
+        <div class="input-field col s4">
+          <%= text_field_tag :phone %>
+          <%= label_tag :phone %>
+        </div>
       </div>
-      <div class="input-field col s4">
-        <input id="contact-email" type="email" class="validate">
-        <label for="contact-email">Email</label>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= text_area_tag :message, nil, class: 'materialize-textarea validate' %>
+          <%= label_tag :message %>
+        </div>
       </div>
-      <div class="input-field col s4">
-        <input id="contact-telephone" type="tel" class="validate">
-        <label for="contact-telephone">Telefon</label>
+      <div class="row">
+        <div class="col s12">
+          <%= button_tag class: 'modal-action modal-close waves-effect waves-light light-blue darken-2 btn' do %>
+            <i class="material-icons left">send</i>Wyślij
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <textarea id="contact-message" class="materialize-textarea validate"></textarea>
-        <label for="contact-message">Wiadomość</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col s12">
-        <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">send</i>Wyślij</button>
-      </div>
-    </div>
-    </form>
+    <% end %>
   </div>
 </div>
