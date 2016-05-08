@@ -21,5 +21,22 @@
         </li>
       </ul>
     </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Dostępne usługi<i class="material-icons right">close</i></span>
+        <% if venue.features.any? %>
+        <ul class="accessories">
+          <% venue.features.each do |feature| %>
+            <li class="chip light-blue darken-2 white-text"><%= feature.name %></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>Obiekt nie oferuje żadnych dodatkowych usług.</p>
+        <% end %>
+        <!-- <span class="action--compare"><i class="material-icons">add_circle_outline</i> Porównaj</span> -->
+        <%= link_to venue_path(venue), class: 'action--details' do %>
+          Szczegóły
+          <i class="material-icons">visibility</i>
+        <% end %>
+    </div>
   </div>
 </div>
