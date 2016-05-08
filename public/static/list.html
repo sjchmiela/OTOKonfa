@@ -27,7 +27,7 @@
         <form action="#" method="get" class="filter__wrap z-depth-1">
             <div class="row">
                 <div class="col s12">
-                    <input type="text" placeholder="Nazwa lub opis obiektu, słowa kluczowe...">
+                    <input type="text" placeholder="Nazwa lub opis obiektu, słowa kluczowe..." name="q">
                 </div>
             </div>
             <div class="row">
@@ -38,12 +38,12 @@
                         </div>
                         <div class="col s7">
                             <div class="range-input" data-min="0" data-max="100">
-                                <input type="hidden" value="20,80">
+                                <input type="hidden" value="0,100" name="hall_size">
                             </div>
                             <div class="filter__slot-types">
-                                <input name="slot-type" type="radio" id="filter-slot-sitting" checked />
+                                <input name="slot-type" type="radio" id="filter-slot-sitting" value="0" checked />
                                 <label for="filter-slot-sitting">siedzące</label>
-                                <input name="slot-type" type="radio" id="filter-slot-standing" />
+                                <input name="slot-type" type="radio" id="filter-slot-standing" value="1" />
                                 <label for="filter-slot-standing">stojące</label>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div class="col s7">
                             <div class="range-input" data-min="0" data-max="100">
-                                <input type="hidden" value="20,80">
+                                <input type="hidden" value="0,100" name="halls">
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col s7">
                             <div class="range-input" data-min="0" data-max="100">
-                                <input type="hidden" value="20,80">
+                                <input type="hidden" value="0,100" name="hotel_size">
                             </div>
                         </div>
                     </div>
@@ -73,8 +73,8 @@
                             <label>W odległości (km)</label>
                         </div>
                         <div class="col s7">
-                            <div class="range-input" data-min="0" data-max="20">
-                                <input type="hidden" value="0,20" id="filter-radius">
+                            <div class="range-input" data-min="0" data-max="20" data-decimals="1" data-step="0.25">
+                                <input type="hidden" value="0,20" id="filter-radius" name="radius">
                             </div>
                         </div>
                     </div>
@@ -83,8 +83,8 @@
                             <label>Średnia ocen</label>
                         </div>
                         <div class="col s7">
-                            <div class="range-input" data-min="0" data-max="100">
-                                <input type="hidden" value="20,80">
+                            <div class="range-input" data-min="1" data-max="5" data-decimals="1" data-step="0.1">
+                                <input type="hidden" value="1,5" name="rate">
                             </div>
                         </div>
                     </div>
@@ -93,14 +93,14 @@
                     <div class="row">
                         <div class="col s12">
                             <label for="filter-attributes">Udogodnienia</label>
-                            <input type="text" class="tags-input" placeholder="podaj atrybut..." id="filter-attributes">
+                            <input type="text" class="tags-input" placeholder="podaj atrybut..." id="filter-attributes" value="1,2" name="attributes">
                         </div>
                     </div>
                 </div>
                 <div class="col s3">
                     <div class="row">
                         <div class="col s12">
-                            <input type="hidden" id="filter-location" value="">
+                            <input type="hidden" id="filter-location" value="" name="location">
                             <div class="map"></div>
                         </div>
                     </div>

@@ -15,17 +15,27 @@
             var input = $(this).find('input');
             var value = input.val().split(',');
             var element = $(this).get(0);
+            var step = $(this).data('step');
+            var decimals = $(this).data('decimals');
+
+            if(!step){
+                step = 1;
+            }
+
+            if(!decimals){
+                decimals = 0;
+            }
 
             noUiSlider.create(element, {
                 start: value,
                 connect: true,
-                step: 1,
+                step: step,
                 range: {
                     'min': $(this).data('min'),
                     'max': $(this).data('max')
                 },
                 format: wNumb({
-                    decimals: 0
+                    decimals: decimals
                 })
             });
 
@@ -35,11 +45,7 @@
             });
         });
 
-        $radius.on('change', function(){
-            var radius = $(this).val().split(',')[1];
-            circle.setRadius(1000 * radius);
-            map.fitBounds(circle.getBounds());
-        });
+        $radius.on('change', updateMap);
     });
 
     window.initMap = function(){
@@ -66,6 +72,8 @@
         circle.bindTo('center', marker, 'position');
 
         google.maps.event.addListener(marker, 'dragend', updateLocationInput );
+
+        updateMap();
     };
 
     function updateLocationInput(){
@@ -90,5 +98,12 @@
         var location = {lat: position.coords.latitude, lng: position.coords.longitude};
         map.setCenter(location);
         marker.setPosition(location);
+        updateMap();
+    }
+
+    function updateMap(){
+        var radius = $radius.val().split(',')[1];
+        circle.setRadius(1000 * radius);
+        map.fitBounds(circle.getBounds());
     }
 })(jQuery);
