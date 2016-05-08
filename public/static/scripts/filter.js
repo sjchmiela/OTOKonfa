@@ -28,5 +28,13 @@
             map: map,
             draggable: true
         });
+        var circle = new google.maps.Circle({
+            map: map,
+            radius: 1000,
+            strokeWeight: 1,
+            fillColor: '#0288d1',
+            strokeColor: '#0288d1'
+        });
+        circle.bindTo('center', marker, 'position');
     }
 })(jQuery);

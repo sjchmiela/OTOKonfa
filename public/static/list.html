@@ -26,6 +26,11 @@
         <h4>Znajdź idealne miejsce na konferencję</h4>
         <form action="#" method="get" class="filter__wrap z-depth-1">
             <div class="row">
+                <div class="col s12">
+                    <input type="text" placeholder="Nazwa lub opis obiektu, słowa kluczowe...">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col s5">
                     <div class="row">
                         <div class="col s5">
@@ -84,7 +89,10 @@
                 </div>
                 <div class="col s3">
                     <div class="row">
-                        <div class="map"></div>
+                        <div class="col s12">
+                            <input type="hidden" id="filter-location" value="">
+                            <div class="map"></div>
+                        </div>
                     </div>
                 </div>
             </div>
