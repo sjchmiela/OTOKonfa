@@ -1,5 +1,6 @@
 (function($){
     var $location;
+    var $radius;
     var $map;
     var map;
     var circle;
@@ -7,11 +8,16 @@
 
     $(document).ready(function(){
         $map = $('.map');
+        $radius = $('#filter-radius');
         $location = $('#filter-location');
 
         $('.range-input').each(function(){
-            noUiSlider.create($(this).get(0), {
-                start: [$(this).data('start-from'), $(this).data('start-to')],
+            var input = $(this).find('input');
+            var value = input.val().split(',');
+            var element = $(this).get(0);
+
+            noUiSlider.create(element, {
+                start: value,
                 connect: true,
                 step: 1,
                 range: {
@@ -22,6 +28,17 @@
                     decimals: 0
                 })
             });
+
+            element.noUiSlider.on('update', function( values ) {
+                input.val(values.join(','));
+                input.trigger('change');
+            });
+        });
+
+        $radius.on('change', function(){
+            var radius = $(this).val().split(',')[1];
+            circle.setRadius(1000 * radius);
+            map.fitBounds(circle.getBounds());
         });
     });
 
