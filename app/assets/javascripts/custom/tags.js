@@ -1,7 +1,7 @@
 (function($){
     $(document).ready(function(){
         var attributes = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.id; },
             prefetch: '/features.json'
@@ -14,10 +14,10 @@
         $input.tagsinput({
             tagClass: 'chip light-blue darken-2 white-text',
             itemValue: 'id',
-            itemText: 'label',
+            itemText: 'name',
             typeaheadjs: {
                 name: 'attributes',
-                displayKey: 'label',
+                displayKey: 'name',
                 source: attributes.ttAdapter()
             }
         });
