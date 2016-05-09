@@ -29,6 +29,10 @@ p, ul {
         margin: .5rem 0;
     }
 
+    h1[contenteditable] {
+        margin: .3rem -.2rem;
+    }
+
     .accessories {
         margin: 0 0 1rem;
     }
@@ -76,6 +80,11 @@ p, ul {
             }
         }
     }
+}
+
+.edit-venue {
+    bottom: 25px;
+    right: 25px;
 }
 
 .venue__location {
@@ -221,6 +230,7 @@ p, ul {
 *[contenteditable]{
     outline: #777 dashed 1px;
     padding: .2rem;
+    margin: -.2rem;
 }
 
 span[contenteditable]{
