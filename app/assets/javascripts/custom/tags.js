@@ -4,7 +4,8 @@
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.id; },
-            prefetch: '/features.json'
+            prefetch: '/features.json',
+            cache: false
         });
 
         var $input = $('.tags-input');
