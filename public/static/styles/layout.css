@@ -44,6 +44,11 @@ p, ul {
     .venue__reviews .collection-item.avatar .secondary-content .material-icons {
       vertical-align: bottom; }
 
+.venue__location .map {
+  margin: 1em 0 0;
+  height: 250px;
+  background: #ddd; }
+
 .venue__contact li {
   position: relative;
   padding: 0.5rem 3rem; }

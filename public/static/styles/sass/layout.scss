@@ -78,6 +78,14 @@ p, ul {
     }
 }
 
+.venue__location {
+    .map {
+        margin: 1em 0 0;
+        height: 250px;
+        background: #ddd;
+    }
+}
+
 .venue__contact {
     li {
         position: relative;
