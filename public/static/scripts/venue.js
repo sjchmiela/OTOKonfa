@@ -89,5 +89,14 @@
     }
 
     function save(property, value){
+        Materialize.toast(MESSAGES.SAVING, 2000, 'orange');
+        $.post("", {
+            property: property,
+            value: value
+        }).done(function(){
+            Materialize.toast(MESSAGES.DONE, 2000, 'green');
+        }).fail(function(){
+            Materialize.toast(MESSAGES.ERROR, 2000, 'green');
+        });
     }
 })(jQuery);
