@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
     post 'contact'
   end
+
+  get 'features' => 'features#index'
+
   root to: 'pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
