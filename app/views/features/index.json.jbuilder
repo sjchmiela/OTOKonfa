@@ -1,4 +1,3 @@
 json.array!(@features) do |feature|
-  json.id feature.id
-  json.label feature.name
+  json.extract! feature, :id, :name, :icon
 end
