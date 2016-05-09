@@ -90,7 +90,7 @@
 
     function save(property, value){
         Materialize.toast(MESSAGES.SAVING, 2000, 'orange');
-        $.post("", {
+        $.post(window.location.href, {
             property: property,
             value: value
         }).done(function(){
