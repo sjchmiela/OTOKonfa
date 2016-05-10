@@ -98,12 +98,12 @@
         save( $map.data('property'), data );
     }
 
-    function save(property, value){
+    function save(property, value, data){
         Materialize.toast(MESSAGES.SAVING, 2000, 'orange');
-        $.post(window.location.href, {
-            property: property,
-            value: value
-        }).done(function(){
+        data = data || {};
+        data.property = property;
+        data.value = value;
+        $.post(window.location.href, data).done(function(){
             Materialize.toast(MESSAGES.DONE, 2000, 'green');
         }).fail(function(){
             Materialize.toast(MESSAGES.ERROR, 2000, 'green');
