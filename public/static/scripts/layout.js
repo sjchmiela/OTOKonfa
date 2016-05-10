@@ -9,7 +9,7 @@
             $.post( $(this).attr('action'), $(this).serialize()).done(function(){
                 window.location.reload();
             }).fail(function(result){
-                Materialize.toast(result.error, 4000, 'red');
+                Materialize.toast(result.message, 4000, 'red');
             });
         });
     });
