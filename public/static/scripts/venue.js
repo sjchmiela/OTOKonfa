@@ -104,6 +104,7 @@
         $toggle.removeClass(remove).addClass(add).find('i').text(text);
 
         editEnabled = !editEnabled;
+        marker.setDraggable(editEnabled);
 
         $('[data-property]').each(fn);
     }
@@ -123,8 +124,7 @@
 
         marker = new google.maps.Marker({
             position: position,
-            map: map,
-            draggable: true
+            map: map
         });
 
         google.maps.event.addListener(marker, 'dragend', updateLocation );
