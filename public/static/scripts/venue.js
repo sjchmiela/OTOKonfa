@@ -4,6 +4,7 @@
     var marker;
     var saved;
     var editEnabled = false;
+    var $attrsInput;
     var MESSAGES = {
         SAVING: 'Zapisuję zmiany...',
         DONE: 'Gotowe!',
@@ -16,6 +17,7 @@
         $map = $('.map');
         $toggle = $('.edit-venue > span');
         $body = $('body');
+        $attrsInput = $('#attributes');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
@@ -43,7 +45,7 @@
             remove = 'green';
             text = 'mode_edit';
             fn = function(){
-                if(!$(this).hasClass('map')){
+                if(isContentEditable(this)){
                     $(this).removeAttr('contenteditable');
                 }
             };
@@ -53,7 +55,7 @@
             remove = 'red';
             text = 'done';
             fn = function(){
-                if(!$(this).hasClass('map')){
+                if(isContentEditable(this)){
                     $(this).attr('contenteditable', true);
                 }
             };
@@ -65,6 +67,10 @@
         editEnabled = !editEnabled;
 
         $('[data-property]').each(fn);
+    }
+
+    function isContentEditable(obj){
+        return !$(obj).hasClass('map') && obj !== $attrsInput;
     }
 
     window.initMap = function(){
