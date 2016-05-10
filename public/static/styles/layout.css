@@ -17,22 +17,25 @@ p, ul {
 .parallax-container {
   background: rgba(0, 0, 0, 0.2); }
 
-.venue__header h1 {
-  margin: .5rem 0; }
-.venue__header h1[contenteditable] {
-  margin: .3rem -.2rem; }
-.venue__header .accessories, .venue__header .bootstrap-tagsinput {
-  margin: 0 0 1rem; }
-.venue__header .section {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7); }
-.venue__header-info p {
-  margin: 1rem 0 0; }
-.venue__header-info .rating li:first-child {
-  margin-right: 0.5rem; }
+.venue__header {
+  position: relative; }
+  .venue__header h1 {
+    margin: .5rem 0; }
+  .venue__header h1[contenteditable] {
+    margin: .3rem -.2rem; }
+  .venue__header .accessories, .venue__header .bootstrap-tagsinput {
+    margin: 0 0 1rem; }
+  .venue__header .section {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1; }
+  .venue__header-info p {
+    margin: 1rem 0 0; }
+  .venue__header-info .rating li:first-child {
+    margin-right: 0.5rem; }
 
 .venue__reviews .collection-item.avatar {
   min-height: 0; }
