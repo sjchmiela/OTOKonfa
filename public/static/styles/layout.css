@@ -7,6 +7,9 @@ p, ul {
 
 .nav-wrapper {
   padding: 0 2rem; }
+  .nav-wrapper .btn i {
+    height: 36px;
+    line-height: 36px; }
 
 .row {
   margin-bottom: 0; }

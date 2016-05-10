@@ -9,6 +9,11 @@ p, ul {
 
 .nav-wrapper {
     padding: 0 2rem;
+
+    .btn i {
+        height: 36px;
+        line-height: 36px;
+    }
 }
 
 .row {
