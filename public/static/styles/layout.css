@@ -470,6 +470,9 @@ span[contenteditable] {
   font-size: 12px;
   line-height: 1.8rem; }
 
+#tag-template {
+  display: none; }
+
 .edit-accessories {
   display: none; }
 

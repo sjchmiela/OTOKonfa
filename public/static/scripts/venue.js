@@ -5,6 +5,7 @@
     var saved;
     var editEnabled = false;
     var $attrsInput;
+    var $attrs;
     var MESSAGES = {
         SAVING: 'Zapisuję zmiany...',
         DONE: 'Gotowe!',
@@ -12,17 +13,36 @@
     };
     var $toggle;
     var $body;
+    var $tpl;
 
     $(document).ready(function(){
         $map = $('.map');
         $toggle = $('.edit-venue > span');
         $body = $('body');
+        $attrs = $('.accessories');
         $attrsInput = $('#attributes');
+        $tpl = $('#tag-template').detach().removeAttr('id');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
             .on('blur', '[contenteditable]', onBlur)
             .on('click', '.edit-venue', toggleEditMode);
+
+        var ids = [];
+
+        $attrs.find('li').each(function(){
+            ids.push( $(this).data('id') );
+        });
+
+        var tags = getTags(ids);
+
+        for(var i=0;i<tags.length;i++){
+            $attrsInput.tagsinput('add', tags[i]);
+        }
+
+        $attrsInput
+            .on('itemAdded', addTag)
+            .on('itemRemoved', removeTag);
     });
 
     function onFocus(){
@@ -35,6 +55,25 @@
         if(current != saved){
             save( $(this).data('property'), current );
         }
+    }
+
+    function addTag(event){
+        console.log(event.item);
+        var $tag = $tpl.clone();
+        $tag.prepend(event.item.label);
+        $tag.data('id', event.item.id);
+        $tag.find('i').text('mode_edit'); // mock icon
+        $attrs.append($tag);
+        saveTag(event.item.id, 'add');
+    }
+
+    function removeTag(event){
+        $attrs.find('[data-id="'+event.item.id+'"]').remove();
+        saveTag(event.item.id, 'remove');
+    }
+
+    function saveTag(id, action){
+        save( $attrsInput.data('property'), id, {action: action} );
     }
 
     function toggleEditMode(){
