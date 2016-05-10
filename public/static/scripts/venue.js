@@ -43,6 +43,9 @@
                 .on('itemAdded', addTag)
                 .on('itemRemoved', removeTag);
         });
+
+        handleModal('#modal-contact');
+        handleModal('#modal-review');
     });
 
     function onFocus(){
