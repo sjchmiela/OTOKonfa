@@ -3,26 +3,21 @@
         $('.parallax').parallax();
         $('.modal-trigger').leanModal();
 
-        $('#modal-login').on('submit', 'form', function(e){
-            e.preventDefault();
+        handleModal('#modal-login', loginSuccess, error);
+        handleModal('#modal-register', registerSuccess, error);
 
-            $.post( $(this).attr('action'), $(this).serialize()).done(function(){
-                window.location.reload();
-            }).fail(function(result){
-                Materialize.toast(result.message, 4000, 'red');
-            });
-        });
+        function loginSuccess(){
+            window.location.reload();
+        }
 
-        $('#modal-register').on('submit', 'form', function(e){
-            e.preventDefault();
+        function error(result){
+            Materialize.toast(result.message, 4000, 'red');
+        }
 
-            $.post( $(this).attr('action'), $(this).serialize()).done(function(result){
-                $('#modal-register').closeModal();
-                Materialize.toast(result.message, 4000, 'green');
-            }).fail(function(result){
-                Materialize.toast(result.message, 4000, 'red');
-            });
-        });
+        function registerSuccess(result){
+            $('#modal-register').closeModal();
+            Materialize.toast(result.message, 4000, 'green');
+        }
     });
 
     window.handleModal = function(id, success, error){
