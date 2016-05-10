@@ -1,34 +1,41 @@
 (function($){
     $(document).ready(function(){
         var attributes = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('label'),
+            initialize: false,
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.id; },
-            prefetch: 'json/attributes.json',
-            cache: false
+            prefetch: {
+                url: 'json/attributes.json',
+                cache: false
+            }
         });
 
-        var $input = $('.tags-input');
+        var promise = attributes.initialize();
 
-        var values = attributes.get($input.val().split(','));
+        window.getTags = function(ids) {
+            return promise.then(function () {
+                return attributes.get(ids);
+            });
+        };
+
+        var $input = $('.tags-input');
 
         $input.tagsinput({
             tagClass: 'chip light-blue darken-2 white-text',
             itemValue: 'id',
-            itemText: 'label',
+            itemText: 'name',
             typeaheadjs: {
                 name: 'attributes',
-                displayKey: 'label',
+                displayKey: 'name',
                 source: attributes.ttAdapter()
             }
         });
 
-        for(var i=0;i<values.length;i++){
-            $input.tagsinput('add', values[i]);
-        }
-
-        window.getTags = function(ids){
-            return attributes.get(ids);
-        }
+        getTags($input.val().split(',')).then(function(values){
+            for(var i=0;i<values.length;i++){
+                $input.tagsinput('add', values[i]);
+            }
+        });
     });
 })(jQuery);
