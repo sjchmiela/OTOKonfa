@@ -24,4 +24,14 @@
             });
         });
     });
+
+    window.handleModal = function(id, success, error){
+        $(id).on('submit', 'form', function(e){
+            e.preventDefault();
+
+            $.post( $(this).attr('action'), $(this).serialize())
+                .done(success)
+                .fail(error);
+        });
+    };
 })(jQuery);
