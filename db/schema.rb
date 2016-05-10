@@ -134,8 +134,8 @@ ActiveRecord::Schema.define(version: 20160508201948) do
     t.string   "phone",       limit: 255
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.integer  "manager_id",  limit: 4
     t.boolean  "accepted",                  default: false
+    t.integer  "manager_id",  limit: 4
     t.string   "website",     limit: 255
   end
 
