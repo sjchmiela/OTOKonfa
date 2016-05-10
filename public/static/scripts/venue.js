@@ -34,15 +34,15 @@
             ids.push( $(this).data('id') );
         });
 
-        var tags = getTags(ids);
+        getTags(ids).then(function(tags){
+            for(var i=0;i<tags.length;i++){
+                $attrsInput.tagsinput('add', tags[i]);
+            }
 
-        for(var i=0;i<tags.length;i++){
-            $attrsInput.tagsinput('add', tags[i]);
-        }
-
-        $attrsInput
-            .on('itemAdded', addTag)
-            .on('itemRemoved', removeTag);
+            $attrsInput
+                .on('itemAdded', addTag)
+                .on('itemRemoved', removeTag);
+        });
     });
 
     function onFocus(){
@@ -58,11 +58,10 @@
     }
 
     function addTag(event){
-        console.log(event.item);
         var $tag = $tpl.clone();
-        $tag.prepend(event.item.label);
+        $tag.prepend(event.item.name);
         $tag.data('id', event.item.id);
-        $tag.find('i').text('mode_edit'); // mock icon
+        $tag.find('i').text(event.item.icon);
         $attrs.append($tag);
         saveTag(event.item.id, 'add');
     }
