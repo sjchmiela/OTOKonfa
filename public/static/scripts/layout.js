@@ -25,7 +25,10 @@
             e.preventDefault();
 
             $.post( $(this).attr('action'), $(this).serialize())
-                .done(success)
+                .done(function(){
+                    $(id).closeModal();
+                    success.apply(this, arguments);
+                })
                 .fail(error);
         });
     };
