@@ -24,6 +24,11 @@ p, ul {
     }
 }
 
+.venues-map {
+    height: calc(75vh - 64px);
+    background: #ddd;
+}
+
 .row {
     margin-bottom: 0;
 }

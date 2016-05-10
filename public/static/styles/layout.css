@@ -16,6 +16,10 @@ p, ul {
   .features .material-icons {
     font-size: 4rem; }
 
+.venues-map {
+  height: calc(75vh - 64px);
+  background: #ddd; }
+
 .row {
   margin-bottom: 0; }
 
