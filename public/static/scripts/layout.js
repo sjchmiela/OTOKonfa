@@ -3,10 +3,16 @@
         $('.parallax').parallax();
         $('.modal-trigger').leanModal();
         $('.dropdown-button').dropdown();
+        $('.reset-password').click(function(){
+            $('#modal-login').closeModal();
+            $('#modal-reset').openModal();
+        });
 
         handleModal('#modal-login', loginSuccess);
         handleModal('#modal-register');
         handleModal('#modal-password');
+        handleModal('#modal-information');
+        handleModal('#modal-reset');
 
         function loginSuccess(){
             window.location.reload();
