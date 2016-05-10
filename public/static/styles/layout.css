@@ -507,6 +507,8 @@ span[contenteditable] {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   padding: 0.25rem 0.5rem;
   margin-left: -0.25rem;
-  cursor: pointer; }
+  cursor: pointer;
+  background: #fff;
+  color: rgba(0, 0, 0, 0.87); }
 
 /*# sourceMappingURL=layout.css.map */
