@@ -127,7 +127,7 @@
                     <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
                     <ul>
                         <% if @venue.phone? %><li><i class="material-icons">call</i><span><%= @venue.phone %></span></li><% end %>
-                        <li><i class="material-icons">email</i><span><%= @venue.manager.email %></span></li>
+                        <li><i class="material-icons">email</i><span><%= @venue.email %></span></li>
                         <% if @venue.website? %><li><i class="material-icons">public</i><span><%= @venue.website %></span></li><% end %>
                         <li><i class="material-icons">location_on</i><span><%= simple_format @venue.address %></span></li>
                     </ul>
