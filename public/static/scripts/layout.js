@@ -6,6 +6,7 @@
 
         handleModal('#modal-login', loginSuccess);
         handleModal('#modal-register');
+        handleModal('#modal-password');
 
         function loginSuccess(){
             window.location.reload();

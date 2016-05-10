@@ -11,9 +11,9 @@
 </head>
 <body>
 <ul id="settings-dropdown" class="dropdown-content">
-    <li><a href="#!" class="grey-text text-darken-4">Edytuj dane</a></li>
+    <li><a href="#modal-information" class="modal-trigger grey-text text-darken-4">Edytuj dane</a></li>
     <li class="divider"></li>
-    <li><a href="#!" class="grey-text text-darken-4">Zmień hasło</a></li>
+    <li><a href="#modal-password" class="modal-trigger grey-text text-darken-4">Zmień hasło</a></li>
 </ul>
 <div class="navbar-fixed">
     <nav class="light-blue darken-2" role="navigation">
@@ -21,7 +21,7 @@
             <a href="#!" class="brand-logo"><i class="material-icons left">business_center</i>OtoKonfa</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#"><i class="material-icons left">stars</i>Ulubione</a></li>
-                <li><a href="#" class="dropdown-button" data-activates="settings-dropdown"><i class="material-icons left">settings</i>Ustawienia</a></li>
+                <li><a href="#!" class="dropdown-button" data-activates="settings-dropdown"><i class="material-icons left">settings</i>Ustawienia</a></li>
                 <li><a href="#"><i class="material-icons left">exit_to_app</i>Wyloguj</a></li>
             </ul>
         </div>
@@ -211,6 +211,28 @@
         </div>
     </div>
 </footer>
+<div id="modal-password" class="modal modal-small">
+    <div class="modal-content">
+        <h4>Zmiana hasła</h4>
+        <form action="" method="post" class="row">
+            <div class="input-field col s12">
+                <input id="password-current" type="password">
+                <label for="password-current">Obecne hasło</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password-new" type="password">
+                <label for="password-new">Nowe hasło</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password-repeat" type="password">
+                <label for="password-repeat">Powtórz hasło</label>
+            </div>
+            <div class="input-field col s12">
+                <button class="modal-action waves-effect waves-light light-blue darken-2 btn">Zmień hasło</button>
+            </div>
+        </form>
+    </div>
+</div>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
