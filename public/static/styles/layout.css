@@ -11,6 +11,11 @@ p, ul {
     height: 36px;
     line-height: 36px; }
 
+.features {
+  padding: 3rem 0 5rem; }
+  .features .material-icons {
+    font-size: 4rem; }
+
 .row {
   margin-bottom: 0; }
 
