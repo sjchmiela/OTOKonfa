@@ -10,13 +10,18 @@
     <link rel="stylesheet" href="styles/layout.css">
 </head>
 <body>
+<ul id="settings-dropdown" class="dropdown-content">
+    <li><a href="#!" class="grey-text text-darken-4">Edytuj dane</a></li>
+    <li class="divider"></li>
+    <li><a href="#!" class="grey-text text-darken-4">Zmień hasło</a></li>
+</ul>
 <div class="navbar-fixed">
     <nav class="light-blue darken-2" role="navigation">
         <div class="nav-wrapper">
             <a href="#!" class="brand-logo"><i class="material-icons left">business_center</i>OtoKonfa</a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="#"><i class="material-icons left">stars</i>Ulubione</a></li>
-                <li><a href="#"><i class="material-icons left">settings</i>Ustawienia</a></li>
+                <li><a href="#" class="dropdown-button" data-activates="settings-dropdown"><i class="material-icons left">settings</i>Ustawienia</a></li>
                 <li><a href="#"><i class="material-icons left">exit_to_app</i>Wyloguj</a></li>
             </ul>
         </div>

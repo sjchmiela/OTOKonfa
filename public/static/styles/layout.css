@@ -11,6 +11,9 @@ p, ul {
     height: 36px;
     line-height: 36px; }
 
+.dropdown-content {
+  margin-top: 64px; }
+
 .features {
   padding: 3rem 0 5rem; }
   .features .material-icons {

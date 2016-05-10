@@ -2,6 +2,7 @@
     $(document).ready(function(){
         $('.parallax').parallax();
         $('.modal-trigger').leanModal();
+        $('.dropdown-button').dropdown();
 
         handleModal('#modal-login', loginSuccess);
         handleModal('#modal-register');
