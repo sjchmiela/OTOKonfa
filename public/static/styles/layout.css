@@ -21,7 +21,7 @@ p, ul {
   margin: .5rem 0; }
 .venue__header h1[contenteditable] {
   margin: .3rem -.2rem; }
-.venue__header .accessories {
+.venue__header .accessories, .venue__header .bootstrap-tagsinput {
   margin: 0 0 1rem; }
 .venue__header .section {
   position: absolute;
@@ -463,11 +463,20 @@ span[contenteditable] {
 
 .bootstrap-tagsinput {
   cursor: text; }
-  .bootstrap-tagsinput .chip {
-    margin: 0 0.1rem 0.25rem 0;
-    height: 1.8rem;
-    font-size: 12px;
-    line-height: 1.8rem; }
+
+.filter .chip {
+  margin: 0 0.1rem 0.25rem 0;
+  height: 1.8rem;
+  font-size: 12px;
+  line-height: 1.8rem; }
+
+.edit-accessories {
+  display: none; }
+
+.edit-enabled .edit-accessories {
+  display: block; }
+.edit-enabled .accessories {
+  display: none; }
 
 .bootstrap-tagsinput input {
   width: auto;

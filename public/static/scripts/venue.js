@@ -10,12 +10,14 @@
         ERROR: 'Błąd!'
     };
     var $toggle;
+    var $body;
 
     $(document).ready(function(){
         $map = $('.map');
         $toggle = $('.edit-venue > span');
+        $body = $('body');
 
-        $('body')
+        $body
             .on('focus', '[contenteditable]', onFocus)
             .on('blur', '[contenteditable]', onBlur)
             .on('click', '.edit-venue', toggleEditMode);
@@ -45,6 +47,7 @@
                     $(this).removeAttr('contenteditable');
                 }
             };
+            $body.removeClass('edit-enabled');
         } else {
             add = 'green';
             remove = 'red';
@@ -54,6 +57,7 @@
                     $(this).attr('contenteditable', true);
                 }
             };
+            $body.addClass('edit-enabled');
         }
 
         $toggle.removeClass(remove).addClass(add).find('i').text(text);
