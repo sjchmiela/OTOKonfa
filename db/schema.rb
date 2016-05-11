@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(version: 20160508201948) do
     t.text     "address",     limit: 65535
     t.string   "geoposition", limit: 255
     t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.boolean  "accepted",                  default: false

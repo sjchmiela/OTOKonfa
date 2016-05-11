@@ -27,7 +27,7 @@ class VenuesController < ApplicationController
 
   def contact
     VenuesMailer.contact(
-      Venue.find(params[:venue_id]).manager.email,
+      Venue.find(params[:venue_id]).email,
       params[:name],
       params[:email],
       params[:phone],
