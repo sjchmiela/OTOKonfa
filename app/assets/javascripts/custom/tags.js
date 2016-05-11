@@ -1,16 +1,25 @@
 (function($){
     $(document).ready(function(){
         var attributes = new Bloodhound({
+            initialize: false,
             datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.id; },
-            prefetch: '/features.json',
-            cache: false
+            prefetch: {
+                url: '/features.json',
+                cache: false
+            }
         });
 
-        var $input = $('.tags-input');
+        var promise = attributes.initialize();
 
-        var values = attributes.get($input.val().split(','));
+        window.getTags = function(ids) {
+            return promise.then(function () {
+                return attributes.get(ids);
+            });
+        };
+
+        var $input = $('.tags-input');
 
         $input.tagsinput({
             tagClass: 'chip light-blue darken-2 white-text',
@@ -23,8 +32,10 @@
             }
         });
 
-        for(var i=0;i<values.length;i++){
-            $input.tagsinput('add', values[i]);
-        }
+        getTags($input.val().split(',')).then(function(values){
+            for(var i=0;i<values.length;i++){
+                $input.tagsinput('add', values[i]);
+            }
+        });
     });
 })(jQuery);
