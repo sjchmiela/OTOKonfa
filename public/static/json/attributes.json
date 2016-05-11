@@ -1,0 +1,13 @@
+[
+  {"id":1,"name":"WiFi","icon":"network_wifi"},
+  {"id":2,"name":"Projektor","icon":"present_to_all"},
+  {"id":3,"name":"Basen","icon":"pool"},
+  {"id":4,"name":"Restauracja","icon":"local_dining"},
+  {"id":5,"name":"Bar","icon":"local_bar"},
+  {"id":6,"name":"Ksero","icon":"local_printshop"},
+  {"id":7,"name":"Klimatyzacja","icon":"ac_unit"},
+  {"id":8,"name":"Siłownia","icon":"fitness_center"},
+  {"id":9,"name":"Sauna","icon":"hot_tub"},
+  {"id":10,"name":"Kwiaciarnia","icon":"local_florist"},
+  {"id":11,"name":"Kasyno","icon":"casino"}
+]

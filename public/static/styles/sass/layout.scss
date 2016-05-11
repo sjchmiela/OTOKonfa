@@ -9,10 +9,36 @@ p, ul {
 
 .nav-wrapper {
     padding: 0 2rem;
+
+    .btn i {
+        height: 36px;
+        line-height: 36px;
+    }
+}
+
+.dropdown-content {
+    margin-top: 64px;
+}
+
+.features {
+    padding: 3rem 0 5rem;
+
+    .material-icons {
+        font-size: 4rem;
+    }
+}
+
+.venues-map {
+    height: calc(75vh - 64px);
+    background: #ddd;
 }
 
 .row {
     margin-bottom: 0;
+}
+
+.latest {
+    padding: 2rem 0 4rem;
 }
 
 .footer-copyright {
@@ -24,12 +50,17 @@ p, ul {
 }
 
 .venue__header {
+    position: relative;
 
     h1 {
         margin: .5rem 0;
     }
 
-    .accessories {
+    h1[contenteditable] {
+        margin: .3rem -.2rem;
+    }
+
+    .accessories, .bootstrap-tagsinput {
         margin: 0 0 1rem;
     }
 
@@ -39,6 +70,7 @@ p, ul {
         bottom: 0;
         right: 0;
         background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
     }
 
     &-info {
@@ -75,6 +107,19 @@ p, ul {
                 vertical-align: bottom;
             }
         }
+    }
+}
+
+.edit-venue {
+    bottom: 25px;
+    right: 25px;
+}
+
+.venue__location {
+    .map {
+        margin: 1em 0 0;
+        height: 250px;
+        background: #ddd;
     }
 }
 
@@ -213,6 +258,7 @@ p, ul {
 *[contenteditable]{
     outline: #777 dashed 1px;
     padding: .2rem;
+    margin: -.2rem;
 }
 
 span[contenteditable]{
@@ -616,7 +662,9 @@ span[contenteditable]{
 
 .bootstrap-tagsinput {
     cursor: text;
+}
 
+.filter {
     .chip {
         margin: 0 0.1rem 0.25rem 0;
         height: 1.8rem;
@@ -624,6 +672,25 @@ span[contenteditable]{
         line-height: 1.8rem;
     }
 }
+
+#tag-template {
+    display: none;
+}
+
+.edit-accessories {
+    display: none;
+}
+
+.edit-enabled {
+    .edit-accessories {
+        display: block;
+    }
+
+    .accessories {
+        display: none;
+    }
+}
+
 .bootstrap-tagsinput input {
     width: auto;
     max-width: inherit;
@@ -653,4 +720,6 @@ span[contenteditable]{
     padding: 0.25rem 0.5rem;
     margin-left: -0.25rem;
     cursor: pointer;
+    background: #fff;
+    color: rgba(0,0,0,0.87);
 }
