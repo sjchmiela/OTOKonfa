@@ -118,6 +118,55 @@ p, ul {
     }
 }
 
+.btn-floating.btn-large {
+    margin-left: 10px;
+    float: left;
+}
+
+.toolbox {
+    position: fixed;
+    right: 23px;
+    bottom: 23px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 998;
+
+    .collection {
+        display: none;
+        position: absolute;
+        right: 0;
+        bottom: 50px;
+        width: 350px;
+        background: #fff;
+
+        .collection-item {
+            min-height: 64px;
+            padding-right: 50px;
+        }
+    }
+
+    .action--remove {
+        cursor: pointer;
+
+        i:hover {
+            color: #333!important;
+        }
+    }
+
+    .collection-header {
+        height: 56px;
+
+        span {
+            line-height: 36px;
+            font-size: 18px;
+        }
+    }
+}
+
+.compare-venues {
+    display: none;
+}
+
 .venue__contact {
     li {
         position: relative;

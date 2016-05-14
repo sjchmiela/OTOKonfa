@@ -1,4 +1,14 @@
 (function($){
+    var compare = [];
+    var $compareButton;
+    var $compareVenues;
+    var $compareItem = $(
+        '<li class="collection-item avatar">' +
+            '<img src="" alt="" class="circle">' +
+            '<a href="#" class="color-default title"></a>' +
+            '<span class="secondary-content action--remove"><i class="material-icons grey-text">delete</i></span>' +
+        '</li>');
+
     $(document).ready(function(){
         $('.parallax').parallax();
         $('.modal-trigger').leanModal();
@@ -8,14 +18,67 @@
             $('#modal-reset').openModal();
         });
 
+        $('body').on('click', function(){
+            $compareVenues.fadeOut();
+        });
+
+        $('.action--compare').click(addToCompare);
+
         handleModal('#modal-login', loginSuccess);
         handleModal('#modal-register');
         handleModal('#modal-password');
         handleModal('#modal-information');
         handleModal('#modal-reset');
 
+        loadCompare();
+
         function loginSuccess(){
             window.location.reload();
+        }
+
+        function addToCompare(){
+            $.post('json/compare.json', {venue_id: $(this).data('id'), action: 'add'}, parseCompare);
+        }
+
+        function loadCompare(){
+            $compareButton = $('.compare-venues');
+            $compareVenues = $('.toolbox .collection');
+
+            $compareButton.on('click', function(e){
+                e.stopPropagation();
+                $compareVenues.fadeIn();
+            });
+
+            $compareVenues.on('click', '.action--remove', function(){
+                $.post('json/compare.json', {venue_id: $(this).data('id'), action: 'remove'}, parseCompare);
+            }).on('click', function(e){
+                e.stopPropagation();
+            });
+
+            $.post('json/compare.json', parseCompare);
+        }
+
+        function parseCompare(data){
+            compare = data;
+
+            $compareVenues.find('.collection-item').remove();
+
+            if(compare.length > 0){
+                $compareButton.show().find('i').text('filter_' + compare.length);
+                var fragment = $(document.createDocumentFragment());
+                var $item, item;
+                for(var i= 0,c=compare.length;i<c;i++){
+                    item = compare[i];
+                    $item = $compareItem.clone();
+                    $item.find('.title').text( item.name );
+                    $item.find('img').attr( 'src', item.thumb );
+                    $item.find('.action--remove').data('id', item.venue_id);
+                    fragment.append($item);
+                }
+                $compareVenues.append(fragment);
+            } else {
+                $compareButton.hide();
+            }
         }
     });
 

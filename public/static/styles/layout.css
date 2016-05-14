@@ -72,6 +72,40 @@ p, ul {
   height: 250px;
   background: #ddd; }
 
+.btn-floating.btn-large {
+  margin-left: 10px;
+  float: left; }
+
+.toolbox {
+  position: fixed;
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998; }
+  .toolbox .collection {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    width: 350px;
+    background: #fff; }
+    .toolbox .collection .collection-item {
+      min-height: 64px;
+      padding-right: 50px; }
+  .toolbox .action--remove {
+    cursor: pointer; }
+    .toolbox .action--remove i:hover {
+      color: #333 !important; }
+  .toolbox .collection-header {
+    height: 56px; }
+    .toolbox .collection-header span {
+      line-height: 36px;
+      font-size: 18px; }
+
+.compare-venues {
+  display: none; }
+
 .venue__contact li {
   position: relative;
   padding: 0.5rem 3rem; }
