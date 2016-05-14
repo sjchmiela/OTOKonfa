@@ -17,7 +17,7 @@
 
     $(document).ready(function(){
         $map = $('.map');
-        $toggle = $('.edit-venue > span');
+        $toggle = $('.edit-venue');
         $body = $('body');
         $attrs = $('.accessories');
         $attrsInput = $('#attributes');

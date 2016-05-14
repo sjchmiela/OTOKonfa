@@ -67,10 +67,6 @@ p, ul {
     .venue__reviews .collection-item.avatar .secondary-content .material-icons {
       vertical-align: bottom; }
 
-.edit-venue {
-  bottom: 25px;
-  right: 25px; }
-
 .venue__location .map {
   margin: 1em 0 0;
   height: 250px;
