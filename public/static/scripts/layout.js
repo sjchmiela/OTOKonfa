@@ -1,5 +1,5 @@
 (function($){
-    var compare = [];
+    var firstCall = true;
     var $compareButton;
     var $compareVenues;
     var $compareItem = $(
@@ -63,26 +63,29 @@
         }
 
         function parseCompare(data){
-            compare = data;
-
             $compareVenues.find('.collection-item').remove();
 
-            if(compare.length > 0){
-                $compareButton.show().find('i').text('filter_' + compare.length);
+            if(data.length > 0){
+                $compareButton.show().find('i').text('filter_' + data.length);
                 var fragment = $(document.createDocumentFragment());
                 var $item, item;
-                for(var i= 0,c=compare.length;i<c;i++){
-                    item = compare[i];
+                for(var i= 0,c=data.length;i<c;i++){
+                    item = data[i];
                     $item = $compareItem.clone();
                     $item.find('.title').text( item.name );
                     $item.find('img').attr( 'src', item.thumb );
                     $item.find('.action--remove').data('id', item.venue_id);
                     fragment.append($item);
                 }
-                $compareVenues.append(fragment);
+
+                if(!firstCall){
+                    $compareVenues.append(fragment).fadeIn();
+                }
             } else {
                 $compareButton.hide();
             }
+
+            firstCall = false;
         }
     });
 
