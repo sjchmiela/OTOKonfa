@@ -36,8 +36,12 @@
             window.location.reload();
         }
 
+        function actionCompare(type, id){
+            $.post('json/compare.json', {venue_id: id, action: type}, parseCompare);
+        }
+
         function addToCompare(){
-            $.post('json/compare.json', {venue_id: $(this).data('id'), action: 'add'}, parseCompare);
+            actionCompare('add', $(this).data('id'));
         }
 
         function loadCompare(){
@@ -50,12 +54,12 @@
             });
 
             $compareVenues.on('click', '.action--remove', function(){
-                $.post('json/compare.json', {venue_id: $(this).data('id'), action: 'remove'}, parseCompare);
+                actionCompare('remove', $(this).data('id'));
             }).on('click', function(e){
                 e.stopPropagation();
             });
 
-            $.post('json/compare.json', parseCompare);
+            actionCompare('get', 0);
         }
 
         function parseCompare(data){
