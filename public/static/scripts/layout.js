@@ -37,7 +37,9 @@
         }
 
         function actionCompare(type, id){
-            $.post('json/compare.json', {venue_id: id, action: type}, parseCompare);
+            $.post('json/compare.json', {venue_id: id, action: type})
+                .done(parseCompare)
+                .fail(window.defaultErrorHandler);
         }
 
         function addToCompare(){
@@ -89,6 +91,10 @@
         }
     });
 
+    window.defaultErrorHandler = function(result){
+        Materialize.toast(result.message, 4000, 'red');
+    };
+
     window.handleModal = function(id, success, error){
         if(!success){
             success = function(result){
@@ -97,9 +103,7 @@
         }
 
         if(!error){
-            error = function(result){
-                Materialize.toast(result.message, 4000, 'red');
-            };
+            error = window.defaultErrorHandler;
         }
 
         $(id).on('submit', 'form', function(e){
