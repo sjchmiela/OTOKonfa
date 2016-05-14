@@ -1,0 +1,12 @@
+[
+  {
+    "venue_id":1,
+    "name":"Bardzo dluga nazwa osrodka, moze miec nawet kilka linijek...",
+    "thumb":"images/venue.jpg"
+  },
+  {
+    "venue_id":1,
+    "name":"Test",
+    "thumb":"images/venue.jpg"
+  }
+]
