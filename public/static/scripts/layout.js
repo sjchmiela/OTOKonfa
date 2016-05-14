@@ -98,7 +98,7 @@
 
         if(!error){
             error = function(result){
-                Materialize.toast(result.message, 4000, 'green');
+                Materialize.toast(result.message, 4000, 'red');
             };
         }
 
