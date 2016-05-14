@@ -167,6 +167,31 @@ p, ul {
     display: none;
 }
 
+.compare {
+    table {
+        margin: 4rem 0;
+    }
+
+    th:first-child {
+        width: 10%;
+        border-left: 0;
+    }
+
+    th, td {
+        border-left: 1px solid #d0d0d0;
+        padding: 10px;
+    }
+
+    th {
+        width: 30%;
+    }
+
+    .accessories {
+        margin: 0;
+        padding: 0;
+    }
+}
+
 .venue__contact {
     li {
         position: relative;
@@ -223,11 +248,17 @@ p, ul {
     margin: 0 .25rem 0.5rem 0;
 }
 
-.card .chip {
+.card .chip,
+.compare .chip {
     margin: 0 0.1rem 0.4rem 0;
     height: 28px;
     font-size: 10px;
     line-height: 28px;
+}
+
+.compare__map {
+    height: 200px;
+    background: #f9f9f9;
 }
 
 .rating {
