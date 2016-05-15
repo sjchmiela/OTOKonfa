@@ -110,15 +110,34 @@ p, ul {
   margin: 3rem 0; }
 .compare th:first-child {
   width: 10%;
-  border-left: 0; }
+  border-left: 0;
+  text-align: right; }
 .compare th, .compare td {
   border-left: 1px solid #d0d0d0;
-  padding: 10px; }
+  padding: 10px;
+  vertical-align: top; }
 .compare th {
-  width: 30%; }
-.compare .accessories {
+  width: 90%; }
+.compare .accessories,
+.compare .rating,
+.compare dl, .compare dd, .compare dt {
   margin: 0;
   padding: 0; }
+.compare dt {
+  margin: 1rem 0 .25rem;
+  font-weight: bold; }
+  .compare dt:first-child {
+    margin-top: 0; }
+.compare .last {
+  border-bottom: 0; }
+  .compare .last td {
+    text-align: center; }
+
+.compare-2 th {
+  width: 45%; }
+
+.compare-3 th {
+  width: 30%; }
 
 .venue__contact li {
   position: relative;
