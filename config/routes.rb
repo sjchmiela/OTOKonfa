@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     post 'contact'
   end
 
+  get '/venues/compare' => 'venues#index'
+  post '/venues/compare' => 'venues#index'
+
   get 'features' => 'features#index'
 
   root to: 'pages#home'
