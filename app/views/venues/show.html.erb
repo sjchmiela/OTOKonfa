@@ -3,14 +3,22 @@
     <div class="container">
       <div class="row">
         <div class="col s8">
-          <h1><%= @venue.name %></h1>
+          <h1 data-property="name"><%= @venue.name %></h1>
           <ul class="accessories">
+            <li class="chip light-blue darken-2 white-text" id="tag-template">
+              <i class="material-icons"></i>
+            </li>
             <% @venue.features.each do |feature| %>
-                <li class="chip light-blue darken-2 white-text">
+                <li class="chip light-blue darken-2 white-text" data-id="<%= feature.id %>">
                   <% if feature.icon? %>
                       <i class="material-icons"><%= feature.icon %></i>
                   <% end %>
                   <%= feature.name %>
+            <% end %>
+            <% if current_user.admin? or (manager_signed_in? and current_manager.id == venue.manager_id) %>
+              <div class="edit-accessories">
+                <input type="text" class="tags-input" placeholder="podaj atrybut..." id="attributes" data-property="attributes">
+              </div>
             <% end %>
           </ul>
         </div>
