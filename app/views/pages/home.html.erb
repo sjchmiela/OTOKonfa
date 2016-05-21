@@ -6,16 +6,84 @@
       <div class="row center">
         <h5 class="header col s12 light">Wybierz najlepszą spośród tysięcy dostępnych ofert!</h5>
       </div>
+      <br />
       <div class="row center">
         <%= link_to venues_path, class: 'btn-large waves-effect waves-light light-blue' do %>
           <i class="material-icons left">view_list</i>Przeglądaj
         <% end %>
-        <%= link_to new_managers_venue_path, class: 'btn-large waves-effect waves-light orange' do %>
-          <i class="material-icons left">note_add</i>Dodaj
-        <% end %>
+        <%#= link_to new_managers_venue_path, class: 'btn-large waves-effect waves-light orange' do %>
+          <!-- <i class="material-icons left">note_add</i>Dodaj -->
+        <%# end %>
       </div>
       <br><br>
     </div>
   </div>
   <div class="parallax"><%= image_tag 'office' %></div>
 </div>
+
+<div class="section features center">
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <h2 class="light-blue-text"><i class="material-icons">euro_symbol</i></h2>
+                <h5>Całkowicie<br>za darmo</h5>
+            </div>
+            <div class="col s4">
+                <h2 class="green-text"><i class="material-icons">verified_user</i></h2>
+                <h5>Tylko sprawdzone<br>ośrodki</h5>
+            </div>
+            <div class="col s4">
+                <h2 class="orange-text"><i class="material-icons">flash_on</i></h2>
+                <h5>Zaawansowana<br>wyszukiwarka</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="venues-map"></div>
+
+<section class="latest venues section">
+    <div class="container">
+        <h4>Ostatnio dodane ośrodki</h4>
+        <div class="row">
+          <% @last_added_venues.each do |venue| %>
+            <div class="col s4">
+                <div class="card card--venue hoverable">
+                    <% if venue.photos.any? %>
+                      <div class="card-image activator">
+                        <%= image_tag venue.photos.first.image, class: 'activator' %>
+                      </div>
+                    <% end %>
+                    <div class="card-content activator">
+                        <span class="card-title activator grey-text text-darken-4"><%= venue.name %><i class="material-icons right activator">more_vert</i></span>
+                        <ul class="card-meta">
+                            <li><i class="material-icons amber-text">star</i> <%= venue.average_rating %></li>
+                            <li><i class="material-icons">location_on</i> <%= venue.city %></li>
+                        </ul>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Dostępne usługi<i class="material-icons right">close</i></span>
+                        <ul class="accessories">
+                          <% if venue.features do |feature| %>
+                            <li class="chip light-blue darken-2 white-text"><%= feature.name %></li>
+                          <% end.empty? %>
+                            <li class="chip light-blue darken-2 white-text">Brak dostępnych usług</li>
+                          <% end %>
+                        </ul>
+                        <span class="action--compare"><i class="material-icons">add_circle_outline</i> Porównaj</span>
+                        <%= link_to venue_path(venue), class: "action--details" do %>
+                         Szczegóły <i class="material-icons">visibility</i>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="center-align">
+            <br>
+            <%= link_to venues_path, class: "btn-large waves-effect waves-light light-blue" do %>
+              <i class="material-icons left">apps</i>Zobacz więcej
+            <% end %>
+        </div>
+    </div>
+</section>

@@ -6,7 +6,7 @@
     $(document).ready(function(){
         $map = $('.venues-map');
 
-        promise = $.get('json/venues.json');
+        promise = $.get('/venues.json');
     });
 
     window.initMap = function(){
