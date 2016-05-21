@@ -121,6 +121,9 @@ p, ul {
 .btn-floating.btn-large {
     margin-left: 10px;
     float: left;
+    i {
+      display: flex;
+    }
 }
 
 .toolbox {

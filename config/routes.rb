@@ -15,13 +15,14 @@ Rails.application.routes.draw do
   namespace :managers do
     resources :venues, except: [:index, :show]
   end
+
+  get '/venues/compare' => 'venues#compare'
+  post '/venues/compare' => 'venues#compare'
+
   resources :venues, only: [:index, :show] do
     resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
     post 'contact'
   end
-
-  get '/venues/compare' => 'venues#index'
-  post '/venues/compare' => 'venues#index'
 
   get 'features' => 'features#index'
 

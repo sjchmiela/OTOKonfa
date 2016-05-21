@@ -36,10 +36,24 @@
             window.location.reload();
         }
 
-        function actionCompare(type, id){
-            $.post('/venues/compare.json', {venue_id: id, action: type})
-                .done(parseCompare)
-                .fail(window.defaultErrorHandler);
+        function actionCompare(action_type, id){
+          switch (action_type) {
+            case 'add':
+              $.post('/venues/compare.json', {venue_id: id, action_type: action_type})
+                  .done(parseCompare)
+                  .fail(window.defaultErrorHandler);
+              break;
+            case 'remove':
+              $.post('/venues/compare.json', {venue_id: id, action_type: action_type})
+                  .done(parseCompare)
+                  .fail(window.defaultErrorHandler);
+              break;
+            default:
+              $.get('/venues/compare.json')
+                  .done(parseCompare)
+                  .fail(window.defaultErrorHandler);
+          }
+
         }
 
         function addToCompare(){
@@ -75,15 +89,23 @@
                     item = data[i];
                     $item = $compareItem.clone();
                     $item.find('.title').text( item.name );
-                    $item.find('img').attr( 'src', item.thumb );
-                    $item.find('.action--remove').data('id', item.venue_id);
+                    if(item.thumb) {
+                      $item.find('img').attr( 'src', item.thumb );
+                    } else {
+                      $item.find('img').remove();
+                    }
+
+                    $item.find('.action--remove').data('id', item.id);
                     fragment.append($item);
                 }
 
                 if(!firstCall){
                     $compareVenues.append(fragment).fadeIn();
+                } else {
+                  $compareVenues.append(fragment);
                 }
             } else {
+                $compareVenues.hide();
                 $compareButton.hide();
             }
 
