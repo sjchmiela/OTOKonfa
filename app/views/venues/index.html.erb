@@ -1,49 +1,116 @@
-<div class="row">
-  <div class="col s12">
-    <h3><%= t 'venues.navbar.title' %></h3>
-  </div>
-  <form class="col s12">
-    <div class="input-field col s12">
-      <i class="material-icons prefix">search</i>
-      <input id="venue_search" type="tel" class="validate" name="search" value="<%= params[:search] %>">
-      <label for="venue_search"><%= t 'search' %></label>
-    </div>
-  </form>
-  <% if @venues.each_with_index do |venue, index| %>
-    <div class="col s12 m6" <% if index % 2 == 0 %>style="clear: left"<% end %>>
-      <div class="card card-venue">
-        <% if venue.photos.any? %>
-          <div class="card-image">
-            <%= image_tag venue.photos.first.image %>
-            <span class="card-title"><%= venue.name %></span>
+<section class="filter section">
+    <div class="container">
+        <h4>Znajdź idealne miejsce na konferencję</h4>
+        <%= form_tag venues_path, method: :get, class: 'filter__wrap z-depth-1' do %>
+          <div class="row">
+            <div class="col s12">
+              <%= text_field_tag :query, params[:query], placeholder: 'Nazwa lub opis obiektu, słowa kluczowe…' %>
+            </div>
           </div>
-        <% end %>
-        <div class="card-content black-text">
-          <% unless venue.photos.any? %>
-          <span class="card-title"><%= venue.name %></span>
-          <% end %>
-          <p><%= truncate(venue.description, length: 150) %></p>
+          <div class="row">
+            <div class="col s5">
+              <div class="row">
+                <div class="col s5">
+                  <%= label_tag :hall_size, 'Wielkość sali (miejsca)' %>
+                </div>
+                <div class="col s7">
+                  <div class="range-input" data-min="0" data-max="100">
+                    <%= hidden_field_tag :hall_size, '0,100' %>
+                  </div>
+                  <div class="filter__slot-types">
+                    <input name="slot-type" type="radio" id="filter-slot-sitting" value="0" checked />
+                    <label for="filter-slot-sitting">siedzące</label>
+                    <input name="slot-type" type="radio" id="filter-slot-standing" value="1" />
+                    <label for="filter-slot-standing">stojące</label>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col s5">
+                <%= label_tag :halls_count, 'Ilość sali' %>
+              </div>
+              <div class="col s7">
+                <div class="range-input" data-min="0" data-max="100">
+                  <%= hidden_field_tag :halls_count, '0,100' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s5">
+                <%= label_tag :hotel_size, 'Wielkość hotelu (miejsca)' %>
+              </div>
+              <div class="col s7">
+                <div class="range-input" data-min="0" data-max="100">
+                  <%= hidden_field_tag :hotel_size, '0,100' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s5">
+                <%= label_tag :radius_size, 'W odległości (km)' %>
+              </div>
+              <div class="col s7">
+                <div class="range-input" data-min="0" data-max="20" data-decimals="1" data-step="0.25">
+                  <%= hidden_field_tag :radius_size, '0,20' %>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s5">
+                <%= label_tag :average_rating, 'Średnia ocen' %>
+              </div>
+              <div class="col s7">
+                <div class="range-input" data-min="1" data-max="5" data-decimals="1" data-step="0.1">
+                  <%= hidden_field_tag :average_rating, '1,5' %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s4">
+            <div class="row">
+              <div class="col s12">
+                <%= label_tag :attributes, 'Dostępne usługi' %>
+                <%= text_field_tag :attributes, nil, placeholder: 'Podaj atrybut…', class: 'tags-input', id: 'filter-attributes' %>
+              </div>
+            </div>
+          </div>
+          <div class="col s3">
+            <div class="row">
+              <div class="col s12">
+                <%= hidden_field_tag :location %>
+                <div class="map"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-action right-align">
-	  <% if admin_signed_in %>
-	    <% if venue.accepted %>
-              <%= link_to (t 'venues.cancel_acceptation'), admin_venue_path(:id => venue.id, :accepted => false), :method => :put  %>
-            <% else %>
-              <%= link_to (t 'venues.accept'), admin_venue_path(:id => venue.id, :accepted => true), :method => :put %>
+        <div class="row">
+          <div class="col s12 filter__submit">
+            <%= button_tag class: 'btn waves-effect waves-light light-blue darken-2' do %>
+              <i class="material-icons">youtube_searched_for</i> Filtruj
             <% end %>
-	  <% end %>
-          <%= link_to (t :show), venue %>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end.empty? %>
-    <div class="col s12 m6 offset-m3">
-      <div class="card">
-        <div class="card-content black-text">
-          <span class="card-title"><%= t 'not_found.title' %></span>
-          <p><%= t 'not_found.description' %></p>
+</section>
+
+<section class="venues section">
+  <div class="container">
+    <div class="row">
+      <% if @venues.each do |venue| %>
+        <%= render partial: 'venue', locals: { venue: venue } %>
+      <% end.empty? %>
+        <div class="card">
+          <div class="card-content black-text">
+            <span class="card-title"><%= t 'not_found.title' %></span>
+            <p><%= t 'not_found.description' %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </div>
+</section>
+
+<% content_for :scripts do %>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<% end %>

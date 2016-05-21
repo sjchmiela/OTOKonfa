@@ -1,0 +1,42 @@
+<div class="col s4">
+  <div class="card card--venue hoverable">
+    <% if venue.photos.any? %>
+      <div class="card-image activator">
+        <%= image_tag venue.photos.first.image, class: 'activator' %>
+      </div>
+    <% end %>
+    <div class="card-content activator">
+      <span class="card-title activator grey-text text-darken-4">
+        <%= venue.name %>
+        <i class="material-icons right activator">more_vert</i>
+      </span>
+      <ul class="card-meta">
+        <li>
+          <i class="material-icons amber-text">star</i>
+          <%= venue.average_rating %>
+        </li>
+        <li>
+          <i class="material-icons">location_on</i>
+          <%= venue.city %>
+        </li>
+      </ul>
+    </div>
+    <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">Dostępne usługi<i class="material-icons right">close</i></span>
+        <% if venue.features.any? %>
+        <ul class="accessories">
+          <% venue.features.each do |feature| %>
+            <li class="chip light-blue darken-2 white-text"><%= feature.name %></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p>Obiekt nie oferuje żadnych dodatkowych usług.</p>
+        <% end %>
+        <!-- <span class="action--compare"><i class="material-icons">add_circle_outline</i> Porównaj</span> -->
+        <%= link_to venue_path(venue), class: 'action--details' do %>
+          Szczegóły
+          <i class="material-icons">visibility</i>
+        <% end %>
+    </div>
+  </div>
+</div>

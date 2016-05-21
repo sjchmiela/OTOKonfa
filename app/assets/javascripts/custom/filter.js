@@ -8,8 +8,8 @@
 
     $(document).ready(function(){
         $map = $('.map');
-        $radius = $('#filter-radius');
-        $location = $('#filter-location');
+        $radius = $('#radius_size');
+        $location = $('#location');
 
         $('.range-input').each(function(){
             var input = $(this).find('input');

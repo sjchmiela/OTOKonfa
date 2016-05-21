@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js" lang="<%= I18n.locale %>">
 <head>
+  <meta charset="utf-8">
   <title>OTOKonfa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <div class="nav-wrapper">
-      <div class='container'>
+  <div class="navbar-fixed">
+    <nav class="light-blue darken-2" role="navigation">
+      <div class="nav-wrapper">
         <%= link_to root_path, class: 'brand-logo' do %>
-          <%= image_tag 'otokonfa-white', alt: (t 'home'), class: 'header-logo' %>
+          <i class="material-icons left">business_center</i>OtoKonfa
         <% end %>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="<%= ("active" if params[:controller] == "venues") %>">
-            <%= link_to venues_path do %>
-              <i class="material-icons left">business</i><%= t "venues.navbar.title" %>
-            <% end %>
-          </li>
-          <% if manager_signed_in? %>
-            <li class="<%= ("active" if params[:controller] == "users/registrations") %>">
+        <ul class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                <%= current_user.first_name %>
+                <i class='material-icons left'>account_box</i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <%= I18n.t 'authentication.sign_out' %>
+                <i class='material-icons left'>power_settings_new</i>
+              <% end %>
+            </li>
+          <% elsif manager_signed_in? %>
+            <li>
               <%= link_to edit_manager_registration_path do %>
-                <%= current_manager.first_name %> (M.)
+                <%= current_manager.first_name %>
                 <i class='material-icons left'>account_box</i>
               <% end %>
             </li>
@@ -34,52 +42,78 @@
               <% end %>
             </li>
           <% else %>
-            <% if !user_signed_in? %>
-              <li class="<%= ("active" if params[:controller] == "users/sessions") %>"><%= link_to (t 'authentication.sign_in'), new_user_session_path %></li>
-              <li><%= link_to (t 'authentication.sign_up'), new_user_registration_path, class: 'waves-effect waves-light btn' %></li>
-            <% else %>
-              <li class="<%= ("active" if params[:controller] == "users/registrations") %>">
-                <%= link_to edit_user_registration_path do %>
-                  <%= current_user.first_name %>
-                  <i class='material-icons left'>account_box</i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to destroy_user_session_path, method: :delete do %>
-                  <%= I18n.t 'authentication.sign_out' %>
-                  <i class='material-icons left'>power_settings_new</i>
-                <% end %>
-              </li>
-            <% end %>
+            <li>
+              <a href="#modal-login" class="modal-trigger">
+                <i class="material-icons left">lock_outline</i>Logowanie
+              </a>
+            </li>
+            <li>
+              <a href="#modal-register" class="modal-trigger">
+                <i class="material-icons left">person_add</i>Rejestracja
+              </a>
+            </li>
           <% end %>
         </ul>
       </div>
-    </div>
-  </nav>
-  <div class='container'>
-    <% if !notice.nil? %>
-      <div class='row'>
-        <div class='col s12 m6 offset-m3'>
-          <div class='card green darken-3'>
-            <div class='card-content white-text'>
-              <p><%= notice %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <% if !alert.nil? %>
-      <div class='row'>
-        <div class='col s12 m6 offset-m3'>
-          <div class='card red darken-3'>
-            <div class='card-content white-text'>
-              <p><%= alert %></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <%= yield %>
+    </nav>
   </div>
+
+  <% if !notice.nil? %>
+    <div class='row'>
+      <div class='col s12 m6 offset-m3'>
+        <div class='card green darken-3'>
+          <div class='card-content white-text'>
+            <p><%= notice %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if !alert.nil? %>
+    <div class='row'>
+      <div class='col s12 m6 offset-m3'>
+        <div class='card red darken-3'>
+          <div class='card-content white-text'>
+            <p><%= alert %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  <%= render 'search' %>
+
+  <footer class="page-footer grey darken-3">
+      <div class="container">
+          <div class="row">
+              <div class="col s8">
+                  <h5 class="white-text">OTOKonfa</h5>
+
+                  <p class="grey-text text-lighten-4">Jesteśmy jedną z największych wyszukiwarek obiektów na Polskim rynku. <br>Każdego dnia odwiedzają nas tysiące nowych klientów.</p>
+              </div>
+              <div class="col s4">
+                  <h5 class="white-text">Serwis</h5>
+                  <ul>
+                      <li><a class="white-text" href="#">Regulamin</a></li>
+                      <li><a class="white-text" href="#">Polityka prywatności</a></li>
+                      <li><a class="white-text" href="#">Polityka cookies</a></li>
+                      <li><a class="white-text" href="#">Kontakt</a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <div class="footer-copyright grey darken-4">
+          <div class="container">
+              &copy; 2016 <a class="light-blue-text text-lighten-1" href="#">OtoKonfa</a>
+          </div>
+      </div>
+  </footer>
+
+  <%= render 'login' %>
+  <%= render 'register' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :scripts %>
 </body>
 </html>

@@ -25,6 +25,17 @@ class VenuesController < ApplicationController
     @review = Review.new(user: current_user) if user_signed_in?
   end
 
+  def contact
+    VenuesMailer.contact(
+      Venue.find(params[:venue_id]).email,
+      params[:name],
+      params[:email],
+      params[:phone],
+      params[:message]
+    ).deliver_now
+    redirect_to venue_path(params[:venue_id]), notice: 'Wysłano wiadomość.'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

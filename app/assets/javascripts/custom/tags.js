@@ -6,7 +6,7 @@
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             identify: function(obj) { return obj.id; },
             prefetch: {
-                url: 'json/attributes.json',
+                url: '/features.json',
                 cache: false
             }
         });

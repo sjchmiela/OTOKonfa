@@ -1,0 +1,59 @@
+<div id="modal-review" class="modal modal-small">
+  <div class="modal-content">
+    <% if !review.nil? %>
+      <h4>Oceń obiekt</h4>
+      <%= form_for [venue, review] do |f| %>
+        <div class="row">
+          <div class="col s12">
+            <label for="review-rate-3">Ocena</label>
+            <ul class="row">
+              <li class="col s2 offset-s1">
+                <input name="rate" type="radio" id="review-rate-1" />
+                <label for="review-rate-1">
+                  <i class="material-icons red-text text-accent-4">sentiment_very_dissatisfied</i>
+                </label>
+              </li>
+              <li class="col s2">
+                <input name="rate" type="radio" id="review-rate-2" />
+                <label for="review-rate-2">
+                  <i class="material-icons red-text text-accent-2">sentiment_dissatisfied</i>
+                </label>
+              </li>
+              <li class="col s2">
+                <input name="rate" type="radio" id="review-rate-3" />
+                <label for="review-rate-3">
+                  <i class="material-icons grey-text">sentiment_neutral</i>
+                </label>
+              </li>
+              <li class="col s2">
+                <input name="rate" type="radio" id="review-rate-4" />
+                <label for="review-rate-4">
+                  <i class="material-icons light-green-text text-accent-2">sentiment_satisfied</i>
+                </label>
+              </li>
+              <li class="col s2">
+                <input name="rate" type="radio" id="review-rate-5" />
+                <label for="review-rate-5">
+                  <i class="material-icons light-green-text text-accent-4">sentiment_very_satisfied</i>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="review-comment" class="materialize-textarea"></textarea>
+            <label for="review-comment">Opcjonalny komentarz</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">send</i>Dodaj ocenę</button>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h4>Aby ocenić obiekt zaloguj się.</h4>
+    <% end %>
+  </div>
+</div>

@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419171652) do
+ActiveRecord::Schema.define(version: 20160508201948) do
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "icon",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "features_venues", id: false, force: :cascade do |t|
+    t.integer "feature_id", limit: 4
+    t.integer "venue_id",   limit: 4
+  end
+
+  add_index "features_venues", ["feature_id", "venue_id"], name: "index_features_venues_on_feature_id_and_venue_id", using: :btree
+  add_index "features_venues", ["feature_id"], name: "index_features_venues_on_feature_id", using: :btree
+  add_index "features_venues", ["venue_id"], name: "index_features_venues_on_venue_id", using: :btree
 
   create_table "halls", force: :cascade do |t|
     t.integer  "venue_id",    limit: 4
@@ -116,10 +132,12 @@ ActiveRecord::Schema.define(version: 20160419171652) do
     t.text     "address",     limit: 65535
     t.string   "geoposition", limit: 255
     t.string   "phone",       limit: 255
+    t.string   "email",       limit: 255
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.integer  "manager_id",  limit: 4
     t.boolean  "accepted",                  default: false
+    t.integer  "manager_id",  limit: 4
+    t.string   "website",     limit: 255
   end
 
   add_index "venues", ["manager_id"], name: "index_venues_on_manager_id", using: :btree
