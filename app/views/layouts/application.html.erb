@@ -8,6 +8,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul id="settings-dropdown" class="dropdown-content">
+      <li><a href="#modal-information" class="modal-trigger grey-text text-darken-4">Edytuj dane</a></li>
+      <li class="divider"></li>
+      <li><a href="#modal-password" class="modal-trigger grey-text text-darken-4">Zmień hasło</a></li>
+  </ul>
   <div class="navbar-fixed">
     <nav class="light-blue darken-2" role="navigation">
       <div class="nav-wrapper">
@@ -16,12 +21,7 @@
         <% end %>
         <ul class="right hide-on-med-and-down">
           <% if user_signed_in? %>
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                <%= current_user.first_name %>
-                <i class='material-icons left'>account_box</i>
-              <% end %>
-            </li>
+            <li><a href="#!" class="dropdown-button" data-activates="settings-dropdown"><i class="material-icons left">settings</i>Ustawienia</a></li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <%= I18n.t 'authentication.sign_out' %>
@@ -111,8 +111,13 @@
       </div>
   </footer>
 
-  <%= render 'login' %>
-  <%= render 'register' %>
+  <% if user_signed_in? %>
+    <%= render 'information' %>
+    <%= render 'password' %>
+  <% else %>
+    <%= render 'login' %>
+    <%= render 'register' %>
+  <% end %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= yield :scripts %>
 </body>
