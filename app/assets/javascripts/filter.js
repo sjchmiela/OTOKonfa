@@ -82,7 +82,7 @@
     }
 
     function getDefaultPosition(){
-        if($location.val() != ''){
+        if($location !== undefined && $location.val() != ''){
             var parts = $location.val().split(',');
             return {lat: parts[0], lng: parts[1]};
         } else {

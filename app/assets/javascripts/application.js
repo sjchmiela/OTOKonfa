@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require typahead.bundle
 //= require bootstrap-tagsinput.min
 //= require materialize-sprockets
-//= require_tree .
+//= require_tree ./custom

@@ -116,7 +116,7 @@
       <div class="col s4">
         <div class="venue__location section">
           <h4 class="underline">Lokalizacja</h4>
-          <iframe frameborder="0" style="border:0;margin:1em 0 0;height:200px" src="https://www.google.com/maps/embed/v1/place?q=<%= URI.encode(@venue.geoposition) %>&key=AIzaSyCk1E3ZhPKzWeVJW4MpLrb1XhPWPTBijpg" allowfullscreen></iframe>
+          <div class="map" data-property="geoposition" data-geoposition="<%= @venue.geoposition %>"></div>
         </div>
         <div class="venue__contact section">
           <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
@@ -159,3 +159,8 @@
 
 <%= render partial: 'review', locals: { venue: @venue, review: @review } %>
 <%= render 'contact' %>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'venue', 'data-turbolinks-track' => true %>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<% end %>
