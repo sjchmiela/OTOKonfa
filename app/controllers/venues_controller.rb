@@ -15,66 +15,91 @@ class VenuesController < ApplicationController
     # puts "array"
     # puts venues
 
-    min_places, max_places = params[:hall_size].split(',').map { |e| Integer(e) }
+    if params[:hall_size]
 
-    venues = venues.keep_if do |venue|
-      biggest_hall = venue.halls.max_by do |h|
-        params['slot-type'] == '0' ? h.chairs : h.capacity
-      end
+      min_places, max_places = params[:hall_size].split(',').map { |e| Integer(e) }
 
-      smallest_hall = venue.halls.min_by do |h|
-        params['slot-type'] == '0' ? h.chairs : h.capacity
-      end
+      venues = venues.keep_if do |venue|
+        biggest_hall = venue.halls.max_by do |h|
+          params['slot-type'] == '0' ? h.chairs : h.capacity
+        end
 
-      # puts biggest_hall, smallest_hall
+        smallest_hall = venue.halls.min_by do |h|
+          params['slot-type'] == '0' ? h.chairs : h.capacity
+        end
 
-      true if min_places == 0 && biggest_hall.nil?
-      false if biggest_hall.nil?
+        # puts biggest_hall, smallest_hall
 
-      if params['slot-type'] == '0'
-        (biggest_hall.chairs <= max_places && smallest_hall.chairs >= min_places)
-      else
-        (biggest_hall.capacity <= max_places && smallest_hall.capacity >= min_places)
+        true if min_places == 0 && biggest_hall.nil?
+        false if biggest_hall.nil?
+
+        if params['slot-type'] == '0'
+          (biggest_hall.chairs <= max_places && smallest_hall.chairs >= min_places)
+        else
+          (biggest_hall.capacity <= max_places && smallest_hall.capacity >= min_places)
+        end
       end
     end
 
     # puts "halls_size"
     # puts venues
 
-    min_halls, max_halls = params[:halls_count].split(',').map { |e| Integer(e) }
+    if params[:halls_count]
+      min_halls, max_halls = params[:halls_count].split(',').map { |e| Integer(e) }
 
-    venues = venues.keep_if do |venue|
-      venue.halls.count <= max_halls && venue.halls.count >= min_halls
-    end
-
-    # puts "halls_count"
-    # puts venues
-
-    min_hotel_size, max_hotel_size = params[:hotel_size].split(',').map { |e| Integer(e) }
-
-    venues = venues.keep_if do |venue|
-      hotels_size = venue.hotels.to_a.inject(0) do |hotel, sum|
-        hotel.to_a.room_components.inject(0) do |room, sum_hotel|
-          (room.quantity * room.capacity) + sum_hotel
-        end
-        + sum
+      venues = venues.keep_if do |venue|
+        venue.halls.count <= max_halls && venue.halls.count >= min_halls
       end
 
-      # puts hotels_size
+      # puts "halls_count"
+      # puts venues
 
-      hotels_size <= max_hotel_size && hotels_size >= min_hotel_size
+      min_hotel_size, max_hotel_size = params[:hotel_size].split(',').map { |e| Integer(e) }
+
+      venues = venues.keep_if do |venue|
+        hotels_size = venue.hotels.to_a.inject(0) do |hotel, sum|
+          hotel.to_a.room_components.inject(0) do |room, sum_hotel|
+            (room.quantity * room.capacity) + sum_hotel
+          end
+          + sum
+        end
+
+        # puts hotels_size
+
+        hotels_size <= max_hotel_size && hotels_size >= min_hotel_size
+      end
     end
 
     # min_radius_size, max_radius_size = params[:radius_size].split(',').map { |e| Float(e) }
 
-    min_rating, max_rating = params[:average_rating].split(',').map { |e| Float(e) }
+    if params[:average_rating]
+      min_rating, max_rating = params[:average_rating].split(',').map { |e| Float(e) }
 
-    venues = venues.keep_if do |venue|
-      venue.average_rating <= max_rating && venue.average_rating >= min_rating
+      venues = venues.keep_if do |venue|
+        venue.average_rating <= max_rating && venue.average_rating >= min_rating
+      end
+    end
+
+    if params[:attributes]
+      required_attributes = params[:attributes].split(',').map { |e| Integer(e) }
+      venues = venues.keep_if do |venue|
+        (required_attributes - venue.features.map(&:id)).empty?
+      end
     end
 
     @venues = venues
+    @max_places = 0
+    Venue.all.each do |v|
+      hall = v.halls.to_a.max_by { |h| [h.chairs, h.capacity].max }
+      @max_places = [hall.chairs, hall.capacity, @max_places].max
+    end
+    @max_places = 100 if @max_places == 0
 
+    @max_halls_count = (Venue.all.to_a.max_by { |v| v.halls.count }).halls.count
+    @max_halls_count = 10 if @max_halls_count == 0
+
+    @max_hotel_size = (Venue.all.to_a.max_by(&:hotel_size)).hotel_size
+    @max_hotel_size = 100 if @max_hotel_size == 0
     # puts @venues
   end
 

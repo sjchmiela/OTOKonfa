@@ -14,7 +14,7 @@
                   <%= label_tag :hall_size, 'Wielkość sali (miejsca)' %>
                 </div>
                 <div class="col s7">
-                  <div class="range-input" data-min="0" data-max="10000">
+                  <div class="range-input" data-min="0" data-max="<%= @max_places %>">
                     <%= hidden_field_tag :hall_size, '0,10000' %>
                   </div>
                   <div class="filter__slot-types">
@@ -30,7 +30,7 @@
                 <%= label_tag :halls_count, 'Ilość sali' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="0" data-max="100">
+                <div class="range-input" data-min="0" data-max="<%= @max_halls_count %>">
                   <%= hidden_field_tag :halls_count, '0,100' %>
                 </div>
               </div>
@@ -40,7 +40,7 @@
                 <%= label_tag :hotel_size, 'Wielkość hotelu (miejsca)' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="0" data-max="10000">
+                <div class="range-input" data-min="0" data-max="<%= @max_hotel_size %>">
                   <%= hidden_field_tag :hotel_size, '0,10000' %>
                 </div>
               </div>
