@@ -1,3 +1,5 @@
+require 'haversine'
+
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :edit, :update, :destroy]
 
@@ -84,6 +86,17 @@ class VenuesController < ApplicationController
       required_attributes = params[:attributes].split(',').map { |e| Integer(e) }
       venues = venues.keep_if do |venue|
         (required_attributes - venue.features.map(&:id)).empty?
+      end
+    end
+
+    if params[:location] && params[:radius_size]
+      min_distance, max_distance = params[:radius_size].split(',').map { |e| Float(e) }
+      lat, lon = params[:location].split(',').map { |e| Float(e) }
+      venues = venues.keep_if do |venue|
+        true if venue.geoposition.nil?
+        vlat, vlon = venue.geoposition.split(',').map { |e| Float(e) }
+        dist_km = Haversine.distance(lat, lon, vlat, vlon)
+        (dist_km <= max_distance) && (dist_km >= min_distance)
       end
     end
 

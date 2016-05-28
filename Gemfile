@@ -48,7 +48,7 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'letter_opener', group: :development
 
 # Use geo-distance to calculate distance when filtering
-gem 'geo-distance', '~> 0.2.2'
+gem 'haversine_distance'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
