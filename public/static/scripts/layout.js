@@ -91,6 +91,8 @@
 
             firstCall = false;
         }
+
+        $('html').removeClass('no-js');
     });
 
     window.defaultErrorHandler = function(result){
