@@ -37,8 +37,9 @@
         }
 
         function actionCompare(type, id){
-            $.get({
+            $.ajax({
                 url: 'json/compare.json',
+                type: 'GET',
                 data: {venue_id: id, action: type},
                 cache: false,
                 dataType: 'json'
