@@ -78,7 +78,7 @@
 
     function updateLocationInput(){
         var location = marker.getPosition();
-        $location.val(location.lat + ',' + location.lng);
+        $location.val(location.lat() + ',' + location.lng());
     }
 
     function getDefaultPosition(){
@@ -99,6 +99,7 @@
         map.setCenter(location);
         marker.setPosition(location);
         updateMap();
+        updateLocationInput();
     }
 
     function updateMap(){
