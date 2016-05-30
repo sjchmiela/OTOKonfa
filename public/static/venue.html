@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="venue__gallery section">
-                    <h4 class="underline">Galeria zdjęć</h4>
+                    <h4 class="underline">Galeria zdjęć<a href="#modal-upload" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
                     <ul class="row">
                         <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
                         <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
@@ -479,6 +479,29 @@
                 <div class="col s12">
                     <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">stars</i>Dodaj ocenę</button>
                 </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="modal-upload" class="modal modal-small">
+    <div class="modal-content">
+        <h4>Nowe zdjęcie</h4>
+        <form action="" method="post" class="row">
+            <div class="input-field col s12">
+                <input id="upload-description" type="text">
+                <label for="upload-description">Opis</label>
+            </div>
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span>Plik</span>
+                    <input type="file" id="upload-photo">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <button class="modal-action waves-effect waves-light light-blue darken-2 btn">Dodaj</button>
             </div>
         </form>
     </div>

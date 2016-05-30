@@ -66,7 +66,30 @@
         });
 
         initPagination();
+        initUpload();
     });
+
+    function initUpload(){
+        $('#modal-upload').on('submit', 'form', function(e){
+            e.preventDefault();
+
+            var formData = new FormData();
+            formData.append('description', $('#upload-description').val());
+            formData.append('photo', $('#upload-photo')[0].files[0]);
+
+            $.ajax({
+                url: $(this).attr('action'),
+                data: formData,
+                type: 'POST',
+                contentType: false,
+                processData: false
+            })
+                .done(function(){
+                    $('#modal-upload').closeModal();
+                })
+                .fail(window.defaultErrorHandler);
+        });
+    }
 
     function initPagination(){
         var $items = $reviews.find('.collection-item');
