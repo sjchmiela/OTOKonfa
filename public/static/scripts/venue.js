@@ -51,6 +51,20 @@
         handleModal('#modal-contact');
         handleModal('#modal-review');
 
+        $('.fancybox').fancybox({
+            live: true,
+            afterLoad: function() {
+                if(editEnabled) {
+                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span>';
+                }
+            },
+            helpers : {
+                title : {
+                    type : 'inside'
+                }
+            }
+        });
+
         initPagination();
     });
 
@@ -120,7 +134,7 @@
         var current = $(this).text();
 
         if(current != saved){
-            save( $(this).data('property'), current );
+            save( $(this).data('property'), current, $(this).data() );
         }
     }
 
