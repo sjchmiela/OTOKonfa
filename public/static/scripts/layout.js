@@ -37,7 +37,12 @@
         }
 
         function actionCompare(type, id){
-            $.post('json/compare.json', {venue_id: id, action: type})
+            $.get({
+                url: 'json/compare.json',
+                data: {venue_id: id, action: type},
+                cache: false,
+                dataType: 'json'
+            })
                 .done(parseCompare)
                 .fail(window.defaultErrorHandler);
         }
