@@ -67,6 +67,10 @@
 
         initPagination();
         initUpload();
+
+        if(sessionStorage && sessionStorage.getItem('edit')){
+            $toggle.trigger('click');
+        }
     });
 
     function initUpload(){
@@ -192,6 +196,10 @@
                 }
             };
             $body.removeClass('edit-enabled');
+
+            if(sessionStorage){
+                sessionStorage.removeItem('edit');
+            }
         } else {
             add = 'green';
             remove = 'red';
@@ -202,12 +210,19 @@
                 }
             };
             $body.addClass('edit-enabled');
+
+            if(sessionStorage){
+                sessionStorage.setItem('edit', true);
+            }
         }
 
         $toggle.removeClass(remove).addClass(add).find('i').text(text);
 
         editEnabled = !editEnabled;
-        marker.setDraggable(editEnabled);
+
+        if(marker){
+            marker.setDraggable(editEnabled);
+        }
 
         $('[data-property]').each(fn);
     }
@@ -227,7 +242,8 @@
 
         marker = new google.maps.Marker({
             position: position,
-            map: map
+            map: map,
+            draggable: editEnabled
         });
 
         google.maps.event.addListener(marker, 'dragend', updateLocation );
