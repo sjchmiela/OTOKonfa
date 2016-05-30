@@ -80,8 +80,10 @@
                     fragment.append($item);
                 }
 
+                $compareVenues.append(fragment);
+
                 if(!firstCall){
-                    $compareVenues.append(fragment).fadeIn();
+                    $compareVenues.fadeIn();
                 }
             } else {
                 $compareButton.hide();
