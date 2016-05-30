@@ -110,6 +110,10 @@ p, ul {
     }
 }
 
+.no-js .venue__reviews .collection-item:nth-child(n+6){
+    display: none;
+}
+
 .venue__location {
     .map {
         margin: 1em 0 0;

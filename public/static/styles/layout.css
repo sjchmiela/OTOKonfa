@@ -67,6 +67,9 @@ p, ul {
     .venue__reviews .collection-item.avatar .secondary-content .material-icons {
       vertical-align: bottom; }
 
+.no-js .venue__reviews .collection-item:nth-child(n+6) {
+  display: none; }
+
 .venue__location .map {
   margin: 1em 0 0;
   height: 250px;

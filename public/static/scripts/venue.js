@@ -14,6 +14,8 @@
     var $toggle;
     var $body;
     var $tpl;
+    var $pagination;
+    var $reviews;
 
     $(document).ready(function(){
         $map = $('.map');
@@ -22,6 +24,8 @@
         $attrs = $('.accessories');
         $attrsInput = $('#attributes');
         $tpl = $('#tag-template').detach().removeAttr('id');
+        $reviews = $('.venue__reviews');
+        $pagination = $('.pagination');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
@@ -46,7 +50,67 @@
 
         handleModal('#modal-contact');
         handleModal('#modal-review');
+
+        initPagination();
     });
+
+    function initPagination(){
+        var $items = $reviews.find('.collection-item');
+        var pages = $items.size() / 5 + 1;
+        var currentPage;
+        var $prev = $pagination.find('li').first();
+        var $next = $pagination.find('li').last();
+
+        if(pages == 1){
+            $pagination.hide();
+        } else {
+            $pagination.on('click', 'li', function(e){
+                e.preventDefault();
+
+                if($(this) == $prev){
+                    displayPage(currentPage-1);
+                } else if($(this) == $next){
+                    displayPage(currentPage+1);
+                } else {
+                    displayPage( $(this).index() );
+                }
+            });
+
+            var fragment = $(document.createDocumentFragment());
+            var item = $pagination.find('li').eq(1);
+
+            for(var i=2;i<=pages;i++){
+                fragment.append( item.clone().find('a').text(i).end() );
+            }
+
+            item.after(fragment);
+        }
+
+        displayPage(1);
+
+        function displayPage(n){
+            if(n < 1 || n > pages){
+                return false;
+            }
+
+            currentPage = n;
+
+            if(currentPage == 1){
+                $prev.addClass('disabled');
+            } else {
+                $prev.removeClass('disabled');
+            }
+
+            if(currentPage == pages){
+                $next.addClass('disabled');
+            } else {
+                $next.removeClass('disabled');
+            }
+
+            $items.hide().slice((n-1)*5, n*5).show();
+            $pagination.find('li').removeClass('active light-blue darken-2').eq(n).addClass('active light-blue darken-2');
+        }
+    }
 
     function onFocus(){
         saved = $(this).text();
