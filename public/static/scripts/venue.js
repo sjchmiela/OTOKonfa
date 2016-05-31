@@ -55,7 +55,7 @@
             live: true,
             afterLoad: function() {
                 if(editEnabled) {
-                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span>';
+                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span><i class="material-icons right remove-photo" title="Usuń">delete</i>';
                 }
             },
             helpers : {
@@ -74,6 +74,9 @@
     });
 
     function initUpload(){
+        var $gallery = $('.venue__gallery');
+        var $galleryTpl = $gallery.find('.template').detach().removeClass('template');
+
         $('#modal-upload').on('submit', 'form', function(e){
             e.preventDefault();
 
@@ -97,10 +100,16 @@
                 })
                 .fail(window.defaultErrorHandler);
         });
-    }
 
-    function venueUpload(response){
-
+        function venueUpload(response){
+            var $tpl = $galleryTpl.clone();
+            $tpl.find('a').attr({
+                'href' : response.photo,
+                'title' : response.title,
+                'data-id' : response.id
+            }).find('img').attr('src', response.photo);
+            $gallery.find('ul').append($tpl);
+        }
     }
 
     function initPagination(){
