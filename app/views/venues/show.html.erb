@@ -9,11 +9,12 @@
               <i class="material-icons"></i>
             </li>
             <% @venue.features.each do |feature| %>
-                <li class="chip light-blue darken-2 white-text" data-id="<%= feature.id %>">
-                  <% if feature.icon? %>
-                      <i class="material-icons"><%= feature.icon %></i>
-                  <% end %>
-                  <%= feature.name %>
+              <li class="chip light-blue darken-2 white-text" data-id="<%= feature.id %>">
+                <% if feature.icon? %>
+                  <i class="material-icons"><%= feature.icon %></i>
+                <% end %>
+                <%= feature.name %>
+              </li>
             <% end %>
             <% if (manager_signed_in? and current_manager.id == @venue.manager_id) %>
               <div class="edit-accessories">
@@ -27,8 +28,10 @@
             <li class="white-text"><%= @venue.average_rating %></li>
             <%= render partial: 'stars', locals: { rating: @venue.average_rating } %>
           </ul>
-          <p class="venue__header-tel"><i class="material-icons left">call</i><%= @venue.phone %></p>
-          <p class="venue__header-location"><i class="material-icons left">location_on</i><%= @venue.city %></p>
+          <p class="venue__header-tel">
+            <i class="material-icons left">call</i><%= @venue.phone %></p>
+          <p class="venue__header-location">
+            <i class="material-icons left">location_on</i><%= @venue.city %></p>
         </div>
       </div>
     </div>
@@ -46,72 +49,93 @@
           <div><%= simple_format @venue.description %></div>
         </div>
         <div class="venue__halls section">
-          <h4 class="underline">Sale <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
+          <h4 class="underline">Sale
+            <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger">
+              <i class="material-icons left">add_circle_outline</i>dodaj salę</a>
+          </h4>
           <div class="row">
             <% @venue.halls.each do |hall| %>
-                <div class="col s6">
-                  <div class="card card--venue hoverable">
-                    <% if hall.photos.any? %>
-                        <div class="card-image activator">
-                          <%= image_tag hall.photos.first.image, class: 'activator' %>
-                        </div>
-                    <% end %>
-                    <div class="card-content activator">
-                      <span class="card-title activator grey-text text-darken-4"><%= hall.name %><i class="material-icons right activator">more_vert</i></span>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4"><%= hall.name %><i class="material-icons right">close</i></span>
-                      <p><%= hall.description %></p>
-                      <div class="divider"></div>
-                      <ul>
-                        <li><strong><%= hall.chairs %></strong> miejsc siedzących</li>
-                        <li><strong><%= hall.capacity %></strong> miejsc stojących</li>
-                      </ul>
-                      <i class="material-icons fancybox">local_see</i>
-                    </div>
-                  </div>
+            <div class="col s6">
+              <div class="card card--venue hoverable">
+                <% if hall.photos.any? %>
+                <div class="card-image activator">
+                  <%= image_tag hall.photos.first.image, class: 'activator' %>
                 </div>
+                <% end %>
+                <div class="card-content activator">
+                  <span class="card-title activator grey-text text-darken-4"><%= hall.name %>
+                    <i class="material-icons right activator">more_vert</i>
+                  </span>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%= hall.name %>
+                    <i class="material-icons right">close</i>
+                  </span>
+                  <p><%= hall.description %></p>
+                  <div class="divider"></div>
+                  <ul>
+                    <li>
+                      <strong><%= hall.chairs %></strong>
+                      miejsc siedzących</li>
+                    <li>
+                      <strong><%= hall.capacity %></strong>
+                      miejsc stojących</li>
+                  </ul>
+                  <i class="material-icons fancybox">local_see</i>
+                </div>
+              </div>
+            </div>
             <% end %>
           </div>
         </div>
         <div class="venue__hotels section">
-          <h4 class="underline">Hotele <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_hotel</i>dodaj hotel</a></h4>
+          <h4 class="underline">Hotele
+            <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger">
+              <i class="material-icons left">local_hotel</i>dodaj hotel</a>
+          </h4>
           <div class="row">
             <% if @venue.hotels.each do |hotel| %>
-                <div class="col s6">
-                  <div class="card card--venue hoverable">
-                    <% if hotel.photos.any? %>
-                        <div class="card-image activator">
-                          <%= image_tag hotel.photos.first.image, class: 'activator' %>
-                        </div>
-                    <% end %>
-                    <div class="card-content activator">
-                      <span class="card-title activator grey-text text-darken-4"><%= hotel.name %><i class="material-icons right activator">more_vert</i></span>
-                    </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4"><%= hotel.name %><i class="material-icons right">close</i></span>
-                      <div class="divider"></div>
-                      <i class="material-icons fancybox">local_see</i>
-                    </div>
-                  </div>
+            <div class="col s6">
+              <div class="card card--venue hoverable">
+                <% if hotel.photos.any? %>
+                <div class="card-image activator">
+                  <%= image_tag hotel.photos.first.image, class: 'activator' %>
                 </div>
+                <% end %>
+                <div class="card-content activator">
+                  <span class="card-title activator grey-text text-darken-4"><%= hotel.name %>
+                    <i class="material-icons right activator">more_vert</i>
+                  </span>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%= hotel.name %>
+                    <i class="material-icons right">close</i>
+                  </span>
+                  <div class="divider"></div>
+                  <i class="material-icons fancybox">local_see</i>
+                </div>
+              </div>
+            </div>
             <% end.empty? %>
-                <div class="col s12">
-                  <div class="card card--venue hoverable">
-                    <div class="card-content activator">
-                      <span class="card-title activator grey-text text-darken-4">Ten ośrodek nie posiada hoteli.</span>
-                    </div>
-                  </div>
+            <div class="col s12">
+              <div class="card card--venue hoverable">
+                <div class="card-content activator">
+                  <span class="card-title activator grey-text text-darken-4">Ten ośrodek nie posiada hoteli.</span>
                 </div>
+              </div>
+            </div>
             <% end %>
           </div>
         </div>
         <div class="venue__gallery section">
-          <h4 class="underline">Galeria zdjęć <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
+          <h4 class="underline">Galeria zdjęć
+            <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger">
+              <i class="material-icons left">local_see</i>dodaj zdjęcie</a>
+          </h4>
           <ul class="row">
             <% @venue.photos.each do |photo| %>
-                <li class="col s3">
-                  <%= link_to photo.image.url, data: { id: photo.id }, class: 'fancybox', rel: 'gallery' do %><%= image_tag photo.image, class: 'z-depth-1 hoverable' %><% end %></li>
+            <li class="col s3">
+              <%= link_to photo.image.url, data: { id: photo.id }, class: 'fancybox', rel: 'gallery' do %><%= image_tag photo.image, class: 'z-depth-1 hoverable' %><% end %></li>
             <% end %>
           </ul>
         </div>
@@ -122,12 +146,29 @@
           <div class="map" data-property="geoposition" data-geoposition="<%= @venue.geoposition %>"></div>
         </div>
         <div class="venue__contact section">
-          <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
+          <h4 class="underline">Kontakt
+            <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger">
+              <i class="material-icons left">email</i>napisz</a>
+          </h4>
           <ul>
-            <% if @venue.phone? %><li><i class="material-icons">call</i><span data-property="phone"><%= @venue.phone %></span></li><% end %>
-            <li><i class="material-icons">email</i><span data-property="email"><%= @venue.email %></span></li>
-            <% if @venue.website? %><li><i class="material-icons">public</i><span data-property="website"><%= @venue.website %></span></li><% end %>
-            <li><i class="material-icons">location_on</i><span data-property="address"><%= simple_format @venue.address %></span></li>
+            <% if @venue.phone? %>
+            <li>
+              <i class="material-icons">call</i>
+              <span data-property="phone"><%= @venue.phone %></span>
+            </li><% end %>
+            <li>
+              <i class="material-icons">email</i>
+              <span data-property="email"><%= @venue.email %></span>
+            </li>
+            <% if @venue.website? %>
+            <li>
+              <i class="material-icons">public</i>
+              <span data-property="website"><%= @venue.website %></span>
+            </li><% end %>
+            <li>
+              <i class="material-icons">location_on</i>
+              <span data-property="address"><%= simple_format @venue.address %></span>
+            </li>
           </ul>
         </div>
         <div class="venue__reviews section">
@@ -140,24 +181,35 @@
           </h4>
           <ul class="collection">
             <% @venue.reviews.each do |review| %>
-                <li class="collection-item avatar">
-                  <i class="material-icons circle light-blue darken-2">face</i>
-                  <strong class="title"><%= review.user.first_name %></strong>
-                  <% if review.comment? %>
-                      <p><%= review.comment %></p>
-                  <% else %>
-                      <p class="grey-text text-lighten-1">brak komentarza</p>
-                  <% end %>
-                  <div class="secondary-content black-text">
-                    <span class="material-icons yellow-text text-accent-4">star</span> <%= review.stars %>
-                  </div>
-                </li>
+            <li class="collection-item avatar">
+              <i class="material-icons circle light-blue darken-2">face</i>
+              <strong class="title"><%= review.user.first_name %></strong>
+              <% if review.comment? %>
+              <p><%= review.comment %></p>
+            <% else %>
+              <p class="grey-text text-lighten-1">brak komentarza</p>
+              <% end %>
+              <div class="secondary-content black-text">
+                <span class="material-icons yellow-text text-accent-4">star</span>
+                <%= review.stars %>
+              </div>
+            </li>
             <% end %>
           </ul>
           <ul class="pagination center-align">
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="waves-effect"><a href="#!">1</a></li>
-            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            <li class="waves-effect">
+              <a href="#!">
+                <i class="material-icons">chevron_left</i>
+              </a>
+            </li>
+            <li class="waves-effect">
+              <a href="#!">1</a>
+            </li>
+            <li class="waves-effect">
+              <a href="#!">
+                <i class="material-icons">chevron_right</i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -170,6 +222,6 @@
 <%= render 'upload' %>
 
 <% content_for :scripts do %>
-  <%= javascript_include_tag 'venue' %>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<%= javascript_include_tag 'venue' %>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
 <% end %>
