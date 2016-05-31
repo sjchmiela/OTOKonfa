@@ -38,9 +38,9 @@
 
         function actionCompare(type, id){
             $.ajax({
-                url: 'json/compare.json',
+                url: '/venues/compare.json',
                 type: 'GET',
-                data: {venue_id: id, action: type},
+                data: {venue_id: id, action_type: type},
                 cache: false,
                 dataType: 'json'
             })
@@ -82,7 +82,7 @@
                     $item = $compareItem.clone();
                     $item.find('.title').text( item.name );
                     $item.find('img').attr( 'src', item.thumb );
-                    $item.find('.action--remove').data('id', item.venue_id);
+                    $item.find('.action--remove').data('id', item.id);
                     fragment.append($item);
                 }
 

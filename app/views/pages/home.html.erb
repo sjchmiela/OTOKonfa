@@ -70,7 +70,7 @@
                             <li class="chip light-blue darken-2 white-text">Brak dostępnych usług</li>
                           <% end %>
                         </ul>
-                        <span class="action--compare"><i class="material-icons">add_circle_outline</i> Porównaj</span>
+                        <span class="action--compare" data-id="<%= venue.id %>"><i class="material-icons">add_circle_outline</i> Porównaj</span>
                         <%= link_to venue_path(venue), class: "action--details" do %>
                          Szczegóły <i class="material-icons">visibility</i>
                         <% end %>

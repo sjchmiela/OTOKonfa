@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require typahead.bundle
 //= require bootstrap-tagsinput.min
+//= require jquery.fancybox.pack
 //= require materialize-sprockets
 //= require_tree ./custom
