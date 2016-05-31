@@ -30,7 +30,9 @@
         $body
             .on('focus', '[contenteditable]', onFocus)
             .on('blur', '[contenteditable]', onBlur)
-            .on('click', '.edit-venue', toggleEditMode);
+            .on('click', '.edit-venue', toggleEditMode)
+            .on('click', '.remove-photo', removePhoto)
+            .on('click', '.trigger-upload', triggerUpload);
 
         var ids = [];
 
@@ -55,7 +57,7 @@
             live: true,
             afterLoad: function() {
                 if(editEnabled) {
-                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span><i class="material-icons right remove-photo" title="Usuń">delete</i>';
+                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span><i class="material-icons right remove-photo" data-id="' + this.element.data('id') + '" title="Usuń">delete</i>';
                 }
             },
             helpers : {
@@ -73,6 +75,23 @@
         }
     });
 
+    function triggerUpload(e){
+        e.preventDefault();
+        $('#modal-upload').openModal();
+        $('#upload-type').val( $(this).data('type') );
+        $('#upload-id').val( $(this).data('id') );
+    }
+
+    function removePhoto(){
+        var id = $(this).data('id');
+        save('photo', '', {
+            id: id,
+            action: 'delete'
+        });
+        $('.fancybox[data-id=' + id + ']').parent().remove();
+        $.fancybox.close();
+    }
+
     function initUpload(){
         var $gallery = $('.venue__gallery');
         var $galleryTpl = $gallery.find('.template').detach().removeClass('template');
@@ -81,6 +100,8 @@
             e.preventDefault();
 
             var formData = new FormData();
+            formData.append('type', $('#upload-type').val());
+            formData.append('id', $('#upload-id').val());
             formData.append('description', $('#upload-description').val());
             formData.append('photo', $('#upload-photo')[0].files[0]);
 
@@ -94,7 +115,7 @@
                 .done(function(response){
                     $('#modal-upload').closeModal();
 
-                    if(response.imageable_type == 'venue'){
+                    if(response.imageable_type == 'Venue'){
                         venueUpload(response);
                     }
                 })
