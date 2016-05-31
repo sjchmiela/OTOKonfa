@@ -1,4 +1,4 @@
-<div class="parallax-container venue__header white-text">
+<div class="venue__header white-text">
   <div class="section">
     <div class="container">
       <div class="row">
@@ -15,7 +15,7 @@
                   <% end %>
                   <%= feature.name %>
             <% end %>
-            <% if current_user.admin? or (manager_signed_in? and current_manager.id == venue.manager_id) %>
+            <% if (manager_signed_in? and current_manager.id == @venue.manager_id) %>
               <div class="edit-accessories">
                 <input type="text" class="tags-input" placeholder="podaj atrybut..." id="attributes" data-property="attributes">
               </div>
@@ -25,15 +25,7 @@
         <div class="col s4 venue__header-info">
           <ul class="rating yellow-text text-accent-4">
             <li class="white-text"><%= @venue.average_rating %></li>
-            <% (1..@venue.average_rating.floor).each do %>
-                <li class="material-icons">star</li>
-            <% end %>
-            <% (@venue.average_rating.floor..@venue.average_rating.ceil-1).each do %>
-                <li class="material-icons">star_half</li>
-            <% end %>
-            <% (@venue.average_rating.ceil..4).each do %>
-                <li class="material-icons">star_border</li>
-            <% end %>
+            <%= render partial: 'stars', locals: { rating: @venue.average_rating } %>
           </ul>
           <p class="venue__header-tel"><i class="material-icons left">call</i><%= @venue.phone %></p>
           <p class="venue__header-location"><i class="material-icons left">location_on</i><%= @venue.city %></p>
@@ -41,7 +33,9 @@
       </div>
     </div>
   </div>
-  <div class="parallax"><%= image_tag @venue.photos.first.image %></div>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag @venue.photos.first.image %></div>
+  </div>
 </div>
 <section class="venue__details">
   <div class="container">
@@ -52,7 +46,7 @@
           <div><%= simple_format @venue.description %></div>
         </div>
         <div class="venue__halls section">
-          <h4 class="underline">Sale</h4>
+          <h4 class="underline">Sale <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
           <div class="row">
             <% @venue.halls.each do |hall| %>
                 <div class="col s6">
@@ -81,7 +75,7 @@
           </div>
         </div>
         <div class="venue__hotels section">
-          <h4 class="underline">Hotele</h4>
+          <h4 class="underline">Hotele <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_hotel</i>dodaj hotel</a></h4>
           <div class="row">
             <% if @venue.hotels.each do |hotel| %>
                 <div class="col s6">
@@ -113,10 +107,11 @@
           </div>
         </div>
         <div class="venue__gallery section">
-          <h4 class="underline">Galeria zdjęć</h4>
+          <h4 class="underline">Galeria zdjęć <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
           <ul class="row">
             <% @venue.photos.each do |photo| %>
-                <li class="col s3"><%= image_tag photo.image, class: 'z-depth-1 hoverable' %></li>
+                <li class="col s3">
+                  <%= link_to photo.image.url, data: { id: photo.id }, class: 'fancybox', rel: 'gallery' do %><%= image_tag photo.image, class: 'z-depth-1 hoverable' %><% end %></li>
             <% end %>
           </ul>
         </div>
@@ -129,10 +124,10 @@
         <div class="venue__contact section">
           <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
           <ul>
-            <% if @venue.phone? %><li><i class="material-icons">call</i><span><%= @venue.phone %></span></li><% end %>
-            <li><i class="material-icons">email</i><span><%= @venue.email %></span></li>
-            <% if @venue.website? %><li><i class="material-icons">public</i><span><%= @venue.website %></span></li><% end %>
-            <li><i class="material-icons">location_on</i><span><%= simple_format @venue.address %></span></li>
+            <% if @venue.phone? %><li><i class="material-icons">call</i><span data-property="phone"><%= @venue.phone %></span></li><% end %>
+            <li><i class="material-icons">email</i><span data-property="email"><%= @venue.email %></span></li>
+            <% if @venue.website? %><li><i class="material-icons">public</i><span data-property="website"><%= @venue.website %></span></li><% end %>
+            <li><i class="material-icons">location_on</i><span data-property="address"><%= simple_format @venue.address %></span></li>
           </ul>
         </div>
         <div class="venue__reviews section">
@@ -159,6 +154,11 @@
                 </li>
             <% end %>
           </ul>
+          <ul class="pagination center-align">
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="waves-effect"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -167,6 +167,7 @@
 
 <%= render partial: 'review', locals: { venue: @venue, review: @review } %>
 <%= render 'contact' %>
+<%= render 'upload' %>
 
 <% content_for :scripts do %>
   <%= javascript_include_tag 'venue' %>
