@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="styles/jquery.fancybox.css">
     <link rel="stylesheet" href="styles/layout.css">
 </head>
 <body>
@@ -77,7 +78,7 @@
                     </div>
                 </div>
                 <div class="venue__halls section">
-                    <h4 class="underline">Sale</h4>
+                    <h4 class="underline">Sale <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
                     <div class="row">
                         <div class="col s6">
                             <div class="card card--venue hoverable">
@@ -122,7 +123,7 @@
                     </div>
                 </div>
                 <div class="venue__hotels section">
-                    <h4 class="underline">Hotele</h4>
+                    <h4 class="underline">Hotele <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_hotel</i>dodaj hotel</a></h4>
                     <div class="row">
                         <div class="col s6">
                             <div class="card card--venue hoverable">
@@ -167,21 +168,21 @@
                     </div>
                 </div>
                 <div class="venue__gallery section">
-                    <h4 class="underline">Galeria zdjęć</h4>
+                    <h4 class="underline">Galeria zdjęć <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
                     <ul class="row">
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
-                        <li class="col s3"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"/></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
+                        <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
                     </ul>
                 </div>
             </div>
@@ -252,14 +253,140 @@
                                 <span class="material-icons yellow-text text-accent-4">star</span> 4
                             </div>
                         </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">pawel94</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">adam12</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">monikaaaa</strong>
+
+                            <p>wszystko bardzo dobrze wyposażone i łatwo dostępne - polecam!</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 5
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">typowy_janusz</strong>
+
+                            <p>niemiła obsługa, niedobre jedzenie, akustyka na sali tragicznia... długo by wymieniać, wymieniłem wszystko</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 1
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">_jacek_</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">kasia_97</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">pawel94</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">adam12</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">monikaaaa</strong>
+
+                            <p>wszystko bardzo dobrze wyposażone i łatwo dostępne - polecam!</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 5
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">typowy_janusz</strong>
+
+                            <p>niemiła obsługa, niedobre jedzenie, akustyka na sali tragicznia... długo by wymieniać, wymieniłem wszystko</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 1
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">_jacek_</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">kasia_97</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle light-blue darken-2">face</i>
+                            <strong class="title">pawel94</strong>
+
+                            <p class="grey-text text-lighten-1">brak komentarza</p>
+
+                            <div class="secondary-content black-text">
+                                <span class="material-icons yellow-text text-accent-4">star</span> 4
+                            </div>
+                        </li>
                     </ul>
                     <ul class="pagination center-align">
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                        <li class="active light-blue darken-2"><a href="#!">1</a></li>
-                        <li class="waves-effect"><a href="#!">2</a></li>
-                        <li class="waves-effect"><a href="#!">3</a></li>
-                        <li class="waves-effect"><a href="#!">4</a></li>
-                        <li class="waves-effect"><a href="#!">5</a></li>
+                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="waves-effect"><a href="#!">1</a></li>
                         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
                     </ul>
                 </div>
@@ -356,6 +483,29 @@
         </form>
     </div>
 </div>
+<div id="modal-upload" class="modal modal-small">
+    <div class="modal-content">
+        <h4>Nowe zdjęcie</h4>
+        <form action="" method="post" class="row">
+            <div class="input-field col s12">
+                <input id="upload-description" type="text">
+                <label for="upload-description">Opis</label>
+            </div>
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <span>Plik</span>
+                    <input type="file" id="upload-photo">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                </div>
+            </div>
+            <div class="input-field col s12">
+                <button class="modal-action waves-effect waves-light light-blue darken-2 btn">Dodaj</button>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="modal-login" class="modal modal-small">
     <div class="modal-content">
         <h4>Logowanie</h4>
@@ -448,6 +598,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
 <script src="scripts/bootstrap-tagsinput.min.js"></script>
+<script src="scripts/jquery.fancybox.pack.js"></script>
 <script src="scripts/layout.js"></script>
 <script src="scripts/tags.js"></script>
 <script src="scripts/venue.js"></script>

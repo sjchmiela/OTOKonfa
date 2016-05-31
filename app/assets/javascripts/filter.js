@@ -99,6 +99,7 @@
         map.setCenter(location);
         marker.setPosition(location);
         updateMap();
+        updateLocationInput();
     }
 
     function updateMap(){

@@ -14,6 +14,8 @@
     var $toggle;
     var $body;
     var $tpl;
+    var $pagination;
+    var $reviews;
 
     $(document).ready(function(){
         $map = $('.map');
@@ -22,6 +24,8 @@
         $attrs = $('.accessories');
         $attrsInput = $('#attributes');
         $tpl = $('#tag-template').detach().removeAttr('id');
+        $reviews = $('.venue__reviews');
+        $pagination = $('.pagination');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
@@ -46,7 +50,108 @@
 
         handleModal('#modal-contact');
         handleModal('#modal-review');
+
+        $('.fancybox').fancybox({
+            live: true,
+            afterLoad: function() {
+                if(editEnabled) {
+                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span>';
+                }
+            },
+            helpers : {
+                title : {
+                    type : 'inside'
+                }
+            }
+        });
+
+        initPagination();
+        initUpload();
+
+        if(sessionStorage && sessionStorage.getItem('edit')){
+            $toggle.trigger('click');
+        }
     });
+
+    function initUpload(){
+        $('#modal-upload').on('submit', 'form', function(e){
+            e.preventDefault();
+
+            var formData = new FormData();
+            formData.append('description', $('#upload-description').val());
+            formData.append('photo', $('#upload-photo')[0].files[0]);
+
+            $.ajax({
+                url: $(this).attr('action'),
+                data: formData,
+                type: 'POST',
+                contentType: false,
+                processData: false
+            })
+                .done(function(){
+                    $('#modal-upload').closeModal();
+                })
+                .fail(window.defaultErrorHandler);
+        });
+    }
+
+    function initPagination(){
+        var $items = $reviews.find('.collection-item');
+        var pages = $items.size() / 5 + 1;
+        var currentPage;
+        var $prev = $pagination.find('li').first();
+        var $next = $pagination.find('li').last();
+
+        if(pages == 1){
+            $pagination.hide();
+        } else {
+            $pagination.on('click', 'li', function(e){
+                e.preventDefault();
+
+                if($(this) == $prev){
+                    displayPage(currentPage-1);
+                } else if($(this) == $next){
+                    displayPage(currentPage+1);
+                } else {
+                    displayPage( $(this).index() );
+                }
+            });
+
+            var fragment = $(document.createDocumentFragment());
+            var item = $pagination.find('li').eq(1);
+
+            for(var i=2;i<=pages;i++){
+                fragment.append( item.clone().find('a').text(i).end() );
+            }
+
+            item.after(fragment);
+        }
+
+        displayPage(1);
+
+        function displayPage(n){
+            if(n < 1 || n > pages){
+                return false;
+            }
+
+            currentPage = n;
+
+            if(currentPage == 1){
+                $prev.addClass('disabled');
+            } else {
+                $prev.removeClass('disabled');
+            }
+
+            if(currentPage == pages){
+                $next.addClass('disabled');
+            } else {
+                $next.removeClass('disabled');
+            }
+
+            $items.hide().slice((n-1)*5, n*5).show();
+            $pagination.find('li').removeClass('active light-blue darken-2').eq(n).addClass('active light-blue darken-2');
+        }
+    }
 
     function onFocus(){
         saved = $(this).text();
@@ -56,7 +161,7 @@
         var current = $(this).text();
 
         if(current != saved){
-            save( $(this).data('property'), current );
+            save( $(this).data('property'), current, $(this).data() );
         }
     }
 
@@ -91,6 +196,10 @@
                 }
             };
             $body.removeClass('edit-enabled');
+
+            if(sessionStorage){
+                sessionStorage.removeItem('edit');
+            }
         } else {
             add = 'green';
             remove = 'red';
@@ -101,12 +210,19 @@
                 }
             };
             $body.addClass('edit-enabled');
+
+            if(sessionStorage){
+                sessionStorage.setItem('edit', true);
+            }
         }
 
         $toggle.removeClass(remove).addClass(add).find('i').text(text);
 
         editEnabled = !editEnabled;
-        marker.setDraggable(editEnabled);
+
+        if(marker){
+            marker.setDraggable(editEnabled);
+        }
 
         $('[data-property]').each(fn);
     }
@@ -126,7 +242,8 @@
 
         marker = new google.maps.Marker({
             position: position,
-            map: map
+            map: map,
+            draggable: editEnabled
         });
 
         google.maps.event.addListener(marker, 'dragend', updateLocation );
