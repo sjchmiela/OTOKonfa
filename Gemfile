@@ -47,6 +47,8 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 # Use letter opener for capturing e-mails in dev environment
 gem 'letter_opener', group: :development
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
