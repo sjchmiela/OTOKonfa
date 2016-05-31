@@ -84,7 +84,7 @@
     function getDefaultPosition(){
         if($location !== undefined && $location.val() != ''){
             var parts = $location.val().split(',');
-            return {lat: parts[0], lng: parts[1]};
+            return {lat: parseFloat(parts[0]), lng: parseFloat(parts[1])};
         } else {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(displayCurrentPosition);

@@ -147,8 +147,6 @@ class VenuesController < ApplicationController
     end
 
     @venues = Venue.where(id: session[:comparing_venues])
-
-    render :index
   end
 
   private
