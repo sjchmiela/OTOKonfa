@@ -88,11 +88,19 @@
                 contentType: false,
                 processData: false
             })
-                .done(function(){
+                .done(function(response){
                     $('#modal-upload').closeModal();
+
+                    if(response.imageable_type == 'venue'){
+                        venueUpload(response);
+                    }
                 })
                 .fail(window.defaultErrorHandler);
         });
+    }
+
+    function venueUpload(response){
+
     }
 
     function initPagination(){
