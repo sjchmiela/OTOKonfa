@@ -81,6 +81,9 @@ p, ul {
   height: 250px;
   background: #ddd; }
 
+.template {
+  display: none; }
+
 .btn-floating.btn-large {
   margin-left: 10px;
   float: left; }
