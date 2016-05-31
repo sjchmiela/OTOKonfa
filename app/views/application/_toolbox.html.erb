@@ -1,4 +1,9 @@
 <div class="toolbox">
+    <% if @venue and (manager_signed_in?) and current_manager.id == @venue.manager_id %>
+      <div class="btn-floating btn-large red edit-venue">
+        <i class="large material-icons">mode_edit</i>
+      </div>
+    <% end %>
     <div class="btn-floating btn-large red compare-venues"><i class="large material-icons"></i></div>
     <ul class="collection with-header">
         <li class="collection-header">
