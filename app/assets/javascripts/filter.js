@@ -8,8 +8,8 @@
 
     $(document).ready(function(){
         $map = $('.map');
-        $radius = $('#radius_size');
-        $location = $('#location');
+        $radius = $('#filter-radius');
+        $location = $('#filter-location');
 
         $('.range-input').each(function(){
             var input = $(this).find('input');
@@ -82,7 +82,7 @@
     }
 
     function getDefaultPosition(){
-        if($location !== undefined && $location.val() != ''){
+        if($location.val() != ''){
             var parts = $location.val().split(',');
             return {lat: parts[0], lng: parts[1]};
         } else {
