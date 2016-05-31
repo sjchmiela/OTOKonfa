@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :venues, only: [:index, :show] do
     resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
     post 'contact'
+    post '' => 'managers/venues#update_property'
   end
 
   get 'features' => 'features#index'

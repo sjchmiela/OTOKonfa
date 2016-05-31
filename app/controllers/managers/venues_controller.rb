@@ -42,6 +42,17 @@ class Managers::VenuesController < ApplicationController
     end
   end
 
+  def update_property
+    t = {}
+    t.store(params["property"], params["value"])
+    @venue = Venue.find(params["venue_id"])
+    if @venue.update(t)
+      render nothing: true, status: :ok
+    else
+      render json: @venue.errors, status: :unprocessable_entity
+    end
+  end
+
   # DELETE /venues/1
   # DELETE /venues/1.json
   def destroy
