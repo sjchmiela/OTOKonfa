@@ -6,7 +6,6 @@ class CreateVenues < ActiveRecord::Migration
       t.text :address
       t.string :geoposition
       t.string :phone
-      t.string :email
 
       t.timestamps null: false
     end
