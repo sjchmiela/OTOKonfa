@@ -1,0 +1,9 @@
+<% (1..rating.floor).each do %>
+    <li class="material-icons">star</li>
+<% end %>
+<% (rating.floor..rating.ceil-1).each do %>
+    <li class="material-icons">star_half</li>
+<% end %>
+<% (rating.ceil..4).each do %>
+    <li class="material-icons">star_border</li>
+<% end %>
