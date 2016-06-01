@@ -194,13 +194,15 @@
         <div class="venue__reviews section">
           <h4 class="underline">
             Oceny
+            <% if !manager_signed_in? %>
             <a href="<%= user_signed_in? ? '#modal-review' : '#modal-login' %>" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger">
               <i class="material-icons left">comment</i>
               <%= user_signed_in? ? 'dodaj' : 'zaloguj' %>
             </a>
+            <% end %>
           </h4>
           <ul class="collection">
-            <% @venue.reviews.each do |review| %>
+            <% if @venue.reviews.each do |review| %>
             <li class="collection-item avatar">
               <i class="material-icons circle light-blue darken-2">face</i>
               <strong class="title"><%= review.user.first_name %></strong>
@@ -214,6 +216,8 @@
                 <%= review.stars %>
               </div>
             </li>
+            <% end.empty? %>
+              <p>Na razie brak ocen.</p>
             <% end %>
           </ul>
           <ul class="pagination center-align">
