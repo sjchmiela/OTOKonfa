@@ -16,7 +16,7 @@
                 <%= feature.name %>
               </li>
             <% end %>
-            <% if (manager_signed_in? and current_manager.id == @venue.manager_id) %>
+            <% if (manager_signed_in? and current_manager == @venue.manager) %>
               <div class="edit-accessories">
                 <input type="text" class="tags-input" placeholder="podaj atrybut..." id="attributes" data-property="attributes">
               </div>
@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="parallax-container">
-    <div class="parallax"><%= image_tag @venue.photos.first.image %></div>
+    <div class="parallax"><%= image_tag cover(@venue) %></div>
   </div>
 </div>
 <section class="venue__details">
