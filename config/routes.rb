@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :venues, only: [:update]
   end
   namespace :managers do
-    resources :venues, except: [:index, :show]
+    resources :venues, except: [:show]
   end
 
   get '/venues/compare' => 'venues#compare'

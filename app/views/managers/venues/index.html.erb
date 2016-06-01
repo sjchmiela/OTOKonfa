@@ -1,0 +1,22 @@
+<section class="filter section">
+    <div class="container">
+        <h4>Twoje obiekty</h4>
+    </div>
+</section>
+
+<section class="venues section">
+  <div class="container">
+    <div class="row">
+      <% if @venues.each do |venue| %>
+        <%= render partial: 'venues/venue', locals: { venue: venue } %>
+      <% end.empty? %>
+        <div class="card">
+          <div class="card-content black-text">
+            <span class="card-title"><%= t 'not_found.title' %></span>
+            <p><%= t 'not_found.description' %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
