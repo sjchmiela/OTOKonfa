@@ -48,6 +48,4 @@ test:
 #
 production:
   <<: *default
-  database: OTOKonfa_production
-  username: OTOKonfa
-  password: <%= ENV['OTOKONFA_DATABASE_PASSWORD'] %>
+  url: <%= ENV['CLEARDB_DATABASE_URL'] %>
