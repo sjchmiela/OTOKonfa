@@ -12,7 +12,8 @@ class Venue < ActiveRecord::Base
   end
 
   def city
-    address.split('\n').last.match('(.)+\s')
+    return '' if address.nil?
+    (address).split('\n').last.match('(.)+\s')
   end
 
   def hotel_size
