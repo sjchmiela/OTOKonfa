@@ -24,7 +24,7 @@ class Managers::HallsController < ApplicationController
     @hall.venue_id = params['venue_id']
 
     if @hall.save
-      render nothing: true, status: :ok
+      render :show, status: :ok
     else
       render json: @venue.errors, status: :unprocessable_entity
     end
