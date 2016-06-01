@@ -1,0 +1,8 @@
+{
+  "id":1,
+  "name":"Nowa sala",
+  "description":"Przykladowy opis",
+  "chairs":100,
+  "capacity":200,
+  "photo":"images/venue.jpg"
+}

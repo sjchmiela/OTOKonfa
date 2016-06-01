@@ -16,6 +16,8 @@
     var $tpl;
     var $pagination;
     var $reviews;
+    var $hallTpl;
+    var $halls;
 
     $(document).ready(function(){
         $map = $('.map');
@@ -26,6 +28,8 @@
         $tpl = $('#tag-template').detach().removeAttr('id');
         $reviews = $('.venue__reviews');
         $pagination = $('.pagination');
+        $halls = $('.venue__halls');
+        $hallTpl = $halls.find('.template').detach().removeClass('template');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
@@ -53,6 +57,7 @@
 
         handleModal('#modal-contact');
         handleModal('#modal-review');
+        handleModal('#modal-hall', appendHall);
 
         initPagination();
         initUpload();
@@ -77,6 +82,16 @@
                 }
             }
         });
+    }
+
+    function appendHall(response){
+        var $tpl = $hallTpl.clone();
+        $tpl.data('id', response.id);
+        $tpl.find('.card-title-text').text(response.name);
+        $tpl.find('img').attr('src', response.photo);
+        $tpl.find('.sitting').text(response.chairs);
+        $tpl.find('.standing').text(response.capacity);
+        $halls.find('.row').append($tpl);
     }
 
     function addHall(e){
