@@ -14,13 +14,13 @@
                   <%= label_tag :hall_size, 'Wielkość sali (miejsca)' %>
                 </div>
                 <div class="col s7">
-                  <div class="range-input" data-min="0" data-max="100">
-                    <%= hidden_field_tag :hall_size, '0,100' %>
+                  <div class="range-input" data-min="0" data-max="<%= @max_places %>">
+                    <%= hidden_field_tag :hall_size, (params[:hall_size] || "0,#{@max_places}") %>
                   </div>
                   <div class="filter__slot-types">
-                    <input name="slot-type" type="radio" id="filter-slot-sitting" value="0" checked />
+                    <input name="slot-type" type="radio" id="filter-slot-sitting" value="0" <%= "checked" if params['slot-type'] == '0' %> />
                     <label for="filter-slot-sitting">siedzące</label>
-                    <input name="slot-type" type="radio" id="filter-slot-standing" value="1" />
+                    <input name="slot-type" type="radio" id="filter-slot-standing" value="1" <%= "checked" if params['slot-type'] == '1' %> />
                     <label for="filter-slot-standing">stojące</label>
                   </div>
                 </div>
@@ -30,8 +30,8 @@
                 <%= label_tag :halls_count, 'Ilość sali' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="0" data-max="100">
-                  <%= hidden_field_tag :halls_count, '0,100' %>
+                <div class="range-input" data-min="0" data-max="<%= @max_halls_count %>">
+                  <%= hidden_field_tag :halls_count, (params[:halls_count] || "0,#{@max_halls_count}") %>
                 </div>
               </div>
             </div>
@@ -40,8 +40,8 @@
                 <%= label_tag :hotel_size, 'Wielkość hotelu (miejsca)' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="0" data-max="100">
-                  <%= hidden_field_tag :hotel_size, '0,100' %>
+                <div class="range-input" data-min="0" data-max="<%= @max_hotel_size %>">
+                  <%= hidden_field_tag :hotel_size, (params[:hotel_size] || "0,#{@max_hotel_size}") %>
                 </div>
               </div>
             </div>
@@ -51,7 +51,7 @@
               </div>
               <div class="col s7">
                 <div class="range-input" data-min="0" data-max="20" data-decimals="1" data-step="0.25">
-                  <%= hidden_field_tag :radius_size, '0,20' %>
+                  <%= hidden_field_tag :radius_size, (params[:radius_size] || '0,20') %>
                 </div>
               </div>
             </div>
@@ -60,8 +60,8 @@
                 <%= label_tag :average_rating, 'Średnia ocen' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="1" data-max="5" data-decimals="1" data-step="0.1">
-                  <%= hidden_field_tag :average_rating, '1,5' %>
+                <div class="range-input" data-min="0" data-max="5" data-decimals="1" data-step="0.1">
+                  <%= hidden_field_tag :average_rating, (params[:average_rating] || '0,5') %>
                 </div>
               </div>
             </div>
@@ -69,15 +69,15 @@
           <div class="col s4">
             <div class="row">
               <div class="col s12">
-                <%= label_tag :attributes, 'Dostępne usługi' %>
-                <%= text_field_tag :attributes, nil, placeholder: 'Podaj atrybut…', class: 'tags-input', id: 'filter-attributes' %>
+                <%= label_tag :attributes, 'Udogodnienia' %>
+                <%= text_field_tag :attributes, params[:attributes], placeholder: 'Podaj atrybut…', class: 'tags-input', id: 'filter-attributes' %>
               </div>
             </div>
           </div>
           <div class="col s3">
             <div class="row">
               <div class="col s12">
-                <%= hidden_field_tag :location %>
+                <%= hidden_field_tag :location, (params[:location]) %>
                 <div class="map"></div>
               </div>
             </div>
@@ -112,5 +112,6 @@
 </section>
 
 <% content_for :scripts do %>
+  <%= javascript_include_tag 'filter' %>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
 <% end %>

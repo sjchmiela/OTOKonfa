@@ -2,4 +2,5 @@
 @import "materialize/components/color";
 $primary-color: color("green", "darken-3") !default;
 @import 'materialize';
+@import 'jquery.fancybox';
 @import 'custom';

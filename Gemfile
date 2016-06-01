@@ -47,6 +47,9 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 # Use letter opener for capturing e-mails in dev environment
 gem 'letter_opener', group: :development
 
+# Use geo-distance to calculate distance when filtering
+gem 'haversine_distance'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

@@ -67,14 +67,95 @@ p, ul {
     .venue__reviews .collection-item.avatar .secondary-content .material-icons {
       vertical-align: bottom; }
 
-.edit-venue {
-  bottom: 25px;
-  right: 25px; }
+.button-edit {
+  display: none; }
+
+.edit-enabled .hide-on-edit {
+  display: none !important; }
+
+.edit-enabled .button-edit {
+  display: block; }
+
+.no-js .venue__reviews .collection-item:nth-child(n+6) {
+  display: none; }
 
 .venue__location .map {
   margin: 1em 0 0;
   height: 250px;
   background: #ddd; }
+
+.template {
+  display: none; }
+
+.remove-photo {
+  cursor: pointer; }
+
+.btn-floating.btn-large {
+  margin-left: 10px;
+  float: left; }
+
+.toolbox {
+  position: fixed;
+  right: 23px;
+  bottom: 23px;
+  padding-top: 15px;
+  margin-bottom: 0;
+  z-index: 998; }
+  .toolbox .collection {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    width: 350px;
+    background: #fff; }
+    .toolbox .collection .collection-item {
+      min-height: 64px;
+      padding-right: 50px; }
+  .toolbox .action--remove {
+    cursor: pointer; }
+    .toolbox .action--remove i:hover {
+      color: #333 !important; }
+  .toolbox .collection-header {
+    height: 56px; }
+    .toolbox .collection-header span {
+      line-height: 36px;
+      font-size: 18px; }
+
+.compare-venues {
+  display: none; }
+
+.compare table {
+  margin: 3rem 0; }
+.compare th:first-child {
+  width: 10%;
+  border-left: 0;
+  text-align: right; }
+.compare th, .compare td {
+  border-left: 1px solid #d0d0d0;
+  padding: 10px;
+  vertical-align: top; }
+.compare th {
+  width: 90%; }
+.compare .accessories,
+.compare .rating,
+.compare dl, .compare dd, .compare dt {
+  margin: 0;
+  padding: 0; }
+.compare dt {
+  margin: 1rem 0 .25rem;
+  font-weight: bold; }
+  .compare dt:first-child {
+    margin-top: 0; }
+.compare .last {
+  border-bottom: 0; }
+  .compare .last td {
+    text-align: center; }
+
+.compare-2 th {
+  width: 45%; }
+
+.compare-3 th {
+  width: 30%; }
 
 .venue__contact li {
   position: relative;
@@ -107,15 +188,29 @@ p, ul {
 .chip {
   margin: 0 .25rem 0.5rem 0; }
 
-.card .chip {
+.card .chip,
+.compare .chip {
   margin: 0 0.1rem 0.4rem 0;
   height: 28px;
   font-size: 10px;
   line-height: 28px; }
 
+.compare__map {
+  height: 200px;
+  background: #f9f9f9; }
+
 .rating li {
   display: inline-block;
   vertical-align: middle; }
+
+.show-on-add {
+  display: none; }
+
+.modal-add .show-on-add {
+  display: block; }
+
+.modal-add .hide-on-add {
+  display: none; }
 
 .modal .modal-content {
   padding: 1.75rem 2.5rem; }
@@ -124,6 +219,15 @@ p, ul {
 .modal .checkbox-field {
   margin: 0 0 2rem;
   padding: 0; }
+
+.modal-action.btn.left {
+  margin-right: .5rem; }
+
+.modal-action.btn.right {
+  margin-left: .5rem; }
+
+.modal-gallery {
+  margin-bottom: 2rem; }
 
 .material-icons {
   vertical-align: middle; }

@@ -3,19 +3,21 @@ class Managers::VenuesController < ApplicationController
   before_action :set_venue, only: [:edit, :update, :destroy]
   before_action :check_manager_ownership!, only: [:edit, :update, :destroy]
 
-  # GET /venues/new
-  def new
-    @venue = Venue.new
+
+  def index
+    @venues = current_manager.venues
   end
 
-  # GET /venues/1/edit
-  def edit
+  # GET /venues/new
+  def new
+    @venue = Venue.new(manager: current_manager)
   end
 
   # POST /venues
   # POST /venues.json
   def create
     @venue = Venue.new(venue_params)
+    @venue.manager = current_manager
 
     respond_to do |format|
       if @venue.save
@@ -38,6 +40,60 @@ class Managers::VenuesController < ApplicationController
       else
         format.html { render :edit }
         format.json { render json: @venue.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def upload_photo
+    @photo = Photo.new(image: params['photo'], title: params['title'])
+    Venue.find(params['venue_id']).photos.append(@photo)
+  end
+
+  def update_property
+    if params["property"] == "photo"
+      photo = Photo.find(Integer(params['id']))
+      if params['method'] == 'delete'
+        if photo.imageable_type == 'Venue'
+          if Venue.find(photo.imageable_id).manager == current_manager
+            Photo.find(params['id']).destroy
+            render nothing: true, status: :ok
+          else
+            render nothing: true, status: :error
+          end
+        else
+          render nothing: true, status: :error
+        end
+      else
+        if photo.imageable_type == 'Venue'
+          if Venue.find(photo.imageable_id).manager == current_manager
+            Photo.find(params['id']).update(title: params['value'])
+            render nothing: true, status: :ok
+          else
+            render nothing: true, status: :error
+          end
+        else
+          render nothing: true, status: :error
+        end
+      end
+    else
+      if params["property"] == 'attributes'
+        @venue = Venue.find(params["venue_id"])
+        if params["method"] == 'add'
+          @venue.features.append(Feature.find(params['value']))
+          render nothing: true, status: :ok
+        else
+          @venue.features.delete(Feature.find(params['value']))
+          render nothing: true, status: :ok
+        end
+      else
+        t = {}
+        t.store(params["property"], params["value"])
+        @venue = Venue.find(params["venue_id"])
+        if @venue.update(t)
+          render nothing: true, status: :ok
+        else
+          render json: @venue.errors, status: :unprocessable_entity
+        end
       end
     end
   end

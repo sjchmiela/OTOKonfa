@@ -4,10 +4,15 @@
   <meta charset="utf-8">
   <title>OTOKonfa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <ul id="settings-dropdown" class="dropdown-content">
+      <li><a href="#modal-information" class="modal-trigger grey-text text-darken-4">Edytuj dane</a></li>
+      <li class="divider"></li>
+      <li><a href="#modal-password" class="modal-trigger grey-text text-darken-4">Zmień hasło</a></li>
+  </ul>
   <div class="navbar-fixed">
     <nav class="light-blue darken-2" role="navigation">
       <div class="nav-wrapper">
@@ -16,12 +21,7 @@
         <% end %>
         <ul class="right hide-on-med-and-down">
           <% if user_signed_in? %>
-            <li>
-              <%= link_to edit_user_registration_path do %>
-                <%= current_user.first_name %>
-                <i class='material-icons left'>account_box</i>
-              <% end %>
-            </li>
+            <li><a href="#!" class="dropdown-button" data-activates="settings-dropdown"><i class="material-icons left">settings</i>Ustawienia</a></li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <%= I18n.t 'authentication.sign_out' %>
@@ -29,6 +29,16 @@
               <% end %>
             </li>
           <% elsif manager_signed_in? %>
+            <li>
+              <%= link_to '#modal-create-venue', class: 'btn light-blue modal-trigger' do %>
+                <i class="material-icons left">stars</i>Dodaj obiekt
+              <% end %>
+            </li>
+            <li>
+              <%= link_to managers_venues_path do %>
+                <i class="material-icons left">apps</i>Moje obiekty
+              <% end %>
+            </li>
             <li>
               <%= link_to edit_manager_registration_path do %>
                 <%= current_manager.first_name %>
@@ -96,6 +106,7 @@
               <div class="col s4">
                   <h5 class="white-text">Serwis</h5>
                   <ul>
+                    <li><%= link_to 'Logowanie Menedżera', new_manager_session_path, class: 'white-text' %></li>
                       <li><a class="white-text" href="#">Regulamin</a></li>
                       <li><a class="white-text" href="#">Polityka prywatności</a></li>
                       <li><a class="white-text" href="#">Polityka cookies</a></li>
@@ -111,9 +122,16 @@
       </div>
   </footer>
 
-  <%= render 'login' %>
-  <%= render 'register' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% if user_signed_in? %>
+    <%= render 'information' %>
+    <%= render 'password' %>
+  <% else %>
+    <%= render 'login' %>
+    <%= render 'register' %>
+  <% end %>
+  <%= render 'create_venue' %>
+  <%= render 'toolbox' %>
+  <%= javascript_include_tag 'application' %>
   <%= yield :scripts %>
 </body>
 </html>

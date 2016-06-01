@@ -13,6 +13,16 @@ class Venue < ActiveRecord::Base
   end
 
   def city
-    address.split('\n').last.match('(.)+\s')
+    return '' if address.nil?
+    (address).split('\n').last.match('(.)+\s')
+  end
+
+  def hotel_size
+    hotels.to_a.inject(0) do |hotel, sum|
+      hotel.to_a.room_components.inject(0) do |room, sum_hotel|
+        (room.quantity * room.capacity) + sum_hotel
+      end
+      + sum
+    end
   end
 end

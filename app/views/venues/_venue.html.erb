@@ -1,10 +1,8 @@
 <div class="col s4">
   <div class="card card--venue hoverable">
-    <% if venue.photos.any? %>
-      <div class="card-image activator">
-        <%= image_tag venue.photos.first.image, class: 'activator' %>
-      </div>
-    <% end %>
+    <div class="card-image activator">
+      <%= image_tag cover(venue), class: 'activator' %>
+    </div>
     <div class="card-content activator">
       <span class="card-title activator grey-text text-darken-4">
         <%= venue.name %>
@@ -19,6 +17,17 @@
           <i class="material-icons">location_on</i>
           <%= venue.city %>
         </li>
+        <% if manager_signed_in? and current_manager == venue.manager %>
+          <% if !venue.accepted %>
+          <li class="yellow-text text-darken-2">
+            Oczekuje na akceptację
+          </li>
+          <% else %>
+          <li class="green-text text-darken-2">
+            Zaakceptowana
+          </li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div class="card-reveal">
@@ -32,7 +41,7 @@
         <% else %>
         <p>Obiekt nie oferuje żadnych dodatkowych usług.</p>
         <% end %>
-        <!-- <span class="action--compare"><i class="material-icons">add_circle_outline</i> Porównaj</span> -->
+        <span class="action--compare" data-id="<%= venue.id %>"><i class="material-icons">add_circle_outline</i> Porównaj</span>
         <%= link_to venue_path(venue), class: 'action--details' do %>
           Szczegóły
           <i class="material-icons">visibility</i>

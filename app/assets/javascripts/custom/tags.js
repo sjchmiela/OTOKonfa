@@ -32,10 +32,14 @@
             }
         });
 
-        getTags($input.val().split(',')).then(function(values){
-            for(var i=0;i<values.length;i++){
-                $input.tagsinput('add', values[i]);
-            }
-        });
+        if ($input.val() !== undefined) {
+          getTags($input.val().split(',')).then(function(values){
+              for(var i=0;i<values.length;i++){
+                  $input.tagsinput('add', values[i]);
+              }
+          });
+        }
+
+
     });
 })(jQuery);

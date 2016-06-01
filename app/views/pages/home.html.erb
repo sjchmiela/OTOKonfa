@@ -6,6 +6,7 @@
       <div class="row center">
         <h5 class="header col s12 light">Wybierz najlepszą spośród tysięcy dostępnych ofert!</h5>
       </div>
+      <br />
       <div class="row center">
         <%= link_to venues_path, class: 'btn-large waves-effect waves-light light-blue' do %>
           <i class="material-icons left">view_list</i>Przeglądaj
@@ -19,3 +20,46 @@
   </div>
   <div class="parallax"><%= image_tag 'office' %></div>
 </div>
+
+<div class="section features center">
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <h2 class="light-blue-text"><i class="material-icons">euro_symbol</i></h2>
+                <h5>Całkowicie<br>za darmo</h5>
+            </div>
+            <div class="col s4">
+                <h2 class="green-text"><i class="material-icons">verified_user</i></h2>
+                <h5>Tylko sprawdzone<br>ośrodki</h5>
+            </div>
+            <div class="col s4">
+                <h2 class="orange-text"><i class="material-icons">flash_on</i></h2>
+                <h5>Zaawansowana<br>wyszukiwarka</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="venues-map"></div>
+
+<section class="latest venues section">
+    <div class="container">
+        <h4>Ostatnio dodane ośrodki</h4>
+        <div class="row">
+          <% @last_added_venues.each do |venue| %>
+            <%= render partial: 'venues/venue', locals: { venue: venue } %>
+          <% end %>
+        </div>
+        <div class="center-align">
+            <br>
+            <%= link_to venues_path, class: "btn-large waves-effect waves-light light-blue" do %>
+              <i class="material-icons left">apps</i>Zobacz więcej
+            <% end %>
+        </div>
+    </div>
+</section>
+
+<% content_for :scripts do %>
+  <%= javascript_include_tag 'home' %>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<% end %>

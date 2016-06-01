@@ -1,4 +1,5 @@
 <div class='row'>
+  <div class='col s10 offset-s1'>
   <div class='col s12'>
     <h1><%= I18n.t 'authentication.edit' %></h1>
     <h5><%= I18n.t resource_name %></h5>
@@ -59,6 +60,8 @@
         <span class="card-title"><%= I18n.t 'authentication.cancel' %></span>
         <div class='row'><div class='col s12'><p>Unhappy?</p></div></div>
         <%= button_to "Cancel my account", registration_path(resource_name), class: 'btn red darken-2', data: { confirm: "Are you sure?" }, method: :delete %>
+      </div>
     </div>
   </div>
+</div>
 </div>

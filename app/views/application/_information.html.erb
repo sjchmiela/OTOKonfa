@@ -1,0 +1,26 @@
+<div id="modal-information" class="modal">
+    <div class="modal-content">
+        <h4>Edycja danych</h4>
+        <%= form_for(current_user, as: "user", url: user_registration_path, html: { method: :put, class: "row" }) do |f| %>
+            <div class="input-field col s6">
+              <%= f.text_field :first_name %>
+              <%= f.label :first_name %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.text_field :last_name %>
+              <%= f.label :last_name %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.email_field :email %>
+              <%= f.label :email %>
+            </div>
+            <div class="input-field col s6">
+              <%= f.password_field :current_password %>
+              <%= f.label :current_password %>
+            </div>
+            <div class="input-field col s12">
+                <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">done</i>Zapisz zmiany</button>
+            </div>
+        <% end %>
+    </div>
+</div>

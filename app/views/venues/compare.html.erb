@@ -1,0 +1,92 @@
+<section class="compare compare-3 section">
+  <div class="container">
+    <h4>Porównaj wybrane ośrodki</h4>
+    <table class="bordered">
+      <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <% @venues.each do |venue| %>
+          <th><%= venue.name %></th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th>Lokalizacja</th>
+        <% @venues.each do |venue| %>
+          <td><div class="compare__map" data-position="<%= venue.geoposition %>"></div></td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Wyposażenie</th>
+        <% features_union = @venues.inject([]) { |memo, obj| memo | obj.features } %>
+        <% @venues.each do |venue| %>
+        <td>
+          <ul class="accessories">
+            <% features_union.each do |f| %>
+              <li class="chip <%= venue.features.include?(f) ? 'light-blue darken-2' : 'grey lighten-2' %>  white-text"><i class="material-icons"><%= f.icon %></i><%= f.name %></li>
+            <% end %>
+          </ul>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Średnia ocen</th>
+        <% @venues.each do |venue| %>
+        <td>
+          <ul class="rating yellow-text text-accent-4">
+            <li class="black-text"><%= venue.average_rating %></li>
+            <%= render partial: "stars", locals: { rating: venue.average_rating } %>
+            <li class="black-text">ocen: <%= venue.reviews.count %></li>
+          </ul>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Sale</th>
+        <% @venues.each do |venue| %>
+        <td>
+          <dl>
+            <% if venue.halls.each do |hall| %>
+              <dt><%= hall.name %></dt>
+              <dd><strong><%= hall.chairs %></strong> miejsc siedzących</dd>
+              <dd><strong><%= hall.capacity %></strong> miejsc stojących</dd>
+            <% end.empty? %>
+              <em>Brak sali</em>
+            <% end %>
+          </dl>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <th>Hotele</th>
+        <% @venues.each do |venue| %>
+        <td>
+          <dl>
+            <% if venue.hotels.each do |hotel| %>
+              <dt><%= hotel.name %></dt>
+              <% hotel.room_components.each do |rc| %>
+                <dd><strong><%= rc.quantity %></string> pokoi <%= rc.capacity %>-osobowych</dd>
+              <% end %>
+            <% end.empty? %>
+              <em>Brak hoteli</em>
+            <% end %>
+          </dl>
+        </td>
+        <% end %>
+      </tr>
+      <tr class="last">
+        <th>&nbsp;</th>
+        <% @venues.each do |venue| %>
+        <td>
+          <a href="<%= venue_path(venue) %>" class="waves-effect waves-light light-blue darken-2 btn">Szczegóły</a>
+        </td>
+        <% end %>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<% content_for :scripts do %>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<% end %>

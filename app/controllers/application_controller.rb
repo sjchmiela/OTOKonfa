@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def set_new_user
     @new_user = User.new
   end
-  
+
   def logout_user_if_manager_logged_in
     sign_out(current_user) if manager_signed_in? && user_signed_in?
   end
