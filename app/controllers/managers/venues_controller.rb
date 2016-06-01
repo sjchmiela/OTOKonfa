@@ -13,14 +13,11 @@ class Managers::VenuesController < ApplicationController
     @venue = Venue.new(manager: current_manager)
   end
 
-  # GET /venues/1/edit
-  def edit
-  end
-
   # POST /venues
   # POST /venues.json
   def create
     @venue = Venue.new(venue_params)
+    @venue.manager = current_manager
 
     respond_to do |format|
       if @venue.save
