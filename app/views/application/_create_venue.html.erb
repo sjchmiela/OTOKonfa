@@ -1,0 +1,14 @@
+<div id="modal-create-venue" class="modal modal-small">
+  <div class="modal-content">
+    <h4>Dodaj obiekt</h4>
+    <%= form_for([:managers, Venue.new]) do |f| %>
+      <div class="input-field col s12">
+        <%= f.text_field :name %>
+        <%= f.label :name %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.submit 'Dodaj', class: 'modal-action modal-close waves-effect waves-light light-blue darken-2 btn' %>
+      </div>
+    <% end %>
+  </div>
+</div>
