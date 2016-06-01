@@ -103,6 +103,7 @@ class VenuesController < ApplicationController
     @venues = venues
     @max_places = 0
     Venue.all.each do |v|
+      next if v.halls.empty?
       hall = v.halls.to_a.max_by { |h| [h.chairs, h.capacity].max || 0 }
       @max_places = [hall.chairs, hall.capacity, @max_places].max
     end
