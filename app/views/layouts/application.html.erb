@@ -30,6 +30,16 @@
             </li>
           <% elsif manager_signed_in? %>
             <li>
+              <%= link_to new_managers_venue_path, class: 'btn light-blue' do %>
+                <i class="material-icons left">stars</i>Dodaj obiekt
+              <% end %>
+            </li>
+            <li>
+              <%= link_to managers_venues_path do %>
+                <i class="material-icons left">apps</i>Moje obiekty
+              <% end %>
+            </li>
+            <li>
               <%= link_to edit_manager_registration_path do %>
                 <%= current_manager.first_name %>
                 <i class='material-icons left'>account_box</i>
@@ -96,6 +106,7 @@
               <div class="col s4">
                   <h5 class="white-text">Serwis</h5>
                   <ul>
+                    <li><%= link_to 'Logowanie Menedżera', new_manager_session_path, class: 'white-text' %></li>
                       <li><a class="white-text" href="#">Regulamin</a></li>
                       <li><a class="white-text" href="#">Polityka prywatności</a></li>
                       <li><a class="white-text" href="#">Polityka cookies</a></li>
