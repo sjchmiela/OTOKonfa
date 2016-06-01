@@ -8,31 +8,31 @@
             <label for="review-rate-3">Ocena</label>
             <ul class="row">
               <li class="col s2 offset-s1">
-                <input name="rate" type="radio" id="review-rate-1" />
+                <input name="review[stars]" type="radio" id="review-rate-1" value="1" />
                 <label for="review-rate-1">
                   <i class="material-icons red-text text-accent-4">sentiment_very_dissatisfied</i>
                 </label>
               </li>
               <li class="col s2">
-                <input name="rate" type="radio" id="review-rate-2" />
+                <input name="review[stars]" type="radio" id="review-rate-2" value="2" />
                 <label for="review-rate-2">
                   <i class="material-icons red-text text-accent-2">sentiment_dissatisfied</i>
                 </label>
               </li>
               <li class="col s2">
-                <input name="rate" type="radio" id="review-rate-3" />
+                <input name="review[stars]" type="radio" id="review-rate-3" value="3" />
                 <label for="review-rate-3">
                   <i class="material-icons grey-text">sentiment_neutral</i>
                 </label>
               </li>
               <li class="col s2">
-                <input name="rate" type="radio" id="review-rate-4" />
+                <input name="review[stars]" type="radio" id="review-rate-4" value="4" />
                 <label for="review-rate-4">
                   <i class="material-icons light-green-text text-accent-2">sentiment_satisfied</i>
                 </label>
               </li>
               <li class="col s2">
-                <input name="rate" type="radio" id="review-rate-5" />
+                <input name="review[stars]" type="radio" id="review-rate-5" value="5" />
                 <label for="review-rate-5">
                   <i class="material-icons light-green-text text-accent-4">sentiment_very_satisfied</i>
                 </label>
@@ -42,7 +42,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="review-comment" class="materialize-textarea"></textarea>
+            <textarea id="review-comment" class="materialize-textarea" name="review[comment]"></textarea>
             <label for="review-comment">Opcjonalny komentarz</label>
           </div>
         </div>
