@@ -171,23 +171,21 @@
               <i class="material-icons left">email</i>napisz</a>
           </h4>
           <ul>
-            <% if @venue.phone? %>
             <li>
               <i class="material-icons">call</i>
-              <span data-property="phone"><%= @venue.phone %></span>
-            </li><% end %>
+              <span data-property="phone"><%= @venue.phone %> </span>
+            </li>
             <li>
               <i class="material-icons">email</i>
-              <span data-property="email"><%= @venue.email %></span>
+              <span data-property="email"><%= @venue.email %> </span>
             </li>
-            <% if @venue.website? %>
             <li>
               <i class="material-icons">public</i>
-              <span data-property="website"><%= @venue.website %></span>
-            </li><% end %>
+              <span data-property="website"><%= @venue.website %> </span>
+            </li>
             <li>
               <i class="material-icons">location_on</i>
-              <span data-property="address"><%= simple_format @venue.address %></span>
+              <span data-property="address"><%= @venue.address %> </span>
             </li>
           </ul>
         </div>
