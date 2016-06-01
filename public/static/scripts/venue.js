@@ -54,6 +54,16 @@
         handleModal('#modal-contact');
         handleModal('#modal-review');
 
+        initPagination();
+        initUpload();
+        initFancybox();
+
+        if(sessionStorage && sessionStorage.getItem('edit')){
+            $toggle.trigger('click');
+        }
+    });
+
+    function initFancybox(){
         $('.fancybox').fancybox({
             live: true,
             afterLoad: function() {
@@ -67,14 +77,7 @@
                 }
             }
         });
-
-        initPagination();
-        initUpload();
-
-        if(sessionStorage && sessionStorage.getItem('edit')){
-            $toggle.trigger('click');
-        }
-    });
+    }
 
     function addHall(e){
         e.preventDefault();
