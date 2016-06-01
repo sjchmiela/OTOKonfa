@@ -76,13 +76,24 @@ class Managers::VenuesController < ApplicationController
         end
       end
     else
-      t = {}
-      t.store(params["property"], params["value"])
-      @venue = Venue.find(params["venue_id"])
-      if @venue.update(t)
-        render nothing: true, status: :ok
+      if params["property"] == 'attributes'
+        @venue = Venue.find(params["venue_id"])
+        if params["method"] == 'add'
+          @venue.features.append(Feature.find(params['value']))
+          render nothing: true, status: :ok
+        else
+          @venue.features.delete(Feature.find(params['value']))
+          render nothing: true, status: :ok
+        end
       else
-        render json: @venue.errors, status: :unprocessable_entity
+        t = {}
+        t.store(params["property"], params["value"])
+        @venue = Venue.find(params["venue_id"])
+        if @venue.update(t)
+          render nothing: true, status: :ok
+        else
+          render json: @venue.errors, status: :unprocessable_entity
+        end
       end
     end
   end

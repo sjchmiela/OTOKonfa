@@ -16,12 +16,12 @@
                 <%= feature.name %>
               </li>
             <% end %>
-            <% if (manager_signed_in? and current_manager == @venue.manager) %>
-              <div class="edit-accessories">
-                <input type="text" class="tags-input" placeholder="podaj atrybut..." id="attributes" data-property="attributes">
-              </div>
-            <% end %>
           </ul>
+          <% if (manager_signed_in? and current_manager == @venue.manager) %>
+            <div class="edit-accessories">
+              <input type="text" class="tags-input" placeholder="podaj atrybut..." id="attributes" data-property="attributes" value=" ">
+            </div>
+          <% end %>
         </div>
         <div class="col s4 venue__header-info">
           <ul class="rating yellow-text text-accent-4">
