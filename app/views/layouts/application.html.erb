@@ -30,7 +30,7 @@
             </li>
           <% elsif manager_signed_in? %>
             <li>
-              <%= link_to new_managers_venue_path, class: 'btn light-blue' do %>
+              <%= link_to '#modal-create-venue', class: 'btn light-blue modal-trigger' do %>
                 <i class="material-icons left">stars</i>Dodaj obiekt
               <% end %>
             </li>
@@ -129,6 +129,7 @@
     <%= render 'login' %>
     <%= render 'register' %>
   <% end %>
+  <%= render 'create_venue' %>
   <%= render 'toolbox' %>
   <%= javascript_include_tag 'application' %>
   <%= yield :scripts %>
