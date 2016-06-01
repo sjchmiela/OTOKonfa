@@ -17,7 +17,7 @@
           <i class="material-icons">location_on</i>
           <%= venue.city %>
         </li>
-        <% if manager_signed_in? and current_manager == venue.manager %>
+        <% if (manager_signed_in? and current_manager == venue.manager) || (user_signed_in? and current_user.admin) %>
           <% if !venue.accepted %>
           <li class="yellow-text text-darken-2">
             Oczekuje na akceptację
