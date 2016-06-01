@@ -139,8 +139,6 @@
                 .done(function(response){
                     $('#modal-upload').closeModal();
 
-                    form.reset();
-
                     if(response.imageable_type == 'Venue'){
                         venueUpload(response);
                     }
@@ -151,10 +149,10 @@
         function venueUpload(response){
             var $tpl = $galleryTpl.clone();
             $tpl.find('a').attr({
-                'href' : response.photo,
+                'href' : response.image,
                 'title' : response.title,
                 'data-id' : response.id
-            }).find('img').attr('src', response.photo);
+            }).find('img').attr('src', response.image);
             $gallery.find('ul').append($tpl);
         }
     }
