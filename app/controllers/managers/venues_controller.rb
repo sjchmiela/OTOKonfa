@@ -47,14 +47,46 @@ class Managers::VenuesController < ApplicationController
     end
   end
 
+  def upload_photo
+    @photo = Photo.new(image: params['photo'], title: params['title'])
+    Venue.find(params['venue_id']).photos.append(@photo)
+  end
+
   def update_property
-    t = {}
-    t.store(params["property"], params["value"])
-    @venue = Venue.find(params["venue_id"])
-    if @venue.update(t)
-      render nothing: true, status: :ok
+    if params["property"] == "photo"
+      if params['method'] == 'delete'
+        photo = Photo.find(params['id'])
+        if photo.imageable_type == 'Venue'
+          if Venue.find(photo.imageable_id).manager == current_manager
+            Photo.find(params['id']).destroy
+            render nothing: true, status: :ok
+          else
+            render nothing: true, status: :error
+          end
+        else
+          render nothing: true, status: :error
+        end
+      else
+        if photo.imageable_type == 'Venue'
+          if Venue.find(photo.imageable_id).manager == current_manager
+            Photo.find(params['id']).update(title: params['value'])
+            render nothing: true, status: :ok
+          else
+            render nothing: true, status: :error
+          end
+        else
+          render nothing: true, status: :error
+        end
+      end
     else
-      render json: @venue.errors, status: :unprocessable_entity
+      t = {}
+      t.store(params["property"], params["value"])
+      @venue = Venue.find(params["venue_id"])
+      if @venue.update(t)
+        render nothing: true, status: :ok
+      else
+        render json: @venue.errors, status: :unprocessable_entity
+      end
     end
   end
 

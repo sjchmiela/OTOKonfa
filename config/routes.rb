@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resources :venues, only: [:update]
   end
   namespace :managers do
-    resources :venues, except: [:show]
+    resources :venues, except: [:show] do
+      resources :halls, only: [:create]
+      post 'upload_photo'
+    end
   end
 
   get '/venues/compare' => 'venues#compare'

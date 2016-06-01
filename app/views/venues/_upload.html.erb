@@ -1,15 +1,17 @@
 <div id="modal-upload" class="modal modal-small">
   <div class="modal-content">
     <h4>Nowe zdjęcie</h4>
-    <form action="" method="post" class="row">
+    <form action="/managers/venues/<%= @venue.id %>/upload_photo" method="post" class="row">
+      <input type="hidden" id="upload-type">
+      <input type="hidden" id="upload-id">
       <div class="input-field col s12">
-        <input id="upload-description" type="text">
+        <input id="upload-description" type="text" name="title">
         <label for="upload-description">Opis</label>
       </div>
       <div class="file-field input-field col s12">
         <div class="btn">
           <span>Plik</span>
-          <input type="file" id="upload-photo">
+          <input type="file" id="upload-photo" name="photo">
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
