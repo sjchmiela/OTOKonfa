@@ -3,9 +3,14 @@ class Managers::VenuesController < ApplicationController
   before_action :set_venue, only: [:edit, :update, :destroy]
   before_action :check_manager_ownership!, only: [:edit, :update, :destroy]
 
+
+  def index
+    @venues = current_manager.venues
+  end
+
   # GET /venues/new
   def new
-    @venue = Venue.new
+    @venue = Venue.new(manager: current_manager)
   end
 
   # GET /venues/1/edit
