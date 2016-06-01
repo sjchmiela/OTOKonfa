@@ -4,7 +4,8 @@ before_filter :authenticate_admin!
 def update
   respond_to do |format|
     @venue = Venue.find params[:id]
-    if @venue.update_attributes(:accepted => required_params)
+    @venue.accepted = params[:accepted] == '1'
+    if @venue.save
       format.html { redirect_to venues_path, notice: 'Venue was successfully updated.' }
       format.json { render :index, status: :ok }
     else
