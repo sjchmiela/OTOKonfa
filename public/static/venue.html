@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s8">
-                    <h1 data-property="name">Centrum Kongresowe</h1>
+                    <h1 data-property="name" title="Nazwa">Centrum Kongresowe</h1>
                     <ul class="accessories">
                         <li class="chip light-blue darken-2 white-text" id="tag-template"><i class="material-icons"></i></li>
                         <li class="chip light-blue darken-2 white-text" data-id="1"><i class="material-icons">network_wifi</i>WiFi</li>
@@ -66,7 +66,7 @@
             <div class="col s8">
                 <div class="venue__description section">
                     <h4 class="underline">Opis</h4>
-                    <div data-property="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. Donec a massa vitae arcu viverra pulvinar. Donec blandit
+                    <div data-property="description" title="Opis">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. Donec a massa vitae arcu viverra pulvinar. Donec blandit
                         consectetur efficitur. Ut gravida, sem nec consectetur hendrerit, tortor lacus mattis urna, eget dignissim magna magna non felis. Nullam gravida, quam eget condimentum posuere,
                         erat lorem dictum nunc, sed sollicitudin neque urna ac sem. Mauris mauris tortor, ultricies ac porttitor a, rhoncus a risus. Phasellus tincidunt in urna ac efficitur.
                         Vestibulum pulvinar mi nisi, non mattis turpis ultrices non. <br><br>Praesent at orci non leo suscipit placerat. Praesent pharetra posuere sapien. Duis laoreet varius suscipit.
@@ -78,23 +78,23 @@
                     </div>
                 </div>
                 <div class="venue__halls section">
-                    <h4 class="underline">Sale <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
+                    <h4 class="underline">Sale <a href="#" class="button-edit button-add-hall right waves-effect waves-light btn light-blue darken-2"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
                     <div class="row">
-                        <div class="col s6">
+                        <div class="col s6 template">
                             <div class="card card--venue hoverable">
                                 <div class="card-image activator">
-                                    <img src="images/venue.jpg" class="activator">
+                                    <img src="" class="activator">
                                 </div>
                                 <div class="card-content activator">
-                                    <span class="card-title activator grey-text text-darken-4">Sala audytoryjna<i class="material-icons right activator">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4"><span class="card-title-text"></span><i class="material-icons right activator hide-on-edit">more_vert</i><i class="material-icons right button-edit">mode_edit</i></span>
                                 </div>
                                 <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Sala audytoryjna<i class="material-icons right">close</i></span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. </p>
+                                    <span class="card-title grey-text text-darken-4"><span class="card-title-text"></span><i class="material-icons right">close</i></span>
+                                    <p></p>
                                     <div class="divider"></div>
                                     <ul>
-                                        <li><strong>2000</strong> miejsc siedzących</li>
-                                        <li><strong>2000</strong> miejsc stojących</li>
+                                        <li><strong class="sitting"></strong> miejsc siedzących</li>
+                                        <li><strong class="standing"></strong> miejsc stojących</li>
                                     </ul>
                                     <i class="material-icons fancybox">local_see</i>
                                 </div>
@@ -106,15 +106,15 @@
                                     <img src="images/venue.jpg" class="activator">
                                 </div>
                                 <div class="card-content activator">
-                                    <span class="card-title activator grey-text text-darken-4">Sala audytoryjna<i class="material-icons right activator">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4"><span class="card-title-text">Sala audytoryjna</span><i class="material-icons right activator hide-on-edit">more_vert</i><i class="material-icons right button-edit">mode_edit</i></span>
                                 </div>
                                 <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Sala audytoryjna<i class="material-icons right">close</i></span>
+                                    <span class="card-title grey-text text-darken-4"><span class="card-title-text">Sala audytoryjna</span><i class="material-icons right">close</i></span>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. </p>
                                     <div class="divider"></div>
                                     <ul>
-                                        <li><strong>2000</strong> miejsc siedzących</li>
-                                        <li><strong>2000</strong> miejsc stojących</li>
+                                        <li><strong class="sitting">2000</strong> miejsc siedzących</li>
+                                        <li><strong class="standing">2000</strong> miejsc stojących</li>
                                     </ul>
                                     <i class="material-icons fancybox">local_see</i>
                                 </div>
@@ -131,15 +131,13 @@
                                     <img src="images/venue.jpg" class="activator">
                                 </div>
                                 <div class="card-content activator">
-                                    <span class="card-title activator grey-text text-darken-4">Sala audytoryjna<i class="material-icons right activator">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4">Hotel Sheraton<i class="material-icons right activator hide-on-edit">more_vert</i><i class="material-icons right button-edit">mode_edit</i></span>
                                 </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Sala audytoryjna<i class="material-icons right">close</i></span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. </p>
-                                    <div class="divider"></div>
+                                <div class="card-reveal hide-on-edit">
+                                    <span class="card-title grey-text text-darken-4">Hotel Sheraton<i class="material-icons right">close</i></span>
                                     <ul>
-                                        <li><strong>2000</strong> miejsc siedzących</li>
-                                        <li><strong>2000</strong> miejsc stojących</li>
+                                        <li><strong>2x</strong> pokój <strong>2-osobowy</strong></li>
+                                        <li><strong>5x</strong> pokój <strong>3-osobowy</strong></li>
                                     </ul>
                                     <i class="material-icons fancybox">local_see</i>
                                 </div>
@@ -151,15 +149,13 @@
                                     <img src="images/venue.jpg" class="activator">
                                 </div>
                                 <div class="card-content activator">
-                                    <span class="card-title activator grey-text text-darken-4">Sala audytoryjna<i class="material-icons right activator">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4">Hotel Sheraton<i class="material-icons right activator hide-on-edit">more_vert</i><i class="material-icons right button-edit">mode_edit</i></span>
                                 </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Sala audytoryjna<i class="material-icons right">close</i></span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. </p>
-                                    <div class="divider"></div>
+                                <div class="card-reveal hide-on-edit">
+                                    <span class="card-title grey-text text-darken-4">Hotel Sheraton<i class="material-icons right">close</i></span>
                                     <ul>
-                                        <li><strong>2000</strong> miejsc siedzących</li>
-                                        <li><strong>2000</strong> miejsc stojących</li>
+                                        <li><strong>2x</strong> pokój <strong>2-osobowy</strong></li>
+                                        <li><strong>5x</strong> pokój <strong>3-osobowy</strong></li>
                                     </ul>
                                     <i class="material-icons fancybox">local_see</i>
                                 </div>
@@ -168,8 +164,9 @@
                     </div>
                 </div>
                 <div class="venue__gallery section">
-                    <h4 class="underline">Galeria zdjęć <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
+                    <h4 class="underline">Galeria zdjęć <a href="#" class="button-edit right waves-effect waves-light btn light-blue darken-2 trigger-upload" data-id="" data-type="Venue"><i class="material-icons left">local_see</i>dodaj zdjęcie</a></h4>
                     <ul class="row">
+                        <li class="col s3 template"><a href="" data-id="" title="" class="fancybox" rel="gallery"><img src="" alt="" class="z-depth-1 hoverable"></a></li>
                         <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
                         <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
                         <li class="col s3"><a href="images/venue.jpg" data-id="1" title="Opis zdjecia" class="fancybox" rel="gallery"><img src="images/venue.jpg" alt="" class="z-depth-1 hoverable"></a></li>
@@ -194,10 +191,10 @@
                 <div class="venue__contact section">
                     <h4 class="underline">Kontakt <a href="#modal-contact" class="right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">email</i>napisz</a></h4>
                     <ul>
-                        <li><i class="material-icons">call</i><span data-property="phone">+48 123 777 999</span></li>
-                        <li><i class="material-icons">email</i><span data-property="email">kontakt@example.org</span></li>
-                        <li><i class="material-icons">public</i><span data-property="website">www.superstronacentrum.pl</span></li>
-                        <li><i class="material-icons">location_on</i><span data-property="address">ul. Krakowska 4/4<br>34-068 Kraków</span></li>
+                        <li><i class="material-icons">call</i><span data-property="phone" title="Telefon">+48 123 777 999</span></li>
+                        <li><i class="material-icons">email</i><span data-property="email" title="Email">kontakt@example.org</span></li>
+                        <li><i class="material-icons">public</i><span data-property="website" title="Strona www">www.superstronacentrum.pl</span></li>
+                        <li><i class="material-icons">location_on</i><span data-property="address" title="Adres">ul. Krakowska 4/4<br>34-068 Kraków</span></li>
                     </ul>
                 </div>
                 <div class="venue__reviews section">
@@ -452,6 +449,49 @@
         </form>
     </div>
 </div>
+<div id="modal-hall" class="modal">
+    <div class="modal-content">
+        <h4>Sala</h4>
+        <form class="col s12" action="json/hall.json">
+            <input type="hidden" id="hall-id">
+            <div class="row">
+                <div class="input-field col s4">
+                    <input id="hall-name" type="text" class="validate">
+                    <label for="hall-name">Nazwa</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="hall-sitting" type="number" class="validate">
+                    <label for="hall-sitting">Miejsca siedzące</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="hall-standing" type="number" class="validate">
+                    <label for="hall-standing">Miejsca stojące</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="hall-description" class="materialize-textarea validate"></textarea>
+                    <label for="hall-description">Krótki opis</label>
+                </div>
+            </div>
+            <div class="row modal-gallery">
+                <div class="col s12">
+                    <h6>Galeria zdjęć</h6>
+                    <p class="show-on-add">Dodawanie zdjęć możliwe jest dopiero po uprzednim dodaniu sali.</p>
+                    <ul class="row hide-on-add"></ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button class="modal-action waves-effect waves-light light-blue darken-2 btn left" type="submit"><i class="material-icons left">save</i>Zapisz</button>
+                    <button class="modal-action action--upload waves-effect waves-light light-blue darken-2 btn left hide-on-add"><i class="material-icons left">add_a_photo</i>Dodaj zdjęcie</button>
+                    <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn right">Anuluj</button>
+                    <button class="modal-action action--delete modal-close waves-effect waves-light light-blue darken-2 btn right hide-on-add"><i class="material-icons left">delete</i>Usuń</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <div id="modal-review" class="modal modal-small">
     <div class="modal-content">
         <h4>Oceń obiekt</h4>
@@ -477,7 +517,7 @@
             </div>
             <div class="row">
                 <div class="col s12">
-                    <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">stars</i>Dodaj ocenę</button>
+                    <button class="modal-action waves-effect waves-light light-blue darken-2 btn"><i class="material-icons left">stars</i>Dodaj ocenę</button>
                 </div>
             </div>
         </form>
@@ -486,7 +526,9 @@
 <div id="modal-upload" class="modal modal-small">
     <div class="modal-content">
         <h4>Nowe zdjęcie</h4>
-        <form action="" method="post" class="row">
+        <form action="json/upload.json" method="post" class="row">
+            <input type="hidden" id="upload-type">
+            <input type="hidden" id="upload-id">
             <div class="input-field col s12">
                 <input id="upload-description" type="text">
                 <label for="upload-description">Opis</label>

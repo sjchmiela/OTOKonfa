@@ -70,6 +70,9 @@ p, ul {
 .button-edit {
   display: none; }
 
+.edit-enabled .hide-on-edit {
+  display: none !important; }
+
 .edit-enabled .button-edit {
   display: block; }
 
@@ -80,6 +83,12 @@ p, ul {
   margin: 1em 0 0;
   height: 250px;
   background: #ddd; }
+
+.template {
+  display: none; }
+
+.remove-photo {
+  cursor: pointer; }
 
 .btn-floating.btn-large {
   margin-left: 10px;
@@ -194,6 +203,15 @@ p, ul {
   display: inline-block;
   vertical-align: middle; }
 
+.show-on-add {
+  display: none; }
+
+.modal-add .show-on-add {
+  display: block; }
+
+.modal-add .hide-on-add {
+  display: none; }
+
 .modal .modal-content {
   padding: 1.75rem 2.5rem; }
 .modal form {
@@ -201,6 +219,15 @@ p, ul {
 .modal .checkbox-field {
   margin: 0 0 2rem;
   padding: 0; }
+
+.modal-action.btn.left {
+  margin-right: .5rem; }
+
+.modal-action.btn.right {
+  margin-left: .5rem; }
+
+.modal-gallery {
+  margin-bottom: 2rem; }
 
 .material-icons {
   vertical-align: middle; }

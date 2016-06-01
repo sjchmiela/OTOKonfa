@@ -16,6 +16,8 @@
     var $tpl;
     var $pagination;
     var $reviews;
+    var $hallTpl;
+    var $halls;
 
     $(document).ready(function(){
         $map = $('.map');
@@ -26,11 +28,16 @@
         $tpl = $('#tag-template').detach().removeAttr('id');
         $reviews = $('.venue__reviews');
         $pagination = $('.pagination');
+        $halls = $('.venue__halls');
+        $hallTpl = $halls.find('.template').detach().removeClass('template');
 
         $body
             .on('focus', '[contenteditable]', onFocus)
             .on('blur', '[contenteditable]', onBlur)
-            .on('click', '.edit-venue', toggleEditMode);
+            .on('click', '.edit-venue', toggleEditMode)
+            .on('click', '.remove-photo', removePhoto)
+            .on('click', '.button-add-hall', addHall)
+            .on('click', '.trigger-upload', triggerUpload);
 
         var ids = [];
 
@@ -50,12 +57,23 @@
 
         handleModal('#modal-contact');
         handleModal('#modal-review');
+        handleModal('#modal-hall', appendHall);
 
+        initPagination();
+        initUpload();
+        initFancybox();
+
+        if(sessionStorage && sessionStorage.getItem('edit')){
+            $toggle.trigger('click');
+        }
+    });
+
+    function initFancybox(){
         $('.fancybox').fancybox({
             live: true,
             afterLoad: function() {
                 if(editEnabled) {
-                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span>';
+                    this.title = '<span contenteditable data-property="photo" data-id="' + this.element.data('id') + '">' + this.title + '</span><i class="material-icons right remove-photo" data-id="' + this.element.data('id') + '" title="Usuń">delete</i>';
                 }
             },
             helpers : {
@@ -64,20 +82,50 @@
                 }
             }
         });
+    }
 
-        initPagination();
-        initUpload();
+    function appendHall(response){
+        var $tpl = $hallTpl.clone();
+        $tpl.data('id', response.id);
+        $tpl.find('.card-title-text').text(response.name);
+        $tpl.find('img').attr('src', response.photo);
+        $tpl.find('.sitting').text(response.chairs);
+        $tpl.find('.standing').text(response.capacity);
+        $halls.find('.row').append($tpl);
+    }
 
-        if(sessionStorage && sessionStorage.getItem('edit')){
-            $toggle.trigger('click');
-        }
-    });
+    function addHall(e){
+        e.preventDefault();
+        $('#modal-hall').addClass('modal-add').openModal();
+    }
+
+    function triggerUpload(e){
+        e.preventDefault();
+        $('#modal-upload').openModal();
+        $('#upload-type').val( $(this).data('type') );
+        $('#upload-id').val( $(this).data('id') );
+    }
+
+    function removePhoto(){
+        var id = $(this).data('id');
+        save('photo', '', {
+            id: id,
+            action: 'delete'
+        });
+        $('.fancybox[data-id=' + id + ']').parent().remove();
+        $.fancybox.close();
+    }
 
     function initUpload(){
+        var $gallery = $('.venue__gallery');
+        var $galleryTpl = $gallery.find('.template').detach().removeClass('template');
+
         $('#modal-upload').on('submit', 'form', function(e){
             e.preventDefault();
-
+            var form = $(this);
             var formData = new FormData();
+            formData.append('type', $('#upload-type').val());
+            formData.append('id', $('#upload-id').val());
             formData.append('description', $('#upload-description').val());
             formData.append('photo', $('#upload-photo')[0].files[0]);
 
@@ -88,11 +136,27 @@
                 contentType: false,
                 processData: false
             })
-                .done(function(){
+                .done(function(response){
                     $('#modal-upload').closeModal();
+
+                    form.reset();
+
+                    if(response.imageable_type == 'Venue'){
+                        venueUpload(response);
+                    }
                 })
                 .fail(window.defaultErrorHandler);
         });
+
+        function venueUpload(response){
+            var $tpl = $galleryTpl.clone();
+            $tpl.find('a').attr({
+                'href' : response.photo,
+                'title' : response.title,
+                'data-id' : response.id
+            }).find('img').attr('src', response.photo);
+            $gallery.find('ul').append($tpl);
+        }
     }
 
     function initPagination(){
