@@ -54,8 +54,8 @@ class Managers::VenuesController < ApplicationController
 
   def update_property
     if params["property"] == "photo"
+      photo = Photo.find(Integer(params['id']))
       if params['method'] == 'delete'
-        photo = Photo.find(params['id'])
         if photo.imageable_type == 'Venue'
           if Venue.find(photo.imageable_id).manager == current_manager
             Photo.find(params['id']).destroy
