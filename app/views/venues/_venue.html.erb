@@ -17,6 +17,17 @@
           <i class="material-icons">location_on</i>
           <%= venue.city %>
         </li>
+        <% if manager_signed_in? and current_manager == venue.manager %>
+          <% if !venue.accepted %>
+          <li class="yellow-text text-darken-2">
+            Oczekuje na akceptację
+          </li>
+          <% else %>
+          <li class="green-text text-darken-2">
+            Zaakceptowana
+          </li>
+          <% end %>
+        <% end %>
       </ul>
     </div>
     <div class="card-reveal">
