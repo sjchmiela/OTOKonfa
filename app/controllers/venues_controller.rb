@@ -109,11 +109,16 @@ class VenuesController < ApplicationController
     end
     @max_places = 100 if @max_places == 0
 
-    @max_halls_count = (Venue.all.to_a.max_by { |v| v.halls.count }).halls.count
-    @max_halls_count = 10 if @max_halls_count == 0
+    if Venue.all.any?
+      @max_halls_count = (Venue.all.to_a.max_by { |v| v.halls.count }).halls.count
+      @max_halls_count = 10 if @max_halls_count == 0
+      @max_hotel_size = (Venue.all.to_a.max_by(&:hotel_size)).hotel_size
+      @max_hotel_size = 100 if @max_hotel_size == 0
+    else
+      @max_halls_count = 10
+      @max_hotel_size = 100
+    end
 
-    @max_hotel_size = (Venue.all.to_a.max_by(&:hotel_size)).hotel_size
-    @max_hotel_size = 100 if @max_hotel_size == 0
     # puts @venues
   end
 
