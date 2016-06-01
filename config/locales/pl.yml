@@ -27,6 +27,14 @@ pl:
   save: Zapisz
   show: Pokaż
   halls: Sale
+  devise:
+    sessions:
+      manager:
+        signed_out: Wylogowano
+        signed_in: Zalogowano
+      user:
+        signed_out: Wylogowano
+        signed_in: Zalogowano
   venues:
     accept: Akceptuj
     cancel_acceptation: Anuluj akceptację
