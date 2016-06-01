@@ -1,5 +1,6 @@
 class Venue < ActiveRecord::Base
-  belongs_to :manager
+  belongs_to :manager  
+  validates_presence_of :email
   has_many :hotels
   has_many :halls
   has_many :photos, as: :imageable
