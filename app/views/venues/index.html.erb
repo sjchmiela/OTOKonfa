@@ -50,8 +50,8 @@
                 <%= label_tag :radius_size, 'W odległości (km)' %>
               </div>
               <div class="col s7">
-                <div class="range-input" data-min="0" data-max="20" data-decimals="1" data-step="0.25">
-                  <%= hidden_field_tag :radius_size, (params[:radius_size] || '0,20') %>
+                <div class="range-input" data-min="0" data-max="600" data-decimals="1" data-step="0.25">
+                  <%= hidden_field_tag :radius_size, (params[:radius_size] || '0,600') %>
                 </div>
               </div>
             </div>

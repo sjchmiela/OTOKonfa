@@ -2,7 +2,7 @@
   <div class="container">
     <%= form_tag({ url: venues_path }, { class: 'row', method: :get }) do %>
       <div class="col s6 offset-s2">
-        <input id="venue_search" type="tel" class="validate search" name="search" value="<%= params[:search] %>" placeholder="Nazwa ośrodka, słowa kluczowe…">
+        <input id="venue_search" type="tel" class="validate search" name="query" value="<%= params[:query] %>" placeholder="Nazwa ośrodka, słowa kluczowe…">
       </div>
       <div class="col s2">
         <button type="submit" class="btn btn-large waves-effect waves-light light-blue darken-2"><i class="material-icons">search</i> Szukaj</button>
