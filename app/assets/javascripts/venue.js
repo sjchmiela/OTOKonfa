@@ -56,7 +56,7 @@
         });
 
         handleModal('#modal-contact');
-        handleModal('#modal-review');
+        // handleModal('#modal-review');
         handleModal('#modal-hall', appendHall);
 
         initPagination();
