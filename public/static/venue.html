@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="venue__halls section">
-                    <h4 class="underline">Sale <a href="#modal-upload" class="button-edit right waves-effect waves-light btn light-blue darken-2 modal-trigger"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
+                    <h4 class="underline">Sale <a href="#" class="button-edit button-add-hall right waves-effect waves-light btn light-blue darken-2"><i class="material-icons left">add_circle_outline</i>dodaj salę</a></h4>
                     <div class="row">
                         <div class="col s6">
                             <div class="card card--venue hoverable">
@@ -131,15 +131,13 @@
                                     <img src="images/venue.jpg" class="activator">
                                 </div>
                                 <div class="card-content activator">
-                                    <span class="card-title activator grey-text text-darken-4">Sala audytoryjna<i class="material-icons right activator">more_vert</i></span>
+                                    <span class="card-title activator grey-text text-darken-4">Hotel Sheraton<i class="material-icons right activator hide-on-edit">more_vert</i><i class="material-icons right button-edit">mode_edit</i></span>
                                 </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Sala audytoryjna<i class="material-icons right">close</i></span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque felis et vulputate sagittis. </p>
-                                    <div class="divider"></div>
+                                <div class="card-reveal hide-on-edit">
+                                    <span class="card-title grey-text text-darken-4">Hotel Sheraton<i class="material-icons right">close</i></span>
                                     <ul>
-                                        <li><strong>2000</strong> miejsc siedzących</li>
-                                        <li><strong>2000</strong> miejsc stojących</li>
+                                        <li><strong>2x</strong> pokój <strong>2-osobowy</strong></li>
+                                        <li><strong>5x</strong> pokój <strong>3-osobowy</strong></li>
                                     </ul>
                                     <i class="material-icons fancybox">local_see</i>
                                 </div>
@@ -451,6 +449,46 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>
+<div id="modal-hall" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Sala</h4>
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s4">
+                    <input id="hall-name" type="text" class="validate">
+                    <label for="hall-name">Nazwa</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="hall-sitting" type="number" class="validate">
+                    <label for="hall-sitting">Miejsca siedzące</label>
+                </div>
+                <div class="input-field col s4">
+                    <input id="hall-standing" type="number" class="validate">
+                    <label for="hall-standing">Miejsca stojące</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="hall-description" class="materialize-textarea validate"></textarea>
+                    <label for="hall-description">Krótki opis</label>
+                </div>
+            </div>
+            <div class="row modal-gallery">
+                <div class="col s12">
+                    <h6>Galeria zdjęć</h6>
+                    <p class="show-on-add">Dodawanie zdjęć możliwe jest dopiero po uprzednim dodaniu sali.</p>
+                    <ul class="row hide-on-add"></ul>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-action action--add modal-close waves-effect waves-light light-blue darken-2 btn left"><i class="material-icons left">save</i>Zapisz</button>
+        <button class="modal-action action--upload modal-close waves-effect waves-light light-blue darken-2 btn left hide-on-add"><i class="material-icons left">add_a_photo</i>Dodaj zdjęcie</button>
+        <button class="modal-action modal-close waves-effect waves-light light-blue darken-2 btn right">Anuluj</button>
+        <button class="modal-action action--delete modal-close waves-effect waves-light light-blue darken-2 btn right hide-on-add"><i class="material-icons left">delete</i>Usuń</button>
     </div>
 </div>
 <div id="modal-review" class="modal modal-small">

@@ -32,6 +32,7 @@
             .on('blur', '[contenteditable]', onBlur)
             .on('click', '.edit-venue', toggleEditMode)
             .on('click', '.remove-photo', removePhoto)
+            .on('click', '.button-add-hall', addHall)
             .on('click', '.trigger-upload', triggerUpload);
 
         var ids = [];
@@ -75,6 +76,11 @@
         }
     });
 
+    function addHall(e){
+        e.preventDefault();
+        $('#modal-hall').addClass('modal-add').openModal();
+    }
+
     function triggerUpload(e){
         e.preventDefault();
         $('#modal-upload').openModal();
@@ -98,7 +104,7 @@
 
         $('#modal-upload').on('submit', 'form', function(e){
             e.preventDefault();
-
+            var form = $(this);
             var formData = new FormData();
             formData.append('type', $('#upload-type').val());
             formData.append('id', $('#upload-id').val());
@@ -114,6 +120,8 @@
             })
                 .done(function(response){
                     $('#modal-upload').closeModal();
+
+                    form.reset();
 
                     if(response.imageable_type == 'Venue'){
                         venueUpload(response);
