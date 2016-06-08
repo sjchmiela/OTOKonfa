@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # Removing :validatable => accounts won't have to be confirmed.
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable,
+         :omniauthable, omniauth_providers: [:facebook]
   validates_presence_of :email
   validates_uniqueness_of :email
   validates_confirmation_of :password
