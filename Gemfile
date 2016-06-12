@@ -42,7 +42,8 @@ gem 'high_voltage', '~> 2.4.0'
 gem 'materialize-sass'
 
 # Use Paperclip for image attachments
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'paperclip', git: 'git://github.com/thoughtbot/paperclip.git'
+gem 'aws-sdk'
 
 # Use letter opener for capturing e-mails in dev environment
 gem 'letter_opener', group: :development
