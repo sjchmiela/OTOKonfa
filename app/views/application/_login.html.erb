@@ -16,6 +16,7 @@
       </div>
       <div class="input-field col s12">
         <%= f.submit 'Zaloguj', class: 'modal-action modal-close waves-effect waves-light light-blue darken-2 btn' %>
+        <%= link_to 'Loguj z FB', user_omniauth_authorize_path(:facebook), class: 'modal-action modal-close waves-effect waves-light light-blue darken-4 btn' %>
         <%= link_to 'Zapomniałem hasła', new_user_password_path, class: 'waves-effect waves-light btn-flat' %>
       </div>
     <% end %>
