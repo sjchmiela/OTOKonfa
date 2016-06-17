@@ -42,6 +42,9 @@
 </div>
 <section class="venue__details">
   <div class="container">
+    <div class="section button-edit">
+      <a href="#modal-facebook" class="waves-effect waves-light btn light-blue darken-2 modal-trigger" style="display:block;margin:20px auto 0;width:500px">Synchronizuj ze stroną w serwisie Facebook</a>
+    </div>
     <div class="row">
       <div class="col s8">
         <div class="venue__description section">
@@ -242,8 +245,26 @@
 <%= render 'create_hall' %>
 <%= render 'contact' %>
 <%= render 'upload' %>
+<%= render 'facebook' %>
 
 <% content_for :scripts do %>
 <%= javascript_include_tag 'venue' %>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpI_0fWP3Q1ghq2Ul-VF2ZsAFCZTA_vwY&callback=initMap"></script>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1590042501288880',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
 <% end %>

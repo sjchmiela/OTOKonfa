@@ -62,6 +62,7 @@
         initPagination();
         initUpload();
         initFancybox();
+        initFacebook();
 
         if(sessionStorage && sessionStorage.getItem('edit')){
             $toggle.trigger('click');
@@ -82,6 +83,105 @@
                 }
             }
         });
+    }
+
+    function initFacebook(){
+        var $modal = $('#modal-facebook');
+        var $pageID = $modal.find('input');
+
+        $modal.on('click', '.modal-action', function(){
+            var pageID = $pageID.val();
+
+            if(!/^[a-zA-Z0-9\-_]+$/.test(pageID)){
+                $pageID.focus();
+                Materialize.toast('Niepoprawny format identyfikatora!', 2000, 'red');
+            } else {
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        FB.api(
+                            '/' + pageID + '?fields=about,description,location,phone,website,emails',
+                            parseResponse
+                        );
+                    }
+                }, {scope: ''});
+            }
+        });
+
+        function parseResponse(response){
+            if (response && !response.error) {
+                var description = response.description || response.about;
+                var website = response.website;
+                var email = response.emails ? response.emails[0] : undefined;
+                var phone = response.phone;
+                var location = response.location;
+                var data = {};
+                var position;
+
+                if(description){
+                    data.description = filterTags(description);
+                }
+
+                if(website && isWebsite(website)){
+                    data.website = website;
+                }
+
+                if(email && isEmail(email)){
+                    data.email = email;
+                }
+
+                if(phone && isPhone(phone)){
+                    data.phone = phone;
+                }
+
+                if(location){
+                    data.address = filterTags(location.street) + '<br>' +
+                                   filterTags(location.zip) + ' ' + filterTags(location.city);
+
+                    position = {lat: parseFloat(location.latitude), lng: parseFloat(location.longitude)};
+
+                    data.geoposition = position.lat + ',' + position.lng;
+
+                    marker.setPosition(position);
+                    map.setCenter(position);
+                }
+
+                var keys = Object.keys(data);
+                var key;
+
+                for(var i=0;i<keys.length;i++ ){
+                    key = keys[i];
+                    setProperty(key, data[key]);
+                }
+
+                $.ajax({
+                    url: window.location.href,
+                    type: 'PUT',
+                    data: {venue: data}
+                });
+
+                $modal.closeModal();
+            }
+        }
+
+        function setProperty(property, value){
+            $('*[data-property=' + property + ']').html(value);
+        }
+
+        function isPhone(phone){
+            return /^[0-9\(\)\+\-\s]$/.test(phone);
+        }
+
+        function isWebsite(website){
+            return /^(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?$/.test(website);
+        }
+
+        function isEmail(email){
+            return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+        }
+
+        function filterTags(content){
+            return content.replace(/(<([^>]+)>)/ig, "");
+        }
     }
 
     function appendHall(response){
