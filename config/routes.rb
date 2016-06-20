@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   post '/venues/compare' => 'venues#compare'
 
   resources :venues, only: [:index, :show] do
+    put '' => 'managers/venues#update'
     resources :reviews, only: [:create, :edit, :update, :destroy, :accept]
     post 'contact'
     post '' => 'managers/venues#update_property'

@@ -154,7 +154,7 @@
                 }
 
                 $.ajax({
-                    url: window.location.href,
+                    url: window.location.href + '.json',
                     type: 'PUT',
                     data: {venue: data}
                 });
