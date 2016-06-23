@@ -1,4 +1,7 @@
 class Venue < ActiveRecord::Base
+  def self.default_scope
+    includes(:reviews, :halls, :photos, :hotels, :features)
+  end
   belongs_to :manager
   validates_presence_of :email
   has_many :hotels
